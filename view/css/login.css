@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(../images/service2.jpg) no-repeat center top;
+  background-size: cover;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.login-box {
+  width: 320px;
+  height: 390px;
+  background: #1c2255;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 110px 35px;
+  border-radius: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Cambia la sombra al pasar el mouse */
+}
+
+.login-box:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Cambia la sombra al pasar el mouse */
+}
+
+.login-box .avatar {
+  width: 240px;
+  height: 75px;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 5px;
+  left: calc(50% - 109px);
+}
+
+.form {
+  margin-top: 40px;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.enviar {
+  border: none;
+  outline: none;
+  height: 40px;
+  margin-left: 30%;
+  background: #2093bf;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+  cursor: pointer;
+  background: #afcd4a;
+  color: #000;
+}
+
+.enviar {
+  margin-top: 5%;
+}
