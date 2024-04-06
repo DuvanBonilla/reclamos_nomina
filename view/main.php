@@ -10,6 +10,8 @@
     <title>Dimension by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/main.css" />
     <noscript>
         <link rel="stylesheet" href="css/noscript.css" />
@@ -23,10 +25,9 @@
 
         <!-- Header -->
         <header id="header">
+
             <div class="logo">
-                <span class="icon fa-gem">
-                    <img class="logo" src="images/logo-redondo.ico" alt="">
-                </span>
+                <img class="logo" src="images/logo-redondo.ico" alt="">
             </div>
             <div class="content">
                 <div class="inner">
@@ -59,51 +60,51 @@
             <!-- Contact -->
             <article id="contact">
                 <h2 class="major">Contact</h2>
-                <form method="POST" action="#">
+                <form method="POST" action="../controller/ctr_aggNovedad.php">
                     <div class="fields">
                         <div class="field half">
                             <label name="fechaRegistro" for="fechaRegistro">Fecha registro</label>
-                            <input type="date" name="fechaRegistro" id="fechaRegistro" style="color: black;" />
+                            <input type="date" name="fechaRegistro" id="fechaRegistro" style="color: black;" required />
                         </div>
-
                         <div class="field half">
                             <label name="fechaNovedad" for="Fecha novedad">Fecha novedad</label>
-                            <input type="date" name="date" id="date" style="color: black;" />
+                            <input type="date" name="fechaNovedad" id="fechaNovedad" style="color: black;" required />
+                        </div>
+                        <div class="field half">
+                            <label for="coordinador">Coordinador</label>
+                            <input type="text" name="coordinador" id="coordinador" required />
                         </div>
                         <div class="field">
-                            <label name="novedad" for="novedad">Novedad</label>
-                            <select id="novedad" name="Novedad">
+                            <label for="novedad">Novedad</label>
+                            <select id="novedad" name="novedad" required>
                                 <option value="saldo faltante">Saldo faltante</option>
                                 <option value="Saldo sobrante">Saldo sobrante</option>
                             </select>
                         </div>
+                        <div class="field half">
+                            <label for="trabajador">Trabajador</label>
+                            <input type="text" name="trabajador" id="trabajador" required />
+                        </div>
                         <div class="field ">
-                            <label name="cliente" for="cliente">Cliente</label>
+                            <label for="cliente">Cliente</label>
                             <select id="cliente" name="cliente">
                                 <option value="uniban">Uniban</option>
                                 <option value="zungo">Zungo</option>
                                 <option value="colonia">Colonia</option>
                             </select>
                         </div>
-                        <div class="field half">
-                            <label for="coordinador">Coordinador</label>
-                            <input type="text" name="coordinador" id="coordinador" />
-                        </div>
-                        <div class="field half">
-                            <label for="trabajador">Trabajador</label>
-                            <input type="text" name="trabajador" id="trabajador" />
+                        <div class="field ">
+                            <label for="descripcion">Descripcion</label>
+                            <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
                         </div>
                         <div class="field half">
                             <label for="idServicio">Id servicio</label>
-                            <input type="text" name="idServicio" id="idServicio" />
-                        </div>
-                        <div class="field ">
-                            <label for="message">Descripcion</label>
-                            <textarea name="message" id="message" rows="4"></textarea>
+                            <input type="text" name="idServicio" id="idServicio" required />
                         </div>
                     </div>
                     <button class="primary" type="submit" class="enviar" name="enviar" id="enviar">Registrar novedad</button>
                 </form>
+
             </article>
         </div>
         <!-- Footer -->

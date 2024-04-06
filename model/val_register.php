@@ -1,5 +1,5 @@
 <?php
-class register
+class valRegister
 {
     private $codigo;
     private $conexion;
