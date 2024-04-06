@@ -65,7 +65,7 @@ body {
   border-radius: 20px;
 }
 
-.login-box input[type="submit"]:hover {
+.enviar:hover {
   cursor: pointer;
   background: #afcd4a;
   color: #000;

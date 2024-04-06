@@ -20,7 +20,7 @@ class valLogin
                 $datos = $login->fetch_assoc();
                 $codigo = $datos["codigo"];
                 if ($this->codigo == $codigo) {
-                    echo '<script>window.location.href="../view/form.php";</script>';
+                    echo '<script>window.location.href="../view/main.php";</script>';
                     exit();
                 } else {
                     echo "
