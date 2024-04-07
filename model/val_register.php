@@ -55,6 +55,22 @@ class valRegister
                     });
                     </script>";
                 } else {
+                    echo "
+                    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                    <script language='JavaScript'>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'El usuario $this->codigo ya se encuentra registrado',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK',
+                            timer: 5000
+                        }).then(() => {
+                            location.assign('../view/register.php');
+                        });
+                    });
+                    </script>";
                 }
             } catch (Exception $e) {
                 echo '  

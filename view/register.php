@@ -1,15 +1,35 @@
+<?php
+session_start();
+if (!isset($_SESSION['rol'])) {
+    // Si no existe , redirige al usuario a la página de inicio de sesión
+    header('location: ../view/login.php');
+    exit;
+}
+if ($_SESSION['rol'] != 1) {
+    // Si no existe o su valor no es igual a 1, redirige al usuario a la página de inicio de sesión
+    header('location: ../view/main2.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="img/logo.ico" type="image/x-icon">
+    <link rel="icon" href="images/logo.ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Registro</title>
     <link rel="stylesheet" href="css/register.css" />
 </head>
 
 <body>
+    <nav>
+        <nav>
+            <a class="exit-link" href="../view/main.php">
+                <i class="fa fa-right-from-bracket fa-beat " style="color: #ff0000"></i>
+            </a>
+        </nav>
+    </nav>
     <div class="login-box">
         <img src="images/logo2.png" class="avatar" alt="Avatar Image" />
 

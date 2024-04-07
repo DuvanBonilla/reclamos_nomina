@@ -58,7 +58,7 @@ body {
   border: none;
   outline: none;
   height: 40px;
-  margin-left: 30%;
+  margin-left: 23%;
   background: #2093bf;
   color: #fff;
   font-size: 18px;
@@ -107,4 +107,14 @@ body {
 #zona option {
   padding: 10px; /* Espaciado interno */
   font-size: 14px; /* Tamaño de fuente */
+}
+
+.exit-link {
+  position: fixed; /* Posición fija en relación con la ventana del navegador */
+  top: 10px; /* Ajusta la posición desde la parte superior */
+  left: 10px; /* Ajusta la posición desde la izquierda */
+  z-index: 5; /* Asegura que el ícono esté por encima de otros elementos */
+  margin-left: 2%;
+  margin-top: 1%;
+  font-size: 35px;
 }

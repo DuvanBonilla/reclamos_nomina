@@ -1,6 +1,3 @@
-@import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
-
 html,
 body,
 div,
@@ -238,7 +235,6 @@ a {
     border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
     border-bottom-color 0.2s ease-in-out;
-  border-bottom: dotted 1px rgba(255, 255, 255, 0.5);
   text-decoration: none;
   color: inherit;
 }
@@ -410,7 +406,7 @@ form {
 form > :last-child {
   margin-bottom: 0;
 }
-
+/* 
 form > .fields {
   display: -moz-flex;
   display: -webkit-flex;
@@ -471,7 +467,7 @@ form > .fields > .field.quarter {
   form > .fields > .field.quarter {
     width: calc(100% - 1.5rem);
   }
-}
+} */
 
 label {
   color: #ffffff;
@@ -1658,7 +1654,7 @@ body.is-preload #header .content .inner {
   transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
   padding: 4.5rem 2.5rem 1.5rem 2.5rem;
   position: relative;
-  width: 40rem;
+  width: 50rem;
   max-width: 100%;
   background-color: rgba(27, 31, 34, 0.85);
   border-radius: 4px;
@@ -1713,7 +1709,23 @@ body.is-preload #header .content .inner {
   background-color: rgba(255, 255, 255, 0.175);
 }
 
-@media screen and (max-width: 736px) {
+/* Media query para dispositivos con ancho menor a 600px (puedes ajustar este valor según tus necesidades) */
+@media only screen and (max-width: 636px) {
+  /* Estilos para los encabezados de la tabla */
+  #about table#tabla-eliminar th {
+    font-size: 14px; /* Reducir el tamaño de la fuente */
+    padding: 8px; /* Ajustar el relleno */
+  }
+
+  /* Otras modificaciones si es necesario, como ocultar ciertas columnas */
+  #about table#tabla-eliminar th:nth-child(3),
+  #about table#tabla-eliminar th:nth-child(5) {
+    display: none; /* Ocultar la tercera y quinta columna en dispositivos móviles */
+  }
+}
+
+/* cerrar */
+@media screen and (max-width: 436px) {
   #main article {
     padding: 3.5rem 2rem 0.5rem 2rem;
   }
@@ -1727,9 +1739,17 @@ body.is-preload #header .content .inner {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 736px) {
   #main article {
-    padding: 3rem 1.5rem 0.5rem 1.5rem;
+    padding: 3.5rem 2rem 0.5rem 2rem;
+  }
+
+  #main article .close:before {
+    top: 0.875rem;
+    left: 0.875rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-size: 14px 14px;
   }
 }
 
@@ -1772,4 +1792,14 @@ body.is-article-visible #footer {
 
 body.is-preload #footer {
   opacity: 0;
+}
+
+.exit-link {
+  position: fixed; /* Posición fija en relación con la ventana del navegador */
+  top: 10px; /* Ajusta la posición desde la parte superior */
+  left: 10px; /* Ajusta la posición desde la izquierda */
+  z-index: 5; /* Asegura que el ícono esté por encima de otros elementos */
+  margin-left: 2%;
+  margin-top: 1%;
+  font-size: 35px;
 }

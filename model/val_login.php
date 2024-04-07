@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class valLogin
 {
     private $codigo;
@@ -20,6 +20,7 @@ class valLogin
                 $datos = $login->fetch_assoc();
                 $codigo = $datos["codigo"];
                 if ($this->codigo == $codigo) {
+                    $_SESSION['rol'] = $this->codigo;
                     echo '<script>window.location.href="../view/main.php";</script>';
                     exit();
                 } else {
