@@ -27,13 +27,15 @@ if ($_SESSION['rol'] != 2) {
 </head>
 
 <body class="is-preload">
-
+    <nav>
+        <a class="exit-link" href="../model/cerrar_session.php">
+            <i class="fa fa-right-from-bracket fa-beat " style="color: #ff0000"></i>
+        </a>
+    </nav>
     <!-- Wrapper -->
     <div id="wrapper">
-
         <!-- Header -->
         <header id="header">
-
             <div class="logo">
                 <img class="logo" src="images/logo-redondo.ico" alt="">
             </div>
@@ -47,7 +49,7 @@ if ($_SESSION['rol'] != 2) {
             <nav>
                 <ul>
                     <li><a href="#contact">Añadir novedad</a></li>
-                    <li><a href="#work">Consultar</a></li>
+                    <li><a href="allNovedades2.php">Consultar novedad</a></li>
                     <!-- <li><a href="#about">About</a></li> -->
                     <li><a href="#">otra cosa</a></li>
                     <!-- <li><a href="#elements">Elements</a></li> -->

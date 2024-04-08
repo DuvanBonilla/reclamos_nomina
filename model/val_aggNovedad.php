@@ -4,46 +4,47 @@ class valNovedad
 {
     private $fechaRegistro;
     private $fechaNovedad;
-    private $novedad;
-    private $cliente;
     private $coordinador;
+    private $novedad;
     private $trabajador;
-    private $idServicio;
     private $descripcion;
-    private $estado;
+    private $idServicio;
+    private $cliente;
     private $idUsuario;
+    private $estado;
     private $conexion;
 
-    public function __construct($fechaRegistro, $fechaNovedad, $novedad, $cliente, $coordinador, $trabajador, $idServicio, $descripcion, $estado, $idUsuario, $conexion)
+    public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $conexion)
     {
         $this->fechaRegistro = $fechaRegistro;
         $this->fechaNovedad = $fechaNovedad;
-        $this->novedad = $novedad;
-        $this->cliente = $cliente;
         $this->coordinador = $coordinador;
+        $this->novedad = $novedad;
         $this->trabajador = $trabajador;
-        $this->idServicio = $idServicio;
         $this->descripcion = $descripcion;
-        $this->estado = $estado;
+        $this->idServicio = $idServicio;
+        $this->cliente = $cliente;
         $this->idUsuario = $idUsuario;
+        $this->estado = $estado;
         $this->conexion = $conexion->conMysql();
     }
 
     public function validarNovedad()
     {
         // Realizar una consulta para obtener los códigos de usuario disponibles
-        $sql = "SELECT codigo FROM usuarios";
+        $sql = "SELECT nombre_coordinador FROM novedades_nomina";
         $resultado = $this->conexion->query($sql);
 
         if ($resultado->num_rows > 0) {
             // Iterar sobre los resultados y mostrar los códigos de usuario
             while ($fila = $resultado->fetch_assoc()) {
-                echo "Código de usuario: " . $fila["codigo"] . "<br>";
+                echo "Código de coordiandor: " . $fila["nombre_coordinador"] . "<br>";
             }
         } else {
             echo "No se encontraron usuarios.";
         }
     }
+
     public function registrarNovedad()
     {
         if (!empty($_POST['fechaRegistro'] && $_POST['fechaNovedad'] && $_POST['novedad'] && $_POST['cliente'] && $_POST['coordinador'] && $_POST['idServicio'] && $_POST['descripcion'])) {
@@ -55,7 +56,7 @@ class valNovedad
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
             if ($stmt = $this->conexion->prepare($query)) {
-                $stmt->bind_param('ssssssssss', $this->fechaRegistro, $this->fechaNovedad, $this->novedad, $this->cliente, $this->coordinador, $this->trabajador, $this->idServicio, $this->descripcion, $this->estado, $this->idUsuario);
+                $stmt->bind_param('ssssssssss', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->cliente, $this->idUsuario, $this->estado,);
 
                 if ($stmt->execute()) {
                     echo "

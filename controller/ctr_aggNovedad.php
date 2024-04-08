@@ -1,8 +1,6 @@
 <?php
 require_once("../model/conexion.php");
 require_once("../model/val_aggNovedad.php");
-
-
 // --------------------------------------------------------------------
 $fechaRegistro = $_POST["fechaRegistro"];
 $fechaNovedad = $_POST["fechaNovedad"];
@@ -18,7 +16,7 @@ $estado = 1;
 $conexion = new Conexion();
 $conMysql = $conexion->conMysql();
 // --------------------------------------------------------------------
-
-$valNovedad = new valNovedad($fechaRegistro, $fechaNovedad, $novedad, $cliente, $coordinador, $trabajador, $idServicio, $descripcion, $estado, $idUsuario, $conexion);
+$valNovedad = new valNovedad($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $conexion);
+// --------------------------------------------------------------------
 $valNovedad->validarNovedad();
 $valNovedad->registrarNovedad();

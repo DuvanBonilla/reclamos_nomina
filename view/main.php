@@ -53,8 +53,8 @@ if ($_SESSION['rol'] != 1) {
                 <ul>
 
                     <li><a href="#contact">Añadir novedad</a></li>
-                    <li><a href="#about">Todas las novedades</a></li>
-                    <li><a href="#work">Consultar novedad</a></li>
+                    <li><a href="allNovedades.php">Consultar novedad</a></li>
+                    <!-- <li><a href="#work">Consultar novedad</a></li> -->
                     <!-- <li><a href="#about">About</a></li> -->
                     <li><a href="register.php">Registrar usuario</a></li>
                 </ul>
@@ -63,37 +63,6 @@ if ($_SESSION['rol'] != 1) {
 
         <!-- Main -->
         <div id="main">
-            <!-- consultar novedad -->
-            <article id="work">
-                <h2 class="major">Consultar novedad</h2>
-                <form action="">
-                    <label name="fechaNovedad" for="Fecha novedad">Fecha novedad</label>
-                    <input type="date" name="fechaNovedad" id="fechaNovedad" style="color: black;" required />
-                </form>
-                <?php require_once("../controller/ctr_searchNovedad.php"); ?>
-            </article>
-            <!-- todas las novedades -->
-            <article id="about">
-                <h3 class="major">Todas las novedades</h3>
-                <table id="tabla-eliminar">
-                    <thead>
-                        <tr>
-                            <th class="field half">Fecha registro</th>
-                            <th class="field half">Fecha novedad</th>
-                            <th class="field half">Coordinador</th>
-                            <th class="field half">Novedad</th>
-                            <th class="field half">Trabajador</th>
-                            <th class="field half">Descripcion</th>
-                            <th class="field half">Servicio</th>
-                        </tr>
-                    </thead>
-                    <!-- Cuerpo de la tabla -->
-                    <tbody>
-                        <?php require_once("../controller/ctr_allNovedad.php"); ?>
-                    </tbody>
-                </table>
-            </article>
-
 
             <!-- registrar novedad -->
             <article id="contact">
@@ -116,10 +85,10 @@ if ($_SESSION['rol'] != 1) {
                         <div class="field">
                             <label for="coordinador">Coordinador</label>
                             <select id="coordinador" name="coordinador" required>
-                                <option value="saldo faltante">Kenier</option>
-                                <option value="Saldo sobrante">Pasos</option>
-                                <option value="Saldo sobrante">Yessy</option>
-                                <option value="Saldo sobrante">Yeison</option>
+                                <option value="Kenier">Kenier</option>
+                                <option value="Pasos">Pasos</option>
+                                <option value="Yessy">Yessy</option>
+                                <option value="Yeison">Yeison</option>
                             </select>
                         </div>
                         <!-- </div>
@@ -143,13 +112,13 @@ if ($_SESSION['rol'] != 1) {
                             <select id="cliente" name="cliente">
                                 <option value="uniban">Uniban</option>
                                 <option value="zungo">Banacol</option>
-                                <option value="colonia">Cfs</option>
-                                <option value="colonia">Banafruit</option>
-                                <option value="colonia">Conserva</option>
-                                <option value="colonia">Fyffes</option>
-                                <option value="colonia">Smitco</option>
-                                <option value="colonia">Spsm</option>
-                                <option value="colonia">Simbacol</option>
+                                <option value="Cfs">Cfs</option>
+                                <option value="Banafruit">Banafruit</option>
+                                <option value="Conserva">Conserva</option>
+                                <option value="Fyffes">Fyffes</option>
+                                <option value="Smitco">Smitco</option>
+                                <option value="Spsm">Spsm</option>
+                                <option value="Simbacol">Simbacol</option>
                             </select>
                         </div>
                         <div class="field ">
