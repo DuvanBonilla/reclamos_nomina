@@ -70,36 +70,16 @@ if ($_SESSION['rol'] != 1) {
             </table>
         </section>
     </main>
-
-    <!-- <div class="popup" id="statePopup" style="display: none;">
-        <form class="popup-content" id="stateForm" method="POST" action="../controller/ctr_updateState.php">
-            <div class="popup-content">
-                <p>Selecciona un estado:</p>
-                <button type="submit" class="state-button" data-state="proceso" name="estado" value="proceso">Proceso</button>
-                <button type="submit" class="state-button" data-state="terminado" name="estado" value="terminado">Terminado</button>
-            </div>
-        </form>
-    </div> -->
-
     <div class="popup" id="statePopup" style="display: none;">
-        <form class="popup-content" id="stateForm" method="POST" action="../controller/ctr_updateState.php">
-            <div class="popup-content">
-                <p>Selecciona un estado:</p>
-                <!-- Campos ocultos para almacenar los datos -->
-                <input type="hidden" id="estadoInput" name="estado" value="">
-                <input type="hidden" id="fechaRegistroInput" name="fechaRegistro" value="">
-                <input type="hidden" id="fechaNovedadInput" name="fechaNovedad" value="">
-                <input type="hidden" id="trabajadorInput" name="trabajador" value="">
-
-                <!-- Botones que envían el estado -->
-                <button type="button" class="state-button" data-state="proceso" onclick="capturarDatos('proceso')">Proceso</button>
-                <button type="button" class="state-button" data-state="terminado" onclick="capturarDatos('terminado')">Terminado</button>
-            </div>
-        </form>
+        <div class="popup-content">
+            <p>Selecciona un estado:</p>
+            <button type="button" id="state-button" data-estado="2">Proceso</button>
+            <button type="button" id="state-button" data-estado="3">Terminado</button>
+        </div>
     </div>
 
-
-    <script src="../controller/js/capturarDatos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../controller/js/captureState.js"></script>
     <script src="../controller/js/chooseState.js"></script>
     <script src="../controller/js/allNovedades.js"></script>
 </body>

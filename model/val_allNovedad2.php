@@ -24,14 +24,7 @@ try {
                 echo "<td>" . $fila['descripcion'] . "</td>";
                 echo "<td>" . $fila['id_servicio'] . "</td>";
                 echo "<td>" . $fila['cliente'] . "</td>";
-                // union de los dos
-                // echo "<td><button class='popup-button update-state-button' onclick=\"showConfirmation('" . $fila['estado'] . "')\" data-id='" . $fila['id'] . "' data-estado='" . $fila['estado'] . "'>" . $fila['estado'] . "</button></td>";
-                echo "<td><button class='popup-button update-state-button' data-id='" . $fila['id'] . "' data-estado='" . $fila['estado'] . "'>" . $fila['estado'] . "</button></td>";
-
-                // funciona pero no envia
-                // echo "<td><button class='popup-button' onclick=\"showConfirmation('" . $fila['estado'] . "')\">" . $fila['estado'] . "</button></td>";
-                // envia pero funciona
-                // echo "<td><button class='popup-button update-state-button' onclick=\"showConfirmation('" . $fila['estado'] . "')\" data-id='" . $fila['id'] . "' data-estado='" . $fila['estado'] . "'>" . $fila['estado'] . "</button></td>";
+                echo "<td><button class='popup-button update-state-button'>" . $fila['estado'] . "</button></td>";
             }
         } else {
             echo "<tr><td colspan='9'>No se encontraron resultados</td></tr>";
