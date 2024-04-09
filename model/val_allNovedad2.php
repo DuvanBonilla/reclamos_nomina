@@ -4,12 +4,20 @@ require_once("conexion.php");
 try {
     $conexion = new Conexion();
     $conMysql = $conexion->conMysql();
+    $zona =  $_SESSION['zona'];
+
+    // $sql = "SELECT N.*, E.estado AS estado   
+    //         FROM novedades_nomina AS N
+    //         INNER JOIN estado AS E 
+    //         ON N.id_estado = E.id_estado";
 
     $sql = "SELECT N.*, E.estado AS estado   
-            FROM novedades_nomina AS N
-            INNER JOIN estado AS E 
-            ON N.id_estado = E.id_estado";
+    FROM novedades_nomina AS N
+    INNER JOIN estado AS E ON N.id_estado = E.id_estado
+    INNER JOIN zona AS Z ON N.id_zona = Z.id_zona
+    WHERE Z.id_zona = $zona";
 
+    echo "<script>console.log('zona: " . $zona . "');</script>";
     $resultado = $conMysql->query($sql);
 
     if ($resultado !== false) {

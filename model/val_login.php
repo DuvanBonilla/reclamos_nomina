@@ -18,9 +18,13 @@ class valLogin
             $login = $this->conexion->query("SELECT * FROM usuarios WHERE codigo = '$this->codigo'");
             if ($login->num_rows > 0) {
                 $datos = $login->fetch_assoc();
+                $rol = $datos["id_rol"];
                 $codigo = $datos["codigo"];
+                $zona = $datos["id_zona"];
+
                 if ($this->codigo == $codigo) {
-                    $_SESSION['rol'] = $this->codigo;
+                    $_SESSION['rol'] = $rol;
+                    $_SESSION['zona'] = $zona;
                     echo '<script>window.location.href="../view/main.php";</script>';
                     exit();
                 } else {

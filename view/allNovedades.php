@@ -5,7 +5,6 @@ if (!isset($_SESSION['rol'])) {
     exit;
 }
 if ($_SESSION['rol'] != 1) {
-    // Si no existe o su valor no es igual a 1, redirige al usuario a la página de inicio de sesión
     header('location: ../view/main2.php');
     exit;
 }

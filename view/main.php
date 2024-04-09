@@ -1,15 +1,16 @@
 <?php
 session_start();
 if (!isset($_SESSION['rol'])) {
-    // Si no existe o su valor no es igual a 1, redirige al usuario a la página de inicio de sesión
+    // Si no existe, redirige al usuario a la página de inicio de sesión
     header('location: ../view/login.php');
     exit;
 }
-if ($_SESSION['rol'] != 1) {
-    // Si no existe o su valor no es igual a 1, redirige al usuario a la página de inicio de sesión
+if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
+    // Si no existe o su valor no es igual a 1, 2, 3 o 4, redirige al usuario a la página main2.php
     header('location: ../view/main2.php');
     exit;
 }
+
 ?>
 <!DOCTYPE HTML>
 <html>

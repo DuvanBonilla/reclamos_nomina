@@ -1,14 +1,13 @@
 <?php
-session_start();
-if (!isset($_SESSION['rol'])) {
-    header('location: ../view/login.php');
-    exit;
-}
-if ($_SESSION['rol'] != 2) {
-    // Si no existe o su valor no es igual a 1, redirige al usuario a la página de inicio de sesión
-    header('location: ../view/main2.php');
-    exit;
-}
+// session_start();
+// if (!isset($_SESSION['rol'])) {
+//     header('location: ../view/login.php');
+//     exit;
+// }
+// if ($_SESSION['rol'] != 2) {
+//     header('location: ../view/main2.php');
+//     exit;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,8 +56,6 @@ if ($_SESSION['rol'] != 2) {
                         <th>ID servicio <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Cliente <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Costos <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,14 +1,16 @@
 <?php
 session_start();
 if (!isset($_SESSION['rol'])) {
+    // Si no existe, redirige al usuario a la página de inicio de sesión
     header('location: ../view/login.php');
     exit;
 }
-if ($_SESSION['rol'] != 2) {
-    // Si no existe o su valor no es igual a 1, redirige al usuario a la página de inicio de sesión
-    header('location: ../view/main.php');
+if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
+    // Si no existe o su valor no es igual a 1, 2, 3 o 4, redirige al usuario a la página main2.php
+    header('location: ../view/main2.php');
     exit;
 }
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -87,10 +89,10 @@ if ($_SESSION['rol'] != 2) {
                         <div class="field">
                             <label for="coordinador">Coordinador</label>
                             <select id="coordinador" name="coordinador" required>
-                                <option value="saldo faltante">Kenier</option>
-                                <option value="Saldo sobrante">Pasos</option>
-                                <option value="Saldo sobrante">Yessy</option>
-                                <option value="Saldo sobrante">Yeison</option>
+                                <option value="Kenier">Kenier</option>
+                                <option value="Pasos">Pasos</option>
+                                <option value="Yessy">Yessy</option>
+                                <option value="Yeison">Yeison</option>
                             </select>
                         </div>
                         <!-- </div>
@@ -114,13 +116,13 @@ if ($_SESSION['rol'] != 2) {
                             <select id="cliente" name="cliente">
                                 <option value="uniban">Uniban</option>
                                 <option value="zungo">Banacol</option>
-                                <option value="colonia">Cfs</option>
-                                <option value="colonia">Banafruit</option>
-                                <option value="colonia">Conserva</option>
-                                <option value="colonia">Fyffes</option>
-                                <option value="colonia">Smitco</option>
-                                <option value="colonia">Spsm</option>
-                                <option value="colonia">Simbacol</option>
+                                <option value="Cfs">Cfs</option>
+                                <option value="Banafruit">Banafruit</option>
+                                <option value="Conserva">Conserva</option>
+                                <option value="Fyffes">Fyffes</option>
+                                <option value="Smitco">Smitco</option>
+                                <option value="Spsm">Spsm</option>
+                                <option value="Simbacol">Simbacol</option>
                             </select>
                         </div>
                         <div class="field ">

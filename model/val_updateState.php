@@ -13,30 +13,6 @@ class updateState
         $this->conexion = $conexion->conMysql();
     }
 
-    public function obtenerTodos()
-    {
-        $query = "SELECT * FROM novedades_nomina";
-
-        $result = $this->conexion->query($query);
-
-        if ($result) {
-            // Array para almacenar los resultados
-            $novedades = [];
-
-            // Recorrer los resultados y almacenarlos en el array
-            while ($row = $result->fetch_assoc()) {
-                $novedades[] = $row;
-            }
-
-            // Devolver el array de resultados
-            return $novedades;
-        } else {
-            // Manejar el error si la consulta no se ejecuta correctamente
-            echo 'Error al ejecutar la consulta: ' . $this->conexion->error;
-            return [];
-        }
-    }
-
     public function actualizar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -60,14 +36,8 @@ class updateState
                 if ($stmt = $mysqli->prepare($query)) {
                     // Ligamos los parámetros de la sentencia preparada
                     $stmt->bind_param('ii', $estado, $id_novedad);
-
                     // Ejecutamos la sentencia
                     if ($stmt->execute()) {
-                        // echo 'se hizo el update';
-                        // echo "<br>";
-                        // echo "$estado";
-                        // echo "<br>";
-                        // echo "$id_novedad";
                     } else {
                         echo 'Error al actualizar el estado en la base de datos: ' . $mysqli->error;
                     }

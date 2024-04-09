@@ -12,9 +12,10 @@ class valNovedad
     private $cliente;
     private $idUsuario;
     private $estado;
+    private $id_zona;
     private $conexion;
 
-    public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $conexion)
+    public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $id_zona, $conexion)
     {
         $this->fechaRegistro = $fechaRegistro;
         $this->fechaNovedad = $fechaNovedad;
@@ -26,6 +27,7 @@ class valNovedad
         $this->cliente = $cliente;
         $this->idUsuario = $idUsuario;
         $this->estado = $estado;
+        $this->id_zona = $id_zona;
         $this->conexion = $conexion->conMysql();
     }
 
@@ -52,11 +54,11 @@ class valNovedad
             // VALUES ('$this->fechaRegistro', '$this->fechaNovedad','$this->novedad','$this->cliente','$this->coordinador','$this->trabajador','$this->idServicio','$this->descripcion') ";
 
 
-            $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,tipo_novedad,trabajador,descripcion,id_servicio,cliente,id_usuario,id_estado) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+            $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,tipo_novedad,trabajador,descripcion,id_servicio,cliente,id_usuario,id_estado, id_zona) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
             if ($stmt = $this->conexion->prepare($query)) {
-                $stmt->bind_param('ssssssssss', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->cliente, $this->idUsuario, $this->estado,);
+                $stmt->bind_param('ssssssssssi', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->cliente, $this->idUsuario, $this->estado, $this->id_zona);
 
                 if ($stmt->execute()) {
                     echo "
