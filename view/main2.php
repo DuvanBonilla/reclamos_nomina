@@ -15,7 +15,7 @@ if ($_SESSION['rol'] == 1 && $_SESSION['rol'] == 3 && $_SESSION['rol'] == 4) {
 <head>
     <title>Registro de novedades</title>
     <meta charset="utf-8" />
-    <link rel="icon" href="images/logo.ico.ico" type="image/x-icon">
+    <link rel="icon" href="images/logo-redondo.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 

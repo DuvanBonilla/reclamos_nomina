@@ -25,6 +25,7 @@ class valLogin
                 if ($this->codigo == $codigo) {
                     $_SESSION['rol'] = $rol;
                     $_SESSION['zona'] = $zona;
+                    $_SESSION['id_usuario'] = $codigo;
 
 
                     echo '<script>window.location.href="../view/main.php";</script>';

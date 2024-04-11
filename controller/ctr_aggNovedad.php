@@ -19,15 +19,15 @@ $id_aprobacionN = 2;
 // --------------------------------------------------------------------
 // registro de la zona en novedes_nomina
 $id_zona =  $_SESSION['zona'];
-$idUsuario =  $_SESSION['codigo'];
+$idUsuario =  $_SESSION['id_usuario'];
 // --------------------------------------------------------------------
 $conexion = new Conexion();
 $conMysql = $conexion->conMysql();
 // --------------------------------------------------------------------
 $valNovedad = new valNovedad($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion);
 // --------------------------------------------------------------------
-var_dump("id estado $id_aprobacionC");
-var_dump("id estado $id_aprobacionN");
+// var_dump("id estado $id_aprobacionC");
+// var_dump("id estado $id_aprobacionN");
 
 $valNovedad->validarNovedad();
 $valNovedad->registrarNovedad();

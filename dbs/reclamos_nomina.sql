@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2024 at 11:08 PM
+-- Generation Time: Apr 11, 2024 at 11:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -142,9 +142,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`codigo`, `id_rol`, `id_zona`) VALUES
 (1, 1, 1),
 (2, 2, 2),
-(3, 2, 3),
-(4, 2, 4),
-(5, 2, 5);
+(3, 3, 3),
+(4, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -163,10 +162,14 @@ CREATE TABLE `zona` (
 
 INSERT INTO `zona` (`id_zona`, `zona`) VALUES
 (1, 'uniban'),
-(2, 'zungo'),
-(3, 'muelle'),
-(4, 'santa marta'),
-(5, 'colonia');
+(2, 'banacol'),
+(3, 'cfs'),
+(4, 'banafruit'),
+(5, 'conserva'),
+(6, 'fyffes'),
+(7, 'smitco'),
+(8, 'spsm'),
+(9, 'simbacol');
 
 --
 -- Indexes for dumped tables
@@ -235,7 +238,7 @@ ALTER TABLE `aprobacion_costos_nomina`
 -- AUTO_INCREMENT for table `novedades_nomina`
 --
 ALTER TABLE `novedades_nomina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables

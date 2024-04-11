@@ -15,7 +15,7 @@ if ($_SESSION['rol'] != 2) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/logo.ico.ico" type="image/x-icon">
+    <link rel="icon" href="images/logo-redondo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Consultar novedades</title>

@@ -31,7 +31,7 @@ try {
                 echo "<td>" . $fila['descripcion'] . "</td>";
                 echo "<td>" . $fila['id_servicio'] . "</td>";
                 echo "<td>" . $fila['cliente'] . "</td>";
-                $_SESSION['id_usuario'] = $fila['id_usuario'];
+                $disabled = $_SESSION['id_aprobacionC'] = $fila["id_aprobacionC"];
                 // ---------------------------------------------------------- ---------------------------------------------------------- ---------------------------------------------------------- 
                 echo "<td><button class='popup-button update-state-button' data-id='" . $fila['id'] . "' data-estado='" . $fila['estado'] . "'>" . $fila['estado'] . "</button></td>";
                 // estado pendiente,proceso,terminado
@@ -39,7 +39,10 @@ try {
                 echo "<td><button class='popup-button update-approvedC-button' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "'>" . $fila['estado_aprobado'] . "</button></td>";
                 // estado costos
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                echo "<td><button class='popup-button update-approvedN-button' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "'>" . $fila['estado_aprobado_area'] . "</button></td>";
+                $disabled = $_SESSION['id_aprobacionC'];
+                // Determinar si el botón debe estar desactivado
+                $disabledN = ($disabled == 2) ? 'disabled' : '';
+                echo "<td><button class='popup-button update-approvedN-button' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN>" . $fila['estado_aprobado_area'] . "</button></td>";
                 // estado nomina
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
             }
