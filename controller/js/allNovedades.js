@@ -51,134 +51,143 @@ function sortTable(column, sort_asc) {
 }
 
 // 3. Converting HTML table to PDF
-
-const pdf_btn = document.querySelector('#toPDF');
 const customers_table = document.querySelector('#customers_table');
-
+const pdf_btn = document.querySelector('#toPDF');
 
 const toPDF = function (customers_table) {
+    // Clonar el contenido del encabezado y el cuerpo de la tabla
+    const tableHead = customers_table.querySelector('thead').cloneNode(true);
+    const tableBody = customers_table.querySelector('tbody').cloneNode(true);
+
+    // Reemplazar los botones con su texto en la tabla
+    tableBody.querySelectorAll('button').forEach(button => {
+        const textNode = document.createTextNode(button.textContent); // Obtener el texto del botón
+        button.parentNode.replaceChild(textNode, button); // Reemplazar el botón con su texto
+    });
+
+    // Generar el código HTML con el encabezado y el cuerpo de la tabla
     const html_code = `
     <!DOCTYPE html>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <main class="table" id="customers_table">${customers_table.innerHTML}</main>`;
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tabla PDF</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            @page {
+                size: landscape;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="table">
+            <table>
+                ${tableHead.outerHTML}
+                ${tableBody.outerHTML}
+            </table>
+        </main>
+    </body>
+    </html>`;
 
+    // Abrir una nueva ventana y escribir el código HTML
     const new_window = window.open();
     new_window.document.write(html_code);
 
+    // Esperar un breve tiempo antes de imprimir y cerrar la ventana
     setTimeout(() => {
         new_window.print();
         new_window.close();
     }, 400);
 }
 
-pdf_btn.onclick = () => {
+pdf_btn.addEventListener('click', function () {
     toPDF(customers_table);
-}
-
-// 4. Converting HTML table to JSON
-
-const json_btn = document.querySelector('#toJSON');
-
-const toJSON = function (table) {
-    let table_data = [],
-        t_head = [],
-
-        t_headings = table.querySelectorAll('th'),
-        t_rows = table.querySelectorAll('tbody tr');
-
-    for (let t_heading of t_headings) {
-        let actual_head = t_heading.textContent.trim().split(' ');
-
-        t_head.push(actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase());
-    }
-
-    t_rows.forEach(row => {
-        const row_object = {},
-            t_cells = row.querySelectorAll('td');
-
-        t_cells.forEach((t_cell, cell_index) => {
-            const img = t_cell.querySelector('img');
-            if (img) {
-                row_object['customer image'] = decodeURIComponent(img.src);
-            }
-            row_object[t_head[cell_index]] = t_cell.textContent.trim();
-        })
-        table_data.push(row_object);
-    })
-
-    return JSON.stringify(table_data, null, 4);
-}
-
-
-// 5. Converting HTML table to CSV File
-
-const csv_btn = document.querySelector('#toCSV');
-
-const toCSV = function (table) {
-    const t_heads = table.querySelectorAll('th'),
-        tbody_rows = table.querySelectorAll('tbody tr');
-
-    const headings = [...t_heads].map(head => {
-        let actual_head = head.textContent.trim().split(' ');
-        return actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase();
-    }).join(',') + ',' + 'image name';
-
-    const table_data = [...tbody_rows].map(row => {
-        const cells = row.querySelectorAll('td'),
-            img = decodeURIComponent(row.querySelector('img').src),
-            data_without_img = [...cells].map(cell => cell.textContent.replace(/,/g, ".").trim()).join(',');
-
-        return data_without_img + ',' + img;
-    }).join('\n');
-
-    return headings + '\n' + table_data;
-}
-
+});
 
 
 // 6. Converting HTML table to EXCEL File
 
+// const excel_btn = document.querySelector('#toEXCEL');
+
+// const toExcel = function (table) {
+//     const tbody_rows = table.querySelectorAll('tbody tr');
+
+//     const table_data = [...tbody_rows].map(row => {
+//         const cells = row.querySelectorAll('td');
+//         const rowData = [...cells].map(cell => cell.textContent.trim());
+//         let imgSrc = '';
+//         const img = row.querySelector('img');
+//         if (img) {
+//             imgSrc = decodeURIComponent(img.src);
+//         }
+//         rowData.push(imgSrc); // Añadir la fuente de la imagen como última celda
+//         return rowData.join(';'); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
+//     }).join('\n'); // Separar las filas por saltos de línea
+
+//     return table_data;
+// }
+
+// excel_btn.onclick = () => {
+//     const excel = toExcel(customers_table);
+//     downloadFile(excel, 'excel.csv'); // Solo necesitas pasar el contenido del archivo CSV y el nombre del archivo
+// }
+
+// const downloadFile = function (data, fileName = '') {
+//     const a = document.createElement('a');
+//     a.download = fileName;
+//     const csvData = new Blob([data], { type: 'text/csv;charset=utf-8' }); // Agregar ';charset=utf-8'
+//     const csvUrl = URL.createObjectURL(csvData);
+
+//     a.href = csvUrl;
+//     document.body.appendChild(a);
+//     a.click();
+//     document.body.removeChild(a);
+//     URL.revokeObjectURL(csvUrl);
+// }
+
+
 const excel_btn = document.querySelector('#toEXCEL');
 
 const toExcel = function (table) {
+    const thead = table.querySelector('thead');
+    const tbody_rows = table.querySelectorAll('tbody tr');
 
-    const t_heads = table.querySelectorAll('th'),
-        tbody_rows = table.querySelectorAll('tbody tr');
+    // Obtener los encabezados de columna y eliminar espacios adicionales y símbolos no deseados
+    const headers = [...thead.querySelectorAll('th')].map(header => header.textContent.trim().replace(/[^\w\s]/gi, ''));
 
-    const headings = [...t_heads].map(head => {
-        let actual_head = head.textContent.trim().split(' ');
-        return actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase();
-    }).join('\t') + '\t' + 'image name';
+    const table_data = [headers.join(';')]; // Agregar los encabezados como la primera fila del archivo CSV
 
-    const table_data = [...tbody_rows].map(row => {
-        const cells = row.querySelectorAll('td'),
-            img = decodeURIComponent(row.querySelector('img').src),
-            data_without_img = [...cells].map(cell => cell.textContent.trim()).join('\t');
+    tbody_rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const rowData = [...cells].map(cell => cell.textContent.trim());
+        let imgSrc = '';
+        const img = row.querySelector('img');
+        if (img) {
+            imgSrc = decodeURIComponent(img.src);
+        }
+        rowData.push(imgSrc); // Añadir la fuente de la imagen como última celda
+        table_data.push(rowData.join(';')); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
+    });
 
-        return data_without_img + '\t' + img;
-    }).join('\n');
-
-    return headings + '\n' + table_data;
+    return table_data.join('\n'); // Unir todas las filas con saltos de línea
 }
 
 excel_btn.onclick = () => {
     const excel = toExcel(customers_table);
-    downloadFile(excel, 'excel');
+    downloadFile(excel, 'excel.csv'); // Solo necesitas pasar el contenido del archivo CSV y el nombre del archivo
 }
 
-const downloadFile = function (data, fileType, fileName = '') {
+const downloadFile = function (data, fileName = '') {
     const a = document.createElement('a');
     a.download = fileName;
-    const mime_types = {
-        'json': 'application/json',
-        'csv': 'text/csv',
-        'excel': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    }
-    a.href = `
-        data:${mime_types[fileType]};charset=utf-8,${encodeURIComponent(data)}
-    `;
+    const csvData = new Blob([data], { type: 'text/csv;charset=utf-8' }); // Especificar la codificación de caracteres como UTF-8
+    const csvUrl = URL.createObjectURL(csvData);
+
+    a.href = csvUrl;
     document.body.appendChild(a);
     a.click();
-    a.remove();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(csvUrl);
 }
 

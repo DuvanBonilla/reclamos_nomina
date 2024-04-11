@@ -4,7 +4,7 @@ if (!isset($_SESSION['rol'])) {
     header('location: ../view/login.php');
     exit;
 }
-if ($_SESSION['rol'] != 1) {
+if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     header('location: ../view/main2.php');
     exit;
 }
@@ -15,20 +15,19 @@ if ($_SESSION['rol'] != 1) {
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="images/logo.ico.ico" type="image/x-icon">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Consultar novedades</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/allNovedades.css" />
 </head>
 
 <body>
+    <a class="exit-link" href="../view/main.php">
+        <i class="fa fa-right-from-bracket fa-beat" style="color: #ff0000"></i>
+    </a>
     <main class="table" id="customers_table">
-
         <section class="table__header">
-            <a class="exit-link" href="../model/cerrar_session.php">
-                <i class="fa fa-right-from-bracket fa-beat" style="color: #ff0000"></i>
-            </a>
             <h1>Novedades</h1>
             <div class="input-group">
                 <input id="search" type="search" placeholder="Buscar novedad" />
@@ -64,22 +63,15 @@ if ($_SESSION['rol'] != 1) {
                 </thead>
                 <tbody>
                     <?php require_once("../model/val_allNovedad.php"); ?>
-
                 </tbody>
             </table>
         </section>
     </main>
-    <div class="popup" id="statePopup" style="display: none;">
-        <div class="popup-content">
-            <p>Selecciona un estado:</p>
-            <button type="button" id="state-button" data-estado="2">Proceso</button>
-            <button type="button" id="state-button" data-estado="3">Terminado</button>
-        </div>
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../controller/js/captureApprovedCostos.js"></script>
+    <script src="../controller/js/captureApprovedNomina.js"></script>
     <script src="../controller/js/captureState.js"></script>
-    <script src="../controller/js/chooseState.js"></script>
     <script src="../controller/js/allNovedades.js"></script>
 </body>
 

@@ -20,6 +20,7 @@ class updateState
                 $estado = $_POST['estado'];
                 $id_novedad = $_POST['id_novedad'];
                 // $estado = 1;
+
                 if ($estado === "1") {
                     $estado = 2;
                 } else if ($estado === "2") {

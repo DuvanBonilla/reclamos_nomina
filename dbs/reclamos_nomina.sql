@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2024 a las 22:05:36
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Host: 127.0.0.1
+-- Generation Time: Apr 10, 2024 at 11:08 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,32 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `reclamos_nomina`
+-- Database: `reclamos_nomina`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado`
+-- Table structure for table `aprobacion_costos_nomina`
+--
+
+CREATE TABLE `aprobacion_costos_nomina` (
+  `id` int(20) NOT NULL,
+  `area` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `aprobacion_costos_nomina`
+--
+
+INSERT INTO `aprobacion_costos_nomina` (`id`, `area`) VALUES
+(1, 'costos'),
+(2, 'nomina');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `estado`
 --
 
 CREATE TABLE `estado` (
@@ -33,7 +52,7 @@ CREATE TABLE `estado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `estado`
+-- Dumping data for table `estado`
 --
 
 INSERT INTO `estado` (`id_estado`, `estado`) VALUES
@@ -44,7 +63,26 @@ INSERT INTO `estado` (`id_estado`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `novedades_nomina`
+-- Table structure for table `estado_aprobado_area`
+--
+
+CREATE TABLE `estado_aprobado_area` (
+  `id_aprobacion` int(20) NOT NULL,
+  `estado` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `estado_aprobado_area`
+--
+
+INSERT INTO `estado_aprobado_area` (`id_aprobacion`, `estado`) VALUES
+(1, 'aprobado'),
+(2, 'pendiente');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `novedades_nomina`
 --
 
 CREATE TABLE `novedades_nomina` (
@@ -58,20 +96,16 @@ CREATE TABLE `novedades_nomina` (
   `id_servicio` int(11) DEFAULT NULL,
   `cliente` varchar(100) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL,
-  `id_estado` int(11) DEFAULT NULL
+  `id_estado` int(11) DEFAULT NULL,
+  `id_zona` int(20) NOT NULL,
+  `id_aprobacionC` int(20) NOT NULL,
+  `id_aprobacionN` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `novedades_nomina`
---
-
-INSERT INTO `novedades_nomina` (`id`, `fecha_registro`, `fecha_novedad`, `nombre_coordinador`, `tipo_novedad`, `trabajador`, `descripcion`, `id_servicio`, `cliente`, `id_usuario`, `id_estado`) VALUES
-(0, '2024-04-08', '2024-04-09', 'Kenier', 'saldo faltante', 'prueba', 'prueba', 123, 'uniban', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -80,17 +114,19 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id_rol`, `rol`) VALUES
 (1, 'administrador'),
-(2, 'coordinador');
+(2, 'coordinador'),
+(3, 'costos'),
+(4, 'nomina');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -100,17 +136,20 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`codigo`, `id_rol`, `id_zona`) VALUES
 (1, 1, 1),
-(123, 1, 1);
+(2, 2, 2),
+(3, 2, 3),
+(4, 2, 4),
+(5, 2, 5);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `zona`
+-- Table structure for table `zona`
 --
 
 CREATE TABLE `zona` (
@@ -119,38 +158,57 @@ CREATE TABLE `zona` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `zona`
+-- Dumping data for table `zona`
 --
 
 INSERT INTO `zona` (`id_zona`, `zona`) VALUES
-(1, 'uniban');
+(1, 'uniban'),
+(2, 'zungo'),
+(3, 'muelle'),
+(4, 'santa marta'),
+(5, 'colonia');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `estado`
+-- Indexes for table `aprobacion_costos_nomina`
+--
+ALTER TABLE `aprobacion_costos_nomina`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `estado`
 --
 ALTER TABLE `estado`
   ADD PRIMARY KEY (`id_estado`);
 
 --
--- Indices de la tabla `novedades_nomina`
+-- Indexes for table `estado_aprobado_area`
+--
+ALTER TABLE `estado_aprobado_area`
+  ADD PRIMARY KEY (`id_aprobacion`);
+
+--
+-- Indexes for table `novedades_nomina`
 --
 ALTER TABLE `novedades_nomina`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_estado` (`id_estado`);
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `id_zona` (`id_zona`),
+  ADD KEY `id_aprobacion` (`id_aprobacionC`),
+  ADD KEY `id_aprobacionN` (`id_aprobacionN`);
 
 --
--- Indices de la tabla `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id_rol`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`codigo`),
@@ -158,24 +216,49 @@ ALTER TABLE `usuarios`
   ADD KEY `id_zona` (`id_zona`);
 
 --
--- Indices de la tabla `zona`
+-- Indexes for table `zona`
 --
 ALTER TABLE `zona`
   ADD PRIMARY KEY (`id_zona`);
 
 --
--- Restricciones para tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Filtros para la tabla `novedades_nomina`
+-- AUTO_INCREMENT for table `aprobacion_costos_nomina`
+--
+ALTER TABLE `aprobacion_costos_nomina`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `novedades_nomina`
+--
+ALTER TABLE `novedades_nomina`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `aprobacion_costos_nomina`
+--
+ALTER TABLE `aprobacion_costos_nomina`
+  ADD CONSTRAINT `aprobacion_costos_nomina_ibfk_1` FOREIGN KEY (`id`) REFERENCES `estado_aprobado_area` (`id_aprobacion`);
+
+--
+-- Constraints for table `novedades_nomina`
 --
 ALTER TABLE `novedades_nomina`
   ADD CONSTRAINT `novedades_nomina_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`codigo`),
-  ADD CONSTRAINT `novedades_nomina_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`);
+  ADD CONSTRAINT `novedades_nomina_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
+  ADD CONSTRAINT `novedades_nomina_ibfk_3` FOREIGN KEY (`id_zona`) REFERENCES `zona` (`id_zona`),
+  ADD CONSTRAINT `novedades_nomina_ibfk_4` FOREIGN KEY (`id_aprobacionC`) REFERENCES `aprobacion_costos_nomina` (`id`),
+  ADD CONSTRAINT `novedades_nomina_ibfk_5` FOREIGN KEY (`id_aprobacionN`) REFERENCES `aprobacion_costos_nomina` (`id`);
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`),

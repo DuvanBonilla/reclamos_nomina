@@ -16,22 +16,27 @@
 
 body {
   min-height: 100vh;
-  background: url(../images/Plantilla-upload.jpg) center / cover;
+  background: url(../images/prueba.jpg) center / cover;
+  /* background: url(../images/novedades.jpg) center / cover; */
+
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 main.table {
-  width: 82vw;
+  width: 84vw;
   height: 90vh;
   background-color: #fff5;
-
   backdrop-filter: blur(7px);
   box-shadow: 0 0.4rem 0.8rem #0005;
   border-radius: 0.8rem;
-
   overflow: hidden;
+}
+
+tr.selected {
+  background-color: lightblue;
 }
 
 .table__header {
@@ -208,10 +213,8 @@ thead th span.icon-arrow {
   height: 1.3rem;
   border-radius: 50%;
   border: 1.4px solid transparent;
-
   text-align: center;
   font-size: 1rem;
-
   margin-left: 0.5rem;
   transition: 0.2s ease-in-out;
 }
@@ -315,14 +318,29 @@ tbody td.active {
 }
 
 .exit-link {
-  position: fixed; /* Posición fija en relación con la ventana del navegador */
-  top: 10px; /* Ajusta la posición desde la parte superior */
-  left: 10px; /* Ajusta la posición desde la izquierda */
-  z-index: 9999; /* Asegura que el ícono esté por encima de otros elementos */
-  margin-left: 20%;
-  margin-top: 1%;
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  z-index: 99999;
   font-size: 35px;
 }
+
+@media only screen and (max-width: 768px) {
+  .exit-link {
+    font-size: 25px;
+    top: 5px;
+    left: 5px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .exit-link {
+    font-size: 20px;
+    top: 9px;
+    left: 10px;
+  }
+}
+
 .popup {
   position: fixed;
   top: 50%;

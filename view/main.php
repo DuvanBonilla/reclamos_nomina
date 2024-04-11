@@ -1,16 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['rol'])) {
-    // Si no existe, redirige al usuario a la página de inicio de sesión
     header('location: ../view/login.php');
     exit;
 }
 if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
-    // Si no existe o su valor no es igual a 1, 2, 3 o 4, redirige al usuario a la página main2.php
     header('location: ../view/main2.php');
     exit;
 }
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -42,12 +39,12 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
         <header id="header">
 
             <div class="logo">
-                <img class="logo" src="images/logo-redondo.ico" alt="">
+                <img class="logo" src="images/logo-blanco.png" alt="">
             </div>
             <div class="content">
                 <div class="inner">
                     <h1>Registro de novedades</h1>
-                    <p>Desde esta plataforma, los coordinadores pueden reportar las novedades presentadas.<br /> ¡Gracias por tu contribución para mejorar nuestros servicios!</a>
+                    <p> <strong> En esta plataforma, los coordinadores pueden reportar las novedades presentadas.<br /> ¡Gracias por tu contribución para mejorar nuestros servicios! </strong></a>
                 </div>
             </div>
             <nav>
@@ -76,7 +73,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                             <input type="date" name="fechaRegistro" id="fechaRegistro" style="color: black;" required />
                         </div>
                         <div class="field half">
-                            <label name="fechaNovedad" for="Fecha novedad">Fecha novedad</label>
+                            <label name="fechaNovedad" for="fechaNovedad">Fecha novedad</label>
                             <input type="date" name="fechaNovedad" id="fechaNovedad" style="color: black;" required />
                         </div>
                         <div class="field half">

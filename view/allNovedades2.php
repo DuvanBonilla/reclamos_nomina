@@ -1,13 +1,13 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['rol'])) {
-//     header('location: ../view/login.php');
-//     exit;
-// }
-// if ($_SESSION['rol'] != 2) {
-//     header('location: ../view/main2.php');
-//     exit;
-// }
+session_start();
+if (!isset($_SESSION['rol'])) {
+    header('location: ../view/login.php');
+    exit;
+}
+if ($_SESSION['rol'] != 2) {
+    header('location: ../view/main.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,18 +15,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/logo.ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Consultar novedades</title>
     <link rel="stylesheet" type="text/css" href="css/allNovedades.css" />
 </head>
 
 <body>
+    <a class="exit-link" href="../view/main.php">
+        <i class="fa fa-right-from-bracket fa-beat" style="color: #ff0000"></i>
+    </a>
     <main class="table" id="customers_table">
 
         <section class="table__header">
-            <a class="exit-link" href="../model/cerrar_session.php">
-                <i class="fa fa-right-from-bracket fa-beat" style="color: #ff0000"></i>
-            </a>
             <h1>Novedades</h1>
             <div class="input-group">
                 <input id="search" type="search" placeholder="Buscar novedad" />
@@ -56,6 +58,8 @@
                         <th>ID servicio <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Cliente <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Costos <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>

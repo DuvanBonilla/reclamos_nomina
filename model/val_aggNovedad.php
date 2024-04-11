@@ -13,9 +13,11 @@ class valNovedad
     private $idUsuario;
     private $estado;
     private $id_zona;
+    private $id_aprobacionC;
+    private $id_aprobacionN;
     private $conexion;
 
-    public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $id_zona, $conexion)
+    public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion)
     {
         $this->fechaRegistro = $fechaRegistro;
         $this->fechaNovedad = $fechaNovedad;
@@ -28,6 +30,8 @@ class valNovedad
         $this->idUsuario = $idUsuario;
         $this->estado = $estado;
         $this->id_zona = $id_zona;
+        $this->id_aprobacionC = $id_aprobacionC;
+        $this->id_aprobacionN = $id_aprobacionN;
         $this->conexion = $conexion->conMysql();
     }
 
@@ -54,11 +58,11 @@ class valNovedad
             // VALUES ('$this->fechaRegistro', '$this->fechaNovedad','$this->novedad','$this->cliente','$this->coordinador','$this->trabajador','$this->idServicio','$this->descripcion') ";
 
 
-            $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,tipo_novedad,trabajador,descripcion,id_servicio,cliente,id_usuario,id_estado, id_zona) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+            $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,tipo_novedad,trabajador,descripcion,id_servicio,cliente,id_usuario,id_estado, id_zona, id_aprobacionC, id_aprobacionN) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
             if ($stmt = $this->conexion->prepare($query)) {
-                $stmt->bind_param('ssssssssssi', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->cliente, $this->idUsuario, $this->estado, $this->id_zona);
+                $stmt->bind_param('ssssssssssiii', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->cliente, $this->idUsuario, $this->estado, $this->id_zona, $this->id_aprobacionC, $this->id_aprobacionN);
 
                 if ($stmt->execute()) {
                     echo "

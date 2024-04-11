@@ -747,21 +747,6 @@ input[type="radio"] + label:before {
   position: relative;
 }
 
-.image:before {
-  pointer-events: none;
-  background-image: url("../../images/overlay.png");
-  background-color: rgba(19, 21, 25, 0.5);
-  border-radius: 4px;
-  content: "";
-  display: block;
-  height: 100%;
-  left: 0;
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
 .image img {
   border-radius: 4px;
   display: block;
@@ -1258,7 +1243,7 @@ button {
   -ms-transition: -ms-transform 0.325s ease-in-out,
     -ms-filter 0.325s ease-in-out;
   transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
-  background-image: url("../images/Plantilla-upload.jpg");
+  background-image: url("../images/main.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

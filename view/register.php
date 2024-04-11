@@ -1,16 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['rol'])) {
-    // Si no existe , redirige al usuario a la página de inicio de sesión
     header('location: ../view/login.php');
     exit;
 }
-if ($_SESSION['rol'] != 1) {
-    // Si no existe o su valor no es igual a 1, redirige al usuario a la página de inicio de sesión
+if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     header('location: ../view/main2.php');
     exit;
-
-    var_dump($_SESSION['rol']);
 }
 ?>
 <!DOCTYPE html>
@@ -22,10 +18,15 @@ if ($_SESSION['rol'] != 1) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="css/register.css" />
-    <title>Login</title>
+    <title>Registro usuarios</title>
 </head>
 
 <body>
+    <nav>
+        <a class="exit-link" href="../view/main.php">
+            <i class="fa fa-right-from-bracket fa-beat " style="color: #ff0000"></i>
+        </a>
+    </nav>
     <div class="container" id="container">
         <div class="form-container sign-in">
             <form class="form" action="../controller/ctr_register.php" method="POST">

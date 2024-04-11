@@ -1,21 +1,22 @@
 <?php
 require_once("conexion.php");
-
+require_once("../model/val_aggNovedad.php");
 try {
     $conexion = new Conexion();
     $conMysql = $conexion->conMysql();
     $zona =  $_SESSION['zona'];
-
-    $sql = "SELECT N.*, E.estado AS estado   
+    $sql = "SELECT N.*, E.estado AS estado, A.area, EC.estado AS estado_aprobado, EN.estado AS estado_aprobado_area
     FROM novedades_nomina AS N
     INNER JOIN estado AS E ON N.id_estado = E.id_estado
     INNER JOIN zona AS Z ON N.id_zona = Z.id_zona
+    -- estado costos
+    INNER JOIN aprobacion_costos_nomina AS A ON N.id_aprobacionC = A.id
+    INNER JOIN estado_aprobado_area AS EC ON A.id = EC.id_aprobacion
+    -- estado nomina
+    INNER JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion 
     WHERE Z.id_zona = $zona";
 
-
     echo "<script>console.log('zona: " . $zona . "');</script>";
-
-
     $resultado = $conMysql->query($sql);
 
     if ($resultado !== false) {
@@ -30,15 +31,17 @@ try {
                 echo "<td>" . $fila['descripcion'] . "</td>";
                 echo "<td>" . $fila['id_servicio'] . "</td>";
                 echo "<td>" . $fila['cliente'] . "</td>";
-                // union de los dos
-                // echo "<td><button class='popup-button update-state-button' onclick=\"showConfirmation('" . $fila['estado'] . "')\" data-id='" . $fila['id'] . "' data-estado='" . $fila['estado'] . "'>" . $fila['estado'] . "</button></td>";
+                $_SESSION['id_usuario'] = $fila['id_usuario'];
+                // ---------------------------------------------------------- ---------------------------------------------------------- ---------------------------------------------------------- 
                 echo "<td><button class='popup-button update-state-button' data-id='" . $fila['id'] . "' data-estado='" . $fila['estado'] . "'>" . $fila['estado'] . "</button></td>";
-
-
-                // funciona pero no envia
-                // echo "<td><button class='popup-button' onclick=\"showConfirmation('" . $fila['estado'] . "')\">" . $fila['estado'] . "</button></td>";
-                // envia pero funciona
-                // echo "<td><button class='popup-button update-state-button' onclick=\"showConfirmation('" . $fila['estado'] . "')\" data-id='" . $fila['id'] . "' data-estado='" . $fila['estado'] . "'>" . $fila['estado'] . "</button></td>";
+                // estado pendiente,proceso,terminado
+                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                echo "<td><button class='popup-button update-approvedC-button' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "'>" . $fila['estado_aprobado'] . "</button></td>";
+                // estado costos
+                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                echo "<td><button class='popup-button update-approvedN-button' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "'>" . $fila['estado_aprobado_area'] . "</button></td>";
+                // estado nomina
+                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
             }
         } else {
             echo "<tr><td colspan='9'>No se encontraron resultados</td></tr>";

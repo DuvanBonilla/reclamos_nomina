@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url("../images/Historia.jpg");
+  background-image: url("../images/register.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -261,4 +261,14 @@ body {
 
 .logoRegis {
   height: 80px;
+}
+
+.exit-link {
+  position: fixed; /* Posición fija en relación con la ventana del navegador */
+  top: 10px; /* Ajusta la posición desde la parte superior */
+  left: 10px; /* Ajusta la posición desde la izquierda */
+  z-index: 99999; /* Asegura que el ícono esté por encima de otros elementos */
+  margin-left: 2%;
+  margin-top: 1%;
+  font-size: 35px;
 }

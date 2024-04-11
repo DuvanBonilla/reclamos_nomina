@@ -1,16 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['rol'])) {
-    // Si no existe, redirige al usuario a la página de inicio de sesión
     header('location: ../view/login.php');
     exit;
 }
-if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
-    // Si no existe o su valor no es igual a 1, 2, 3 o 4, redirige al usuario a la página main2.php
+if ($_SESSION['rol'] == 1 && $_SESSION['rol'] == 3 && $_SESSION['rol'] == 4) {
     header('location: ../view/main2.php');
     exit;
 }
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -39,7 +36,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
         <!-- Header -->
         <header id="header">
             <div class="logo">
-                <img class="logo" src="images/logo-redondo.ico" alt="">
+                <img class="logo" src="images/logo-blanco.png" alt="">
             </div>
             <div class="content">
                 <div class="inner">
