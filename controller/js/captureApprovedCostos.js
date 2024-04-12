@@ -2,7 +2,14 @@
 $(document).on("click", ".update-approvedC-button, .approvedC-button", function () {
     var id_aprobacionC = $(this).attr("data-id_aprobacionC");
     var id_novedad = $(this).data("id");
-
+    var estado = $(this).data("estado");
+    if (estado === "pendiente") {
+        estado = 1;
+    } else if (estado === "proceso") {
+        estado = 2;
+    } else if (estado === "terminado") {
+        estado = 3;
+    }
     // console.log("Datos antes de la solicitud AJAX:");
     // console.log("id_aprobacionC:", id_aprobacionC);
     // console.log("id:", id_novedad);
@@ -12,6 +19,7 @@ $(document).on("click", ".update-approvedC-button, .approvedC-button", function 
         data: {
             id_aprobacionC: id_aprobacionC,
             id_novedad: id_novedad,
+            estado: estado,
         },
         success: function (response) {
             console.log("Respuesta del servidor:", response);

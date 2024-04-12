@@ -4,12 +4,14 @@ class updateApprovedC
 {
     private $id_novedad;
     private $id_aprobacionC;
+    private $estado;
     private $conexion;
 
-    public function __construct($id_novedad, $id_aprobacionC, $conexion)
+    public function __construct($id_novedad, $id_aprobacionC, $estado, $conexion)
     {
         $this->id_novedad = $id_novedad;
         $this->id_aprobacionC = $id_aprobacionC;
+        $this->estado = $estado;
         $this->conexion = $conexion->conMysql();
     }
 
@@ -19,8 +21,18 @@ class updateApprovedC
             if (isset($_POST['id_novedad']) && isset($_POST['id_aprobacionC'])) {
                 $id_novedad = $_POST['id_novedad'];
                 $id_aprobacionC = $_POST['id_aprobacionC'];
+                $estado = $_POST['estado'];
+
                 if ($id_aprobacionC === "2") {
                     $id_aprobacionC = 1;
+                }
+                // $estado = 1;
+                if ($estado === "1") {
+                    $estado = 2;
+                } else if ($estado === "2") {
+                    $estado = 3;
+                } else if ($estado === "3") {
+                    $estado = 3;
                 }
 
                 $conexion = new Conexion();
@@ -28,10 +40,12 @@ class updateApprovedC
                 // -------------------------------------------------------------------------------------------------------
 
                 // -------------------------------------------------------------------------------------------------------
-                $query = 'UPDATE novedades_nomina SET id_aprobacionC = ? WHERE id = ?';
+                // $query = 'UPDATE novedades_nomina SET id_aprobacionC = ? WHERE id = ?';
+                $query = 'UPDATE novedades_nomina SET id_aprobacionC = ?, id_estado = ? WHERE id = ?';
+
                 if ($stmt = $mysqli->prepare($query)) {
                     // Ligamos los parámetros de la sentencia preparada
-                    $stmt->bind_param('ii', $id_aprobacionC, $id_novedad);
+                    $stmt->bind_param('iii', $id_aprobacionC, $estado, $id_novedad);
                     // Ejecutamos la sentencia
                     if ($stmt->execute()) {
                     } else {

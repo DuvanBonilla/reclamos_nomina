@@ -8,6 +8,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     header('location: ../view/main2.php');
     exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,9 +57,10 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                         <th>Descripcion <span class="icon-arrow">&UpArrow;</span></th>
                         <th>ID servicio <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Cliente <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Costos <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -71,7 +73,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../controller/js/captureApprovedCostos.js"></script>
     <script src="../controller/js/captureApprovedNomina.js"></script>
-    <script src="../controller/js/captureState.js"></script>
     <script src="../controller/js/allNovedades.js"></script>
 </body>
 
