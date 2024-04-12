@@ -31,7 +31,6 @@ try {
                 echo "<td>" . $fila['descripcion'] . "</td>";
                 echo "<td>" . $fila['id_servicio'] . "</td>";
                 echo "<td>" . $fila['cliente'] . "</td>";
-
                 echo "<td><button class='popup-button '>" . $fila['estado'] . "</button></td>";
                 echo "<td><button class='popup-button '>" . $fila['estado_aprobado'] . "</button></td>";
                 echo "<td><button class='popup-button '>" . $fila['estado_aprobado_area'] . "</button></td>";
