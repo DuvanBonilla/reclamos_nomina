@@ -35,18 +35,33 @@ try {
                 $disabledCostos = $_SESSION['estado'];
                 // Determinar si el botón debe estar desactivado
                 $disabledC = ($disabledCostos == 2) ? 'disabled' : '';
-                echo "<td><button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC>" . $fila['estado_aprobado'] . "</button></td>";
+
+                if ($fila["id_aprobacionC"] == "1") {
+                    echo "<td><button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: #00a135;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
+                } else if ($fila["id_aprobacionC"] == "2") {
+                    echo "<td><button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: red;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
+                }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 // estado nomina
                 $disabled = $_SESSION['id_aprobacionC'];
                 // Determinar si el botón debe estar desactivado
                 $disabledN = ($disabled == 2) ? 'disabled' : '';
-                echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN>" . $fila['estado_aprobado_area'] . "</button></td>";
+                if ($fila["id_aprobacionN"] == "1") {
+                    echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN style='background-color: #00a135;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
+                } else if ($fila["id_aprobacionN"] == "2") {
+                    echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN style='background-color: red;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
+                }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                echo "<td><button class='popup-button ' >" . $fila['estado'] . "</button></td>";
+                if ($fila["estado"] == "pendiente") {
+                    echo "<td><button class='popup-button ' style='background-color: red;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                } else if ($fila["estado"] == "proceso") {
+                    echo "<td><button class='popup-button ' style='background-color: #ffdf00;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                } else if ($fila["estado"] == "terminado") {
+                    echo "<td><button class='popup-button ' style='background-color: #00a135;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 // eliminar novedad
-                echo "<td><button class='popup-button update-delete-button' data-id='" . $fila['id'] . "'><i class='fas fa-trash-alt'></i></button></td>";
+                echo "<td><button class='popup-button update-delete-button' data-id='" . $fila['id'] . "' style='background-color: red;'><i class='fas fa-trash-alt'></i> </button></td>";
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
             }
         } else {
