@@ -21,6 +21,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <title>Consultar novedades</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/allNovedades.css" />
+
 </head>
 
 <body>
@@ -68,6 +69,11 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                 </tbody>
             </table>
         </section>
+
+        <!-- <div id="popup" class="popup">
+            Contenido del pop-up grande aquí...
+        </div> -->
+
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -75,6 +81,8 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <script src="../controller/js/captureApprovedNomina.js"></script>
     <script src="../controller/js/capureDelete.js"></script>
     <script src="../controller/js/allNovedades.js"></script>
+    <script src="../controller/js/popUp_novedades.js"></script>
+
 </body>
 
 </html>

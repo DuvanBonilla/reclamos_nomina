@@ -52,16 +52,23 @@ try {
                     echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN style='background-color: red;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
                 }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                // if ($fila["estado"] == "pendiente") {
+                //     echo "<td><button class='popup-button ' style='background-color: red;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                // } else if ($fila["estado"] == "proceso") {
+                //     echo "<td><button class='popup-button ' style='background-color: #ffdf00;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                // } else if ($fila["estado"] == "terminado") {
+                //     echo "<td><button class='popup-button ' style='background-color: #00a135;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                // }
                 if ($fila["estado"] == "pendiente") {
-                    echo "<td><button class='popup-button ' style='background-color: red;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                    echo "<td><button class='popup-button' style='background-color: #FF0000;'><i class='fa solid fa-xmark fa-beat'></i></button></td>";
                 } else if ($fila["estado"] == "proceso") {
-                    echo "<td><button class='popup-button ' style='background-color: #ffdf00;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                    echo "<td><button class='popup-button ' style='background-color: #ffdf00;'><i class='fas fa-spinner fa-spin'></i></button></td>";
                 } else if ($fila["estado"] == "terminado") {
-                    echo "<td><button class='popup-button ' style='background-color: #00a135;'><strong>" . $fila['estado'] . "</strong></button></td>";
+                    echo "<td><button class='popup-button ' style='background-color: #00a135;'><i class='fas fa-check fa-beat'></i></button></td>";
                 }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 // eliminar novedad
-                echo "<td><button class='popup-button update-delete-button' data-id='" . $fila['id'] . "' style='background-color: red;'><i class='fas fa-trash-alt'></i> </button></td>";
+                echo "<td><button class='popup-button update-delete-button' data-id='" . $fila['id'] . "' style='background-color: red;'><i class='fas fa-trash-alt fa-shake'></i> </button></td>";
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
             }
         } else {

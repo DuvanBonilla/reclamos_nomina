@@ -90,7 +90,6 @@ tr.selected {
 
   margin: 0.8rem auto;
   border-radius: 0.6rem;
-
   overflow: auto;
   overflow: overlay;
 }
@@ -399,4 +398,43 @@ tbody td.active {
 
 .popup-button:hover {
   background-color: #2093bf;
+}
+/* Estilos para tablet y dispositivos móviles */
+@media only screen and (max-width: 768px) {
+  .table__body {
+    width: 100%;
+  }
+
+  thead th span.icon-arrow {
+    margin-left: 0rem;
+    width: 0rem;
+  }
+
+  table,
+  th,
+  td {
+    padding: 6px;
+    text-align: center;
+  }
+  /* Ocultar todas las columnas excepto las tres que deseas mostrar */
+  table th,
+  table td {
+    display: none;
+  }
+  /* Mostrar solo las columnas que deseas en dispositivos móviles */
+  table th:nth-child(1),
+  table td:nth-child(1),
+  table th:nth-child(5),
+  table td:nth-child(5),
+  table th:nth-child(11),
+  table td:nth-child(11) {
+    display: table-cell;
+  }
+  /* Ajustar el ancho de la columna 5 en dispositivos móviles */
+  table th:nth-child(5),
+  table td:nth-child(5) {
+    width: 20px !important;
+    max-width: 20px !important;
+    /* background-color: red; */
+  }
 }
