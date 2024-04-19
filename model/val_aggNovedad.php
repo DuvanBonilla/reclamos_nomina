@@ -54,10 +54,6 @@ class valNovedad
     public function registrarNovedad()
     {
         if (!empty($_POST['fechaRegistro'] && $_POST['fechaNovedad'] && $_POST['novedad'] && $_POST['cliente'] && $_POST['coordinador'] && $_POST['idServicio'] && $_POST['descripcion'])) {
-            // $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,tipo_novedad,trabajador,descripcion,id_servicio,cliente) 
-            // VALUES ('$this->fechaRegistro', '$this->fechaNovedad','$this->novedad','$this->cliente','$this->coordinador','$this->trabajador','$this->idServicio','$this->descripcion') ";
-
-
             $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,tipo_novedad,trabajador,descripcion,id_servicio,cliente,id_usuario,id_estado, id_zona, id_aprobacionC, id_aprobacionN) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
@@ -82,22 +78,6 @@ class valNovedad
                     });
                     </script>";
                 } else {
-                    // echo "
-                    // <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-                    // <script language='JavaScript'>
-                    // document.addEventListener('DOMContentLoaded', function() {
-                    //     Swal.fire({
-                    //         icon: 'error',
-                    //         title: 'La novedad no se ha podido registrar',
-                    //         showCancelButton: false,
-                    //         confirmButtonColor: '#3085d6',
-                    //         confirmButtonText: 'OK',
-                    //         timer: 5000
-                    //     }).then(() => {
-                    //         location.assign('../view/main.php');
-                    //     });
-                    // });
-                    // </script>";
                     echo "Error al preparar la consulta: " . $this->conexion->error;
                 }
             } else {

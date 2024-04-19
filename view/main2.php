@@ -41,17 +41,13 @@ if ($_SESSION['rol'] == 1 && $_SESSION['rol'] == 3 && $_SESSION['rol'] == 4) {
             <div class="content">
                 <div class="inner">
                     <h1>Registro de novedades</h1>
-                    <p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
-                        for free under the <a href="https://html5up.net/license">Creative Commons</a> </p>
+                    <p> <strong> En esta plataforma, los coordinadores pueden reportar las novedades presentadas.<br /> ¡Gracias por tu contribución para mejorar nuestros servicios! </strong></a>
                 </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="#contact">Añadir novedad</a></li>
                     <li><a href="allNovedades2.php">Consultar novedad</a></li>
-                    <!-- <li><a href="#about">About</a></li> -->
-                    <li><a href="#">otra cosa</a></li>
-                    <!-- <li><a href="#elements">Elements</a></li> -->
                 </ul>
             </nav>
         </header>
@@ -61,14 +57,13 @@ if ($_SESSION['rol'] == 1 && $_SESSION['rol'] == 3 && $_SESSION['rol'] == 4) {
             <!-- Work -->
             <article id="work">
                 <h2 class="major">Work</h2>
-                <!-- <span class="image main"><img src="images/pic02.jpg" alt="" /></span> -->
                 <p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
                 <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
             </article>
 
             <!-- Contact -->
             <article id="contact">
-                <h2 class="major">Contact</h2>
+                <h2 class="major">Agregar Novedad</h2>
                 <form method="POST" action="../controller/ctr_aggNovedad.php">
                     <div class="fields">
                         <div class="field half">
@@ -92,11 +87,6 @@ if ($_SESSION['rol'] == 1 && $_SESSION['rol'] == 3 && $_SESSION['rol'] == 4) {
                                 <option value="Yeison">Yeison</option>
                             </select>
                         </div>
-                        <!-- </div>
-                        <div class="field half">
-                            <label for="coordinador">Coordinador</label>
-                            <input type="text" name="coordinador" id="coordinador" required />
-                        </div> -->
                         <div class="field">
                             <label for="novedad">Novedad</label>
                             <select id="novedad" name="novedad" required>

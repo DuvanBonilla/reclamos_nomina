@@ -50,102 +50,8 @@ function sortTable(column, sort_asc) {
         .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
 }
 
-// 3. Converting HTML table to PDF
-const customers_table = document.querySelector('#customers_table');
-const pdf_btn = document.querySelector('#toPDF');
 
-const toPDF = function (customers_table) {
-    // Clonar el contenido del encabezado y el cuerpo de la tabla
-    const tableHead = customers_table.querySelector('thead').cloneNode(true);
-    const tableBody = customers_table.querySelector('tbody').cloneNode(true);
-
-    // Reemplazar los botones con su texto en la tabla
-    tableBody.querySelectorAll('button').forEach(button => {
-        const textNode = document.createTextNode(button.textContent); // Obtener el texto del botón
-        button.parentNode.replaceChild(textNode, button); // Reemplazar el botón con su texto
-    });
-
-    // Generar el código HTML con el encabezado y el cuerpo de la tabla
-    const html_code = `
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tabla PDF</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <style>
-            @page {
-                size: landscape;
-            }
-        </style>
-    </head>
-    <body>
-        <main class="table">
-            <table>
-                ${tableHead.outerHTML}
-                ${tableBody.outerHTML}
-            </table>
-        </main>
-    </body>
-    </html>`;
-
-    // Abrir una nueva ventana y escribir el código HTML
-    const new_window = window.open();
-    new_window.document.write(html_code);
-
-    // Esperar un breve tiempo antes de imprimir y cerrar la ventana
-    setTimeout(() => {
-        new_window.print();
-        new_window.close();
-    }, 400);
-}
-
-pdf_btn.addEventListener('click', function () {
-    toPDF(customers_table);
-});
-
-
-// 6. Converting HTML table to EXCEL File
-
-// const excel_btn = document.querySelector('#toEXCEL');
-
-// const toExcel = function (table) {
-//     const tbody_rows = table.querySelectorAll('tbody tr');
-
-//     const table_data = [...tbody_rows].map(row => {
-//         const cells = row.querySelectorAll('td');
-//         const rowData = [...cells].map(cell => cell.textContent.trim());
-//         let imgSrc = '';
-//         const img = row.querySelector('img');
-//         if (img) {
-//             imgSrc = decodeURIComponent(img.src);
-//         }
-//         rowData.push(imgSrc); // Añadir la fuente de la imagen como última celda
-//         return rowData.join(';'); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
-//     }).join('\n'); // Separar las filas por saltos de línea
-
-//     return table_data;
-// }
-
-// excel_btn.onclick = () => {
-//     const excel = toExcel(customers_table);
-//     downloadFile(excel, 'excel.csv'); // Solo necesitas pasar el contenido del archivo CSV y el nombre del archivo
-// }
-
-// const downloadFile = function (data, fileName = '') {
-//     const a = document.createElement('a');
-//     a.download = fileName;
-//     const csvData = new Blob([data], { type: 'text/csv;charset=utf-8' }); // Agregar ';charset=utf-8'
-//     const csvUrl = URL.createObjectURL(csvData);
-
-//     a.href = csvUrl;
-//     document.body.appendChild(a);
-//     a.click();
-//     document.body.removeChild(a);
-//     URL.revokeObjectURL(csvUrl);
-// }
-
+//  ------------------------ convertir a excel ------------------------
 
 const excel_btn = document.querySelector('#toEXCEL');
 
@@ -168,6 +74,7 @@ const toExcel = function (table) {
         }
         rowData.push(imgSrc); // Añadir la fuente de la imagen como última celda
         table_data.push(rowData.join(';')); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
+
     });
 
     return table_data.join('\n'); // Unir todas las filas con saltos de línea

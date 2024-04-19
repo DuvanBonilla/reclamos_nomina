@@ -26,8 +26,5 @@ $conMysql = $conexion->conMysql();
 // --------------------------------------------------------------------
 $valNovedad = new valNovedad($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion);
 // --------------------------------------------------------------------
-// var_dump("id estado $id_aprobacionC");
-// var_dump("id estado $id_aprobacionN");
-
 $valNovedad->validarNovedad();
 $valNovedad->registrarNovedad();

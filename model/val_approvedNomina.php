@@ -26,8 +26,6 @@ class updateApprovedN
                 if ($id_aprobacionN == 2) {
                     $id_aprobacionN = 1;
                 }
-
-                // $estado = 1;
                 if ($estado === "1") {
                     $estado = 2;
                 } else if ($estado === "2") {
@@ -49,7 +47,6 @@ class updateApprovedN
                     } else {
                         echo 'Error al actualizar el estado en la base de datos: ' . $mysqli->error;
                     }
-
                     // Cerramos la sentencia
                     $stmt->close();
                 } else {

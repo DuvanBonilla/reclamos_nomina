@@ -7,7 +7,6 @@ include_once '../model/val_approvedCostos.php';
 $id_aprobacionC = intval($_POST['id_aprobacionC']);
 $id_novedad = intval($_POST['id_novedad']);
 $estado = intval($_POST['estado']);
-
 // -------------------------------------------------------------------------------------------------------
 $conexion = new Conexion();
 // -------------------------------------------------------------------------------------------------------

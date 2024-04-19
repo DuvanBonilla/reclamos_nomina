@@ -26,7 +26,6 @@ class updateApprovedC
                 if ($id_aprobacionC === "2") {
                     $id_aprobacionC = 1;
                 }
-                // $estado = 1;
                 if ($estado === "1") {
                     $estado = 2;
                 } else if ($estado === "2") {
@@ -38,9 +37,6 @@ class updateApprovedC
                 $conexion = new Conexion();
                 $mysqli = $conexion->conMysql();
                 // -------------------------------------------------------------------------------------------------------
-
-                // -------------------------------------------------------------------------------------------------------
-                // $query = 'UPDATE novedades_nomina SET id_aprobacionC = ? WHERE id = ?';
                 $query = 'UPDATE novedades_nomina SET id_aprobacionC = ?, id_estado = ? WHERE id = ?';
 
                 if ($stmt = $mysqli->prepare($query)) {

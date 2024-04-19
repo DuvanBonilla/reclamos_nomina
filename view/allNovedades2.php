@@ -39,7 +39,6 @@ if ($_SESSION['rol'] != 2) {
                 <input type="checkbox" id="export-file" />
                 <div class="export__file-options">
                     <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt="" /></label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
                 </div>
             </div>
@@ -57,9 +56,10 @@ if ($_SESSION['rol'] != 2) {
                         <th>Descripcion <span class="icon-arrow">&UpArrow;</span></th>
                         <th>ID servicio <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Cliente <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Costos <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +67,24 @@ if ($_SESSION['rol'] != 2) {
                 </tbody>
             </table>
         </section>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
+                <!--  contenido del modal -->
+            </div>
+        </div>
+
     </main>
+    <!-- ------------------- url para el ajax -------- -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- --------------- popUp de ver novedad en celular -------- -->
+    <script src="../controller/js/popUp_novedades.js"></script>
+    <!-- ------ capturar id para la consulta individual del popUp -------- -->
+    <script src="../controller/js/captureIdPopUpNovedad.js"></script>
+    <!-- -------------------- js de la tabla -------- -->
     <script src="../controller/js/allNovedades.js"></script>
 </body>
 

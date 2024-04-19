@@ -15,9 +15,8 @@ try {
     -- estado nomina
     INNER JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion 
     WHERE Z.id_zona = $zona";
-
-    echo "<script>console.log('zona: " . $zona . "');</script>";
     $resultado = $conMysql->query($sql);
+    // -------------------------------------------------------------------------------------------------------
 
     if ($resultado !== false) {
         if ($resultado->num_rows > 0) {
@@ -31,9 +30,15 @@ try {
                 echo "<td>" . $fila['descripcion'] . "</td>";
                 echo "<td>" . $fila['id_servicio'] . "</td>";
                 echo "<td>" . $fila['cliente'] . "</td>";
-                echo "<td><button class='popup-button '>" . $fila['estado'] . "</button></td>";
                 echo "<td><button class='popup-button '>" . $fila['estado_aprobado'] . "</button></td>";
                 echo "<td><button class='popup-button '>" . $fila['estado_aprobado_area'] . "</button></td>";
+                if ($fila["estado"] == "pendiente") {
+                    echo "<td><button class='popup-button update-novedadNumber-button' data-novedad='" . $fila['id'] . "' style='background-color: #FF0000;'> " . $fila['estado'] . " </button></td>";
+                } else if ($fila["estado"] == "proceso") {
+                    echo "<td><button class='popup-button update-novedadNumber-button' data-novedad='" . $fila['id'] . "' style='background-color: #ffdf00;'> " . $fila['estado'] . " </button></td>";
+                } else if ($fila["estado"] == "terminado") {
+                    echo "<td><button class='popup-button update-novedadNumber-button' data-novedad='" . $fila['id'] . "' style='background-color: #00a135;'> " . $fila['estado'] . " </button></td>";
+                }
             }
         } else {
             echo "<tr><td colspan='9'>No se encontraron resultados</td></tr>";

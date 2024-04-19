@@ -16,9 +16,4 @@ class Conexion
 
         return $conexion;
     }
-
-    public function cerrarConexion($conexion)
-    {
-        $conexion->close();
-    }
 }

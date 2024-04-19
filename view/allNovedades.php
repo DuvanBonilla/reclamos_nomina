@@ -8,7 +8,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     header('location: ../view/main2.php');
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +39,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                 <input type="checkbox" id="export-file" />
                 <div class="export__file-options">
                     <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt="" /></label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
                 </div>
             </div>
@@ -70,19 +68,31 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
             </table>
         </section>
 
-        <!-- <div id="popup" class="popup">
-            Contenido del pop-up grande aquí...
-        </div> -->
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
+                <!-- contenido del modal -->
+            </div>
+        </div>
+
 
     </main>
-
+    <!-- ------------------- url para el ajax -------- -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../controller/js/captureApprovedCostos.js"></script>
-    <script src="../controller/js/captureApprovedNomina.js"></script>
-    <script src="../controller/js/capureDelete.js"></script>
-    <script src="../controller/js/allNovedades.js"></script>
+    <!-- --------------- popUp de ver novedad en celular -------- -->
     <script src="../controller/js/popUp_novedades.js"></script>
-
+    <!-- ------ capturar id para la consulta individual del popUp -------- -->
+    <script src="../controller/js/captureIdPopUpNovedad.js"></script>
+    <!-- ------------------------ costos -------- -->
+    <script src="../controller/js/captureApprovedCostos.js"></script>
+    <!-- --------------------- nomina -------- -->
+    <script src="../controller/js/captureApprovedNomina.js"></script>
+    <!-- -------------------- eliminar -------- -->
+    <script src="../controller/js/capureDelete.js"></script>
+    <!-- -------------------- js de la tabla -------- -->
+    <script src="../controller/js/allNovedades.js"></script>
 </body>
 
 </html>

@@ -50,8 +50,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                 <ul>
                     <li><a href="#contact">Añadir novedad</a></li>
                     <li><a href="allNovedades.php">Consultar novedad</a></li>
-                    <!-- <li><a href="#work">Consultar novedad</a></li> -->
-                    <!-- <li><a href="#about">About</a></li> -->
                     <li><a href="register.php">Registrar usuario</a></li>
                 </ul>
             </nav>
@@ -62,7 +60,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
 
             <!-- registrar novedad -->
             <article id="contact">
-                <h2 class="major">Contact</h2>
+                <h2 class="major">Agregar Novedad</h2>
                 <form method="POST" action="../controller/ctr_aggNovedad.php">
                     <div class="fields">
 
@@ -87,11 +85,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                                 <option value="Yeison">Yeison</option>
                             </select>
                         </div>
-                        <!-- </div>
-                        <div class="field half">
-                            <label for="coordinador">Coordinador</label>
-                            <input type="text" name="coordinador" id="coordinador" required />
-                        </div> -->
                         <div class="field">
                             <label for="novedad">Novedad</label>
                             <select id="novedad" name="novedad" required>
@@ -135,7 +128,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <div id="bg"></div>
     <!-- Scripts -->
     <script src="../controller/js/jquery.min.js"></script>
-    <script src="../controller/js/searchNovedad.js"></script>
     <script src="../controller/js/browser.min.js"></script>
     <script src="../controller/js/breakpoints.min.js"></script>
     <script src="../controller/js/util.js"></script>

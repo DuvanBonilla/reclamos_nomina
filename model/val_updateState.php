@@ -27,11 +27,8 @@ class updateState
                     $estado = 3;
                 } else if ($estado === "3") {
                 }
-
                 $conexion = new Conexion();
                 $mysqli = $conexion->conMysql();
-                // -------------------------------------------------------------------------------------------------------
-
                 // -------------------------------------------------------------------------------------------------------
                 $query = 'UPDATE novedades_nomina SET id_estado = ? WHERE id = ?';
                 if ($stmt = $mysqli->prepare($query)) {

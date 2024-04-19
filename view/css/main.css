@@ -1461,11 +1461,18 @@ body.is-preload #bg:before {
   min-width: 7.5rem;
   height: 2.75rem;
   line-height: 2.75rem;
-  padding: 0 1.25rem 0 1.45rem;
+  padding: 0 1.45rem 0 2.5rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   font-size: 0.8rem;
   border-bottom: 0;
+}
+
+#header nav ul li a {
+  height: 3rem;
+  line-height: 3rem;
+  min-width: 0;
+  width: 100%;
 }
 
 #header nav ul li a:hover {
@@ -1581,13 +1588,6 @@ body.is-preload #header .content .inner {
 
   #header nav ul li:first-child {
     border-top: 0;
-  }
-
-  #header nav ul li a {
-    height: 3rem;
-    line-height: 3rem;
-    min-width: 0;
-    width: 100%;
   }
 
   #header nav.use-middle:after {

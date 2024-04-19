@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 11:23 PM
+-- Generation Time: Apr 20, 2024 at 12:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -238,7 +238,7 @@ ALTER TABLE `aprobacion_costos_nomina`
 -- AUTO_INCREMENT for table `novedades_nomina`
 --
 ALTER TABLE `novedades_nomina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables

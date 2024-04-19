@@ -20,8 +20,6 @@ class updateState
                 $conexion = new Conexion();
                 $mysqli = $conexion->conMysql();
                 // -------------------------------------------------------------------------------------------------------
-
-                // -------------------------------------------------------------------------------------------------------
                 $query = 'DELETE FROM novedades_nomina WHERE id = ?';
                 if ($stmt = $mysqli->prepare($query)) {
                     // Ligamos los parámetros de la sentencia preparada

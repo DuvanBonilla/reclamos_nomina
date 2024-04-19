@@ -11,7 +11,6 @@ class valLogin
         $this->conexion = $conexion->conMysql();
     }
 
-
     public function validarLogin()
     {
         if (!empty($_POST["codigo"])) {
