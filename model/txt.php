@@ -29,38 +29,35 @@ try {
                 echo "<td>" . $fila['id_servicio'] . "</td>";
                 echo "<td>" . $fila['cliente'] . "</td>";
 
+                // ---------------------------------------------------------- ---------------------------------------------------------- ---------------------------------------------------------- 
+                // area de costos
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                // costos
-                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                // desactivar el boton de costos si el rol es 4 (nomina)
-                $disabledCostosIfNomina = $_SESSION['rol'];
-                $disablednomina = ($disabledCostosIfNomina == 4) ? 'disabled' : '';
-
-                $disabledCostos = $_SESSION['estado'] = $fila["id_estado"];
-                $disabledC = ($disabledCostos == 2) ? 'disabled' : '';
-                // cambiar colores dependiendo del estado de $id_aprobacionC
+                // desactivar el boton de costos si el rol es 4(nomina)
+                $disabledCostos = $_SESSION['rol'];
+                $disabledC = ($disabledCostos == 4) ? 'disabled' : '';
+                // cambio de color si el estado de costos es 1 o 2
                 if ($fila["id_aprobacionC"] == "1") {
-                    echo "<td><button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC $disablednomina style='background-color: #00a135;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
+                    echo "<td><button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: #00a135;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
                 } else if ($fila["id_aprobacionC"] == "2") {
-                    echo "<td><button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC $disablednomina style='background-color: red;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
+                    echo "<td><button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: #FF0000;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
                 }
-                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                //    nomina
-                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                // deshabilitar el boton de costos si el rol es 3 (costos)
-                $disabledNominaIfcostos = $_SESSION['rol'];
-                $disabledCostos = ($disabledCostosIfNomina == 3) ? 'disabled' : '';
-                // si el estado de costos esta pendiente se desactiva el poder pasar a aprobado nomina
-                $disabled = $_SESSION['id_aprobacionC'] = $fila["id_aprobacionC"];
-                $disabledN = ($disabled == 2) ? 'disabled' : '';
-                // cambiar colores dependiendo del estado de $id_aprobacionN
+                // -------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                // area de nomina
+                // -------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                // desactivar el boton de costos si el rol es 3(costos)
+                // $disabled = $_SESSION['rol'];
+                // $costosDisable = ($disabledCostos == 3) ? 'disabled' : '';
+                // se desactiva el boton de nomina hasta que el de costos sea 1 o aprobado
+                $disabledNomina = $_SESSION['id_aprobacionC'] = $fila["id_aprobacionC"];
+                $disabledN = ($disabledNomina == 2) ? 'disabled' : '';
+                // cambio de color si el estado de nomina es 1 o 2
                 if ($fila["id_aprobacionN"] == "1") {
-                    echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN $disabledCostos style='background-color: #00a135;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
+                    echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN  style='background-color: #00a135;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
                 } else if ($fila["id_aprobacionN"] == "2") {
-                    echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN $disabledCostos style='background-color: red;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
+                    echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN  style='background-color: #FF0000;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
                 }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                // gestion del estado de la nvoedad
+                // icons dependiendo del estado
                 if ($fila["estado"] == "pendiente") {
                     echo "<td><button class='popup-button update-novedadNumber-button ' data-novedad='" . $fila['id'] . "'  style='background-color: #FF0000;' ><i class='fa solid fa-xmark fa-beat'></i></button></td>";
                 } else if ($fila["estado"] == "proceso") {

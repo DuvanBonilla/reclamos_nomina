@@ -63,10 +63,9 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                 <h2 class="major">Agregar Novedad</h2>
                 <form method="POST" action="../controller/ctr_aggNovedad.php">
                     <div class="fields">
-
                         <div class="field half">
-                            <label name="fechaRegistro" for="fechaRegistro">Fecha registro</label>
-                            <input type="date" name="fechaRegistro" id="fechaRegistro" style="color: black;" required />
+                            <!-- <label name="fechaRegistro" for="fechaRegistro">Fecha registro</label> -->
+                            <input type="date" name="fechaRegistro" id="fechaRegistro" style="color: black;" required hidden />
                         </div>
                         <div class="field half">
                             <label name="fechaNovedad" for="fechaNovedad">Fecha novedad</label>
@@ -96,7 +95,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                             <label for="trabajador">Trabajador</label>
                             <input type="text" name="trabajador" id="trabajador" required />
                         </div>
-                        <div class="field ">
+                        <div class="field " required>
                             <label for="cliente">Cliente</label>
                             <select id="cliente" name="cliente">
                                 <option value="uniban">Uniban</option>
@@ -127,6 +126,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <!-- Background -->
     <div id="bg"></div>
     <!-- Scripts -->
+    <script src="../controller/js/setDate.js"></script>
     <script src="../controller/js/jquery.min.js"></script>
     <script src="../controller/js/browser.min.js"></script>
     <script src="../controller/js/breakpoints.min.js"></script>

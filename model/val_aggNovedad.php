@@ -35,21 +35,6 @@ class valNovedad
         $this->conexion = $conexion->conMysql();
     }
 
-    public function validarNovedad()
-    {
-        // Realizar una consulta para obtener los códigos de usuario disponibles
-        $sql = "SELECT nombre_coordinador FROM novedades_nomina";
-        $resultado = $this->conexion->query($sql);
-
-        if ($resultado->num_rows > 0) {
-            // Iterar sobre los resultados y mostrar los códigos de usuario
-            while ($fila = $resultado->fetch_assoc()) {
-                echo "Código de coordiandor: " . $fila["nombre_coordinador"] . "<br>";
-            }
-        } else {
-            echo "No se encontraron usuarios.";
-        }
-    }
 
     public function registrarNovedad()
     {

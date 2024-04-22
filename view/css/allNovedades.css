@@ -8,8 +8,8 @@
 
 body {
   min-height: 100vh;
-  background: url(../images/prueba.jpg) center / cover;
-  /* background: url(../images/novedades.jpg) center / cover; */
+  /* background: url(../images/prueba.jpg) center / cover; */
+  background: url(../images/novedades.jpg) center / cover;
 
   background-repeat: no-repeat;
   display: flex;
@@ -18,7 +18,7 @@ body {
 }
 
 main.table {
-  width: 84vw;
+  width: 89vw;
   height: 90vh;
   background-color: #fff5;
   backdrop-filter: blur(7px);
@@ -127,6 +127,7 @@ thead th {
   background-color: #d5d1defe;
   cursor: pointer;
   text-transform: capitalize;
+  z-index: 3;
 }
 
 tbody tr:nth-child(even) {
@@ -321,6 +322,10 @@ tbody td.active {
     top: 5px;
     left: 5px;
   }
+
+  thead th {
+    z-index: 0;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -368,6 +373,11 @@ tbody td.active {
   transition: background-color 0.3s;
 }
 
+.popup-button i {
+  position: relative; /* Asegura que el z-index se aplique correctamente */
+  z-index: 1; /* Un valor mayor que el z-index del botón */
+}
+
 .popup-content button:hover {
   background-color: #2093bf;
 }
@@ -391,8 +401,37 @@ tbody td.active {
 }
 /* Estilos para tablet y dispositivos móviles */
 @media only screen and (max-width: 768px) {
+  .export__file .export__file-btn {
+    align-items: end;
+  }
+  .table__header h1 {
+    display: none; /* Oculta el h1 */
+  }
+
+  .table__header .input-group {
+    width: calc(100% - 50px); /* Resta el espacio del h1 del ancho total */
+    height: 40px;
+  }
+
+  .table__header {
+    padding: 0px;
+  }
+
   .table__body {
     width: 100%;
+  }
+  .popup-button i {
+    z-index: 1; /* Un valor mayor que el z-index del botón */
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #d5d1defe;
+    cursor: pointer;
+    text-transform: capitalize;
+    z-index: 4;
   }
 
   thead th span.icon-arrow {
@@ -431,7 +470,7 @@ tbody td.active {
 .modal {
   display: none; /* Ocultar el modal por defecto */
   position: fixed; /* Posición fija para que cubra toda la pantalla */
-  z-index: 1; /* Hacer que el modal esté por encima de todo */
+  z-index: 2; /* Hacer que el modal esté por encima de todo */
   left: 0;
   top: 0;
   width: 100%;
@@ -439,6 +478,7 @@ tbody td.active {
   overflow: auto; /* Permitir desplazamiento si el contenido es demasiado largo */
   background-color: rgb(0, 0, 0); /* Fondo oscuro */
   background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro con transparencia */
+  z-index: 4;
 }
 
 /* Contenido del modal */

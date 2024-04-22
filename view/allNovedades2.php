@@ -8,6 +8,7 @@ if ($_SESSION['rol'] != 2) {
     header('location: ../view/main.php');
     exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

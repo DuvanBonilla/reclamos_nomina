@@ -1306,6 +1306,12 @@ body.is-preload #bg:before {
   #wrapper {
     padding: 2rem 1rem;
   }
+
+  .fa-right-from-bracket:before,
+  .fa-sign-out-alt:before {
+    font-size: 30px;
+    z-index: -200;
+  }
 }
 
 @media screen and (max-width: 480px) {
