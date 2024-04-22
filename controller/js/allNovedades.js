@@ -53,36 +53,92 @@ function sortTable(column, sort_asc) {
 
 //  ------------------------ convertir a excel ------------------------
 
+// const excel_btn = document.querySelector('#toEXCEL');
+
+// const toExcel = function (table) {
+//     const thead = table.querySelector('thead');
+//     const tbody_rows = table.querySelectorAll('tbody tr');
+
+//     // Obtener los encabezados de columna y eliminar espacios adicionales y símbolos no deseados
+//     const headers = [...thead.querySelectorAll('th')].map(header => header.textContent.trim().replace(/[^\w\s]/gi, ''));
+
+//     const table_data = [headers.join(';')]; // Agregar los encabezados como la primera fila del archivo CSV
+
+//     tbody_rows.forEach(row => {
+//         const cells = row.querySelectorAll('td');
+//         const rowData = [...cells].map(cell => cell.textContent.trim());
+//         let imgSrc = '';
+//         const img = row.querySelector('img');
+//         if (img) {
+//             imgSrc = decodeURIComponent(img.src);
+//         }
+//         rowData.push(imgSrc); // Añadir la fuente de la imagen como última celda
+//         table_data.push(rowData.join(';')); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
+
+//     });
+
+//     return table_data.join('\n'); // Unir todas las filas con saltos de línea
+// }
+
+// excel_btn.onclick = () => {
+//     const excel = toExcel(customers_table);
+//     downloadFile(excel, 'excel.csv'); // Solo necesitas pasar el contenido del archivo CSV y el nombre del archivo
+// }
+
+// const downloadFile = function (data, fileName = '') {
+//     const a = document.createElement('a');
+//     a.download = fileName;
+//     const csvData = new Blob([data], { type: 'text/csv;charset=utf-8' }); // Especificar la codificación de caracteres como UTF-8
+//     const csvUrl = URL.createObjectURL(csvData);
+
+//     a.href = csvUrl;
+//     document.body.appendChild(a);
+//     a.click();
+//     document.body.removeChild(a);
+//     URL.revokeObjectURL(csvUrl);
+// }
+
+
 const excel_btn = document.querySelector('#toEXCEL');
 
 const toExcel = function (table) {
-    const thead = table.querySelector('thead');
-    const tbody_rows = table.querySelectorAll('tbody tr');
+    const tbody = table.querySelector('tbody');
+    const rows = tbody.querySelectorAll('tr');
 
-    // Obtener los encabezados de columna y eliminar espacios adicionales y símbolos no deseados
-    const headers = [...thead.querySelectorAll('th')].map(header => header.textContent.trim().replace(/[^\w\s]/gi, ''));
+    // Array para almacenar los datos de cada fila, incluyendo los encabezados
+    const rowData = [];
 
-    const table_data = [headers.join(';')]; // Agregar los encabezados como la primera fila del archivo CSV
+    // Especificar los encabezados manualmente
+    const headers = [
+        "Fecha registro",
+        "Fecha novedad",
+        "Coordinador",
+        "Novedad",
+        "Trabajador",
+        "Descripción",
+        "ID servicio",
+        "Cliente",
+        "Costos",
+        "Nómina",
+    ];
+    rowData.push(headers.join(';')); // Agregar los encabezados al array
 
-    tbody_rows.forEach(row => {
+    // Recorremos cada fila de la tabla
+    rows.forEach(row => {
         const cells = row.querySelectorAll('td');
-        const rowData = [...cells].map(cell => cell.textContent.trim());
-        let imgSrc = '';
-        const img = row.querySelector('img');
-        if (img) {
-            imgSrc = decodeURIComponent(img.src);
-        }
-        rowData.push(imgSrc); // Añadir la fuente de la imagen como última celda
-        table_data.push(rowData.join(';')); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
-
+        const rowValues = Array.from(cells).map(cell => cell.innerText.trim());
+        rowData.push(rowValues.join(';')); // Agregar los valores de la fila al array
     });
 
-    return table_data.join('\n'); // Unir todas las filas con saltos de línea
+    console.log('Datos de la tabla:', rowData);
+
+    return rowData.join('\n'); // Unir todas las filas con saltos de línea
 }
+
 
 excel_btn.onclick = () => {
     const excel = toExcel(customers_table);
-    downloadFile(excel, 'excel.csv'); // Solo necesitas pasar el contenido del archivo CSV y el nombre del archivo
+    downloadFile(excel, 'datos.csv'); // Nombrar el archivo como "datos.csv"
 }
 
 const downloadFile = function (data, fileName = '') {
@@ -96,5 +152,4 @@ const downloadFile = function (data, fileName = '') {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(csvUrl);
-}
-
+}   
