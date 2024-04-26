@@ -102,4 +102,34 @@ class valNovedad
             </script>";
         }
     }
+
+
+    function subirArchivo($archivo, $fechaRegistro, $conexion)
+    {
+        $sql = "SELECT * FROM novedades_nomina";
+        $resultado = $this->conexion->query($sql);
+        if ($resultado !== false) {
+            $fila = $resultado->fetch_assoc();
+            $id = $fila['id'];
+            $nombreArchivo = $archivo['name'];
+            $archivoTemporal = $archivo['tmp_name'];
+            $carpetaDestino = 'C:\xampp\htdocs\reclamos_nomina\archivos';
+            echo "<script>console.log($resultado);</script>";
+
+
+            $rutaDestino = $carpetaDestino . $nombreArchivo;
+
+            if (move_uploaded_file($archivoTemporal, $rutaDestino)) {
+
+                $sql = "INSERT INTO archivos (id,fecha,nombre_archivo,archivo) VALUES ('$id', '$fechaRegistro','$nombreArchivo', '$rutaDestino')";
+                if ($this->conexion->query($sql)) {
+                    return true; // Éxito
+                }
+            }
+            echo "<script>console.log('salio mal al mover');</script>";
+            return false; // Error
+        } else {
+            echo "<script>console.log('salio mal con los datos');</script>";
+        }
+    }
 }

@@ -11,6 +11,8 @@ $trabajador = $_POST["trabajador"];
 $descripcion = $_POST["descripcion"];
 $idServicio = $_POST["idServicio"];
 $cliente = $_POST["cliente"];
+$archivo = $_FILES['archivo'];
+
 // --------------------------------------------------------------------
 // registro del estado en pendiente y id de la cuenta que registró
 $estado = 1;
@@ -28,3 +30,8 @@ $valNovedad = new valNovedad($fechaRegistro, $fechaNovedad, $coordinador, $noved
 // --------------------------------------------------------------------
 $valNovedad->registrarNovedad();
 // --------------------------------------------------------------------
+// --------------------------------------------------------------------
+//                          subir archivo
+// --------------------------------------------------------------------
+// --------------------------------------------------------------------
+$valNovedad->subirArchivo($archivo, $fechaRegistro, $conexion);

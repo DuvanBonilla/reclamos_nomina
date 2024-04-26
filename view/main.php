@@ -61,7 +61,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
             <!-- registrar novedad -->
             <article id="contact">
                 <h2 class="major">Agregar Novedad</h2>
-                <form method="POST" action="../controller/ctr_aggNovedad.php">
+                <form method="POST" action="../controller/ctr_aggNovedad.php" enctype="multipart/form-data">
                     <div class="fields">
                         <div class="field half">
                             <!-- <label name="fechaRegistro" for="fechaRegistro">Fecha registro</label> -->
@@ -71,6 +71,12 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                             <label name="fechaNovedad" for="fechaNovedad">Fecha novedad</label>
                             <input type="date" name="fechaNovedad" id="fechaNovedad" style="color: black;" required />
                         </div>
+
+                        <div class="uploadArchive">
+                            <label class="labelArchivo" for="archivo">Seleccione un Archivo</label>
+                            <input type="file" class="form-control-file" name="archivo" id="archivo" required>
+                        </div>
+
                         <div class="field half">
                             <label for="idServicio">Id servicio</label>
                             <input type="text" name="idServicio" id="idServicio" required />
@@ -109,11 +115,14 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                                 <option value="simbacol">Simbacol</option>
                             </select>
                         </div>
+
                         <div class="field ">
                             <label for="descripcion">Descripcion</label>
                             <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
                         </div>
                     </div>
+
+
                     <button class="primary" type="submit" class="enviar" name="enviar" id="enviar">Registrar novedad</button>
                 </form>
             </article>

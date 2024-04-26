@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 12:05 AM
+-- Generation Time: Apr 26, 2024 at 04:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,6 +39,26 @@ CREATE TABLE `aprobacion_costos_nomina` (
 INSERT INTO `aprobacion_costos_nomina` (`id`, `area`) VALUES
 (1, 'costos'),
 (2, 'nomina');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `archivos`
+--
+
+CREATE TABLE `archivos` (
+  `id` int(255) NOT NULL,
+  `fecha` date NOT NULL,
+  `nombre_archivo` varchar(255) NOT NULL,
+  `archivo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `archivos`
+--
+
+INSERT INTO `archivos` (`id`, `fecha`, `nombre_archivo`, `archivo`) VALUES
+(1, '2024-04-25', 'Captura de pantalla 2024-04-23 235650.png', 'C:xampphtdocs\reclamos_nominaarchivosCaptura de pantalla 2024-04-23 235650.png');
 
 -- --------------------------------------------------------
 
@@ -143,7 +163,11 @@ INSERT INTO `usuarios` (`codigo`, `id_rol`, `id_zona`) VALUES
 (1, 1, 1),
 (2, 2, 2),
 (3, 3, 3),
-(4, 4, 4);
+(4, 4, 4),
+(8, 2, 5),
+(9, 2, 4),
+(777, 3, 8),
+(778, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -179,6 +203,12 @@ INSERT INTO `zona` (`id_zona`, `zona`) VALUES
 -- Indexes for table `aprobacion_costos_nomina`
 --
 ALTER TABLE `aprobacion_costos_nomina`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `archivos`
+--
+ALTER TABLE `archivos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -238,7 +268,7 @@ ALTER TABLE `aprobacion_costos_nomina`
 -- AUTO_INCREMENT for table `novedades_nomina`
 --
 ALTER TABLE `novedades_nomina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
