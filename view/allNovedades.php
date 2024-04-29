@@ -61,6 +61,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                         <th>Costos <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Archivo <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Eliminar <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>

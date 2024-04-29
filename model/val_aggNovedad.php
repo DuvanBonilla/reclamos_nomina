@@ -106,27 +106,30 @@ class valNovedad
 
     function subirArchivo($archivo, $fechaRegistro, $conexion)
     {
-        $sql = "SELECT * FROM novedades_nomina";
+        // consulta por el id de forma descendente, de manera que se obtiene el id del ultimo añadido,se asigna al archivo
+        $sql = "SELECT id FROM novedades_nomina ORDER BY id DESC LIMIT 1";
         $resultado = $this->conexion->query($sql);
+        // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
         if ($resultado !== false) {
             $fila = $resultado->fetch_assoc();
             $id = $fila['id'];
+            $_SESSION['id_novedad'] = $id;
+            // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
             $nombreArchivo = $archivo['name'];
             $archivoTemporal = $archivo['tmp_name'];
-            $carpetaDestino = 'C:\xampp\htdocs\reclamos_nomina\archivos';
-            echo "<script>console.log($resultado);</script>";
-
-
+            // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+            $carpetaDestino = 'C:\\\xampp\\\\htdocs\\\reclamos_nomina\\\archivos\\\\';
             $rutaDestino = $carpetaDestino . $nombreArchivo;
-
+            // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
             if (move_uploaded_file($archivoTemporal, $rutaDestino)) {
 
                 $sql = "INSERT INTO archivos (id,fecha,nombre_archivo,archivo) VALUES ('$id', '$fechaRegistro','$nombreArchivo', '$rutaDestino')";
                 if ($this->conexion->query($sql)) {
                     return true; // Éxito
                 }
+            } else {
+                echo "<script>console.log('salio mal al mover');</script>";
             }
-            echo "<script>console.log('salio mal al mover');</script>";
             return false; // Error
         } else {
             echo "<script>console.log('salio mal con los datos');</script>";
