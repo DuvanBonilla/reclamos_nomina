@@ -1803,3 +1803,16 @@ body.is-preload #footer {
   margin-top: 1%;
   font-size: 35px;
 }
+
+.clearForm {
+  margin-left: 15px;
+}
+
+/* Estilo específico para Safari en iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"] {
+    appearance: textfield;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+  }
+}

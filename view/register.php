@@ -54,7 +54,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                     <option value="8">Zona Aduanera</option>
                 </select>
                 <button type="submit" class="enviar" name="enviar" id="enviar">Registrar usuario</button>
-
             </form>
         </div>
         <div class="toggle-container">

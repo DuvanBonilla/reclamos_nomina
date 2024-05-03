@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/popUpUpdateUsers.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <form class="form" action="../controller/ " method="POST">
+            <label for="codigo">Codigo</label>
+            <input type="text" id="codigo" name="codigo" style="text-align: center;" />
+            <label for="rol">Rol</label>
+            <select id="rol" name="rol" name="rol">
+                <option value="2">Coordinador</option>
+                <option value="4">Nomina</option>
+                <option value="3">Costos</option>
+                <option value="1">Administrador</option>
+            </select>
+            <label for="zona">Zona</label>
+            <select id="zona" name="zona">
+                <option value="1">Uniban Zungo</option>
+                <option value="2">Uniban M3</option>
+                <option value="3">Uniban Colonia</option>
+                <option value="4">Banacol Zungo</option>
+                <option value="5">Banacol colonia</option>
+                <option value="6">Operaciones Marinas</option>
+                <option value="7">Santa Marta</option>
+                <option value="8">Zona Aduanera</option>
+            </select>
+            <button type="submit" class="enviar" name="enviar" id="enviar">Actualizar usuario</button>
+        </form>
+    </div>
+</body>
+
+
+</html>

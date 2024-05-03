@@ -57,7 +57,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                         <th>Trabajador <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Descripcion <span class="icon-arrow">&UpArrow;</span></th>
                         <th>ID servicio <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Cliente <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Zona <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Costos <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
@@ -93,7 +93,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <!-- --------------------- nomina -------- -->
     <script src="../controller/js/captureApprovedNomina.js"></script>
     <!-- -------------------- eliminar -------- -->
-    <script src="../controller/js/capureDelete.js"></script>
+    <script src="../controller/js/capureDeleteNovedad.js"></script>
     <!-- -------------------- js de la tabla -------- -->
     <script src="../controller/js/allNovedades.js"></script>
 </body>

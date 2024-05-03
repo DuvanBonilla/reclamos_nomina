@@ -4,15 +4,18 @@ class valRegister
     private $codigo;
     private $conexion;
     private $rol;
+    private $estado;
+
     private $zona;
 
 
-    public function __construct($codigo, $conexion, $rol, $zona)
+    public function __construct($codigo, $conexion, $rol, $zona, $estado)
     {
         $this->codigo = $codigo;
         $this->conexion = $conexion->conMysql();
         $this->rol = $rol;
         $this->zona = $zona;
+        $this->estado = $estado;
     }
 
     public function verificarCodigo()
@@ -34,7 +37,7 @@ class valRegister
     public function registrarCodigo()
     {
         if (!empty($_POST['codigo'])) {
-            $query = "INSERT INTO usuarios(codigo, id_rol, id_zona) VALUES ('$this->codigo', '$this->rol', '$this->zona')";
+            $query = "INSERT INTO usuarios(codigo, id_rol, id_zona, estado) VALUES ('$this->codigo', '$this->rol', '$this->zona', '$this->estado')";
             try {
                 $ejecutar = mysqli_query($this->conexion, $query);
                 if ($ejecutar) {

@@ -1,6 +1,7 @@
 <?php
+
 session_start();
-if (!isset($_SESSION['rol'])) {
+if (!isset($_SESSION['rol']) || $_SESSION['estado'] == 2) {
     header('location: ../view/login.php');
     exit;
 }
@@ -8,6 +9,19 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     header('location: ../view/main2.php');
     exit;
 }
+
+$rol = $_SESSION['rol'];
+if ($rol == 1) {
+    $rol = "Administrador";
+} else if ($rol == 2) {
+    $rol = "Coordinador";
+} else if ($rol == 3) {
+    $rol = "Costos";
+} else if ($rol == 4) {
+    $rol = "Nomina";
+}
+
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -42,7 +56,8 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>Registro de novedades</h1>
+                    <!-- <h1>Registro de novedades</h1 -->
+                    <h1 style=>Bienvenido <span style="color: #abcd43;"><?php echo $rol; ?></span></h1>
                     <p> <strong> En esta plataforma, los coordinadores pueden reportar las novedades presentadas.<br /> ¡Gracias por tu contribución para mejorar nuestros servicios! </strong></a>
                 </div>
             </div>
@@ -51,6 +66,8 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                     <li><a href="#contact">Añadir novedad</a></li>
                     <li><a href="allNovedades.php">Consultar novedad</a></li>
                     <li><a href="register.php">Registrar usuario</a></li>
+                    <li><a href="users.php">Consultar usuarios</a></li>
+
                 </ul>
             </nav>
         </header>
@@ -61,33 +78,37 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
             <!-- registrar novedad -->
             <article id="contact">
                 <h2 class="major">Agregar Novedad</h2>
-                <form method="POST" action="../controller/ctr_aggNovedad.php" enctype="multipart/form-data">
+                <form id="miFormulario" method="POST" action="../controller/ctr_aggNovedad.php" enctype="multipart/form-data">
                     <div class="fields">
                         <div class="field half">
                             <!-- <label name="fechaRegistro" for="fechaRegistro">Fecha registro</label> -->
                             <input type="date" name="fechaRegistro" id="fechaRegistro" style="color: black;" required hidden />
                         </div>
                         <div class="field half">
-                            <label name="fechaNovedad" for="fechaNovedad">Fecha novedad</label>
+                            <label name="fechaNovedad" for="fechaNovedad">Fecha de novedad</label>
                             <input type="date" name="fechaNovedad" id="fechaNovedad" style="color: black;" required />
                         </div>
 
                         <div class="uploadArchive">
                             <label class="labelArchivo" for="archivo">Seleccione un Archivo</label>
-                            <input type="file" class="form-control-file" name="archivo" id="archivo" required>
+                            <input type="file" class="form-control-file" name="archivo" id="archivo">
                         </div>
 
                         <div class="field half">
-                            <label for="idServicio">Id servicio</label>
+                            <label for="idServicio">Codigo servicio</label>
                             <input type="text" name="idServicio" id="idServicio" required />
                         </div>
                         <div class="field">
                             <label for="coordinador">Coordinador</label>
                             <select id="coordinador" name="coordinador" required>
-                                <option value="Kenier">Kenier</option>
-                                <option value="Pasos">Pasos</option>
-                                <option value="Yessy">Yessy</option>
-                                <option value="Yeison">Yeison</option>
+                                <option value="ErasmoMadarriaga">Erasmo Madarriaga</option>
+                                <option value="AntonioLopez">Antonio Lopez</option>
+                                <option value="HectorMarinoMosquera">Hector Marino Mosquera</option>
+                                <option value="LuisDarioHerrera">Luis Dario Herrera</option>
+                                <option value="AndresSierra">Andres Sierra</option>
+                                <option value="LuisBallesta">Luis Ballesta</option>
+                                <option value="RosalinoRodriguez">Rosalino Rodriguez</option>
+                                <option value="YordiJimenez">Yordi Jimenez</option>
                             </select>
                         </div>
                         <div class="field">
@@ -99,7 +120,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                         </div>
                         <div class="field half">
                             <label for="trabajador">Trabajador</label>
-                            <input type="text" name="trabajador" id="trabajador" required />
+                            <input type="text" name="trabajador" id="trabajador" pattern="[A-Za-z]+" title="Por favor ingresa solo letras" required />
                         </div>
                         <div class="field " required>
                             <label for="cliente">Cliente</label>
@@ -107,8 +128,8 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                                 <option value="uniban">Uniban</option>
                                 <option value="zungo">Banacol</option>
                                 <option value="cfs">Cfs</option>
-                                <option value="banafruit">Banafruit</option>
-                                <option value="conserva">Conserva</option>
+                                <option value="banafruit">Banafrut</option>
+                                <option value="conserva">Conserba</option>
                                 <option value="fyffes">Fyffes</option>
                                 <option value="smitco">Smitco</option>
                                 <option value="spsm">Spsm</option>
@@ -124,6 +145,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
 
 
                     <button class="primary" type="submit" class="enviar" name="enviar" id="enviar">Registrar novedad</button>
+                    <button class="clearForm" type="button" onclick="limpiarCampos()">Limpiar Campos</button>
                 </form>
             </article>
         </div>
@@ -136,6 +158,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <div id="bg"></div>
     <!-- Scripts -->
     <script src="../controller/js/setDate.js"></script>
+    <script src="../controller/js/clear_form.js"></script>
     <script src="../controller/js/jquery.min.js"></script>
     <script src="../controller/js/browser.min.js"></script>
     <script src="../controller/js/breakpoints.min.js"></script>

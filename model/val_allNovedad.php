@@ -6,12 +6,13 @@ try {
     // consulta de la tabla de novedades
     $conexion = new Conexion();
     $conMysql = $conexion->conMysql();
-    $sql = "SELECT N.*, E.estado AS estado, A.area, EC.estado AS estado_aprobado, EN.estado AS estado_aprobado_area
+    $sql = "SELECT N.*, E.estado AS estado, A.area, EC.estado AS estado_aprobado, EN.estado AS estado_aprobado_area, z.zona as zona
         FROM novedades_nomina AS N
         LEFT JOIN estado AS E ON N.id_estado = E.id_estado
         LEFT JOIN aprobacion_costos_nomina AS A ON N.id_aprobacionC = A.id
         LEFT JOIN estado_aprobado_area AS EC ON A.id = EC.id_aprobacion
-        LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion";
+        LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion
+        LEFT JOIN zona as z ON N.id_zona = z.id_zona";
 
     $resultado = $conMysql->query($sql);
     // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
@@ -27,7 +28,7 @@ try {
                 echo "<td>" . $fila['trabajador'] . "</td>";
                 echo "<td>" . $fila['descripcion'] . "</td>";
                 echo "<td>" . $fila['id_servicio'] . "</td>";
-                echo "<td>" . $fila['cliente'] . "</td>";
+                echo "<td>" . $fila['zona'] . "</td>";
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 // boton costos
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
@@ -82,7 +83,7 @@ try {
 
                     echo "<td><a href='../model/descargar_archivos.php?archivo=" . $archivo . "' class='popup-button update-delete-button' style='background-color: #2194bc;' download><i class='fas fa-file-download'></i></a></td>";
                 } else {
-                    echo "No se encontró ningún archivo para el ID de novedad proporcionado.";
+                    echo "<td><a ' class='popup-button ' style='background-color: #FF0000;' download><i class='fa solid fa-xmark fa-beat'></i></a></td>";
                 }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 // eliminar novedad

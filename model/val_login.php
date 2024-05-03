@@ -20,12 +20,13 @@ class valLogin
                 $rol = $datos["id_rol"];
                 $codigo = $datos["codigo"];
                 $zona = $datos["id_zona"];
+                $estado = $datos["estado"];
 
                 if ($this->codigo == $codigo) {
                     $_SESSION['rol'] = $rol;
                     $_SESSION['zona'] = $zona;
                     $_SESSION['id_usuario'] = $codigo;
-
+                    $_SESSION['estado'] = $estado;
 
                     echo '<script>window.location.href="../view/main.php";</script>';
                     exit();
