@@ -60,7 +60,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
         <!-- Modal -->
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close"><i class="fa-solid fa-xmark fa-bounce"></i></span>
                 <div id="modalContent"></div>
                 <!-- contenido del modal -->
             </div>

@@ -80,10 +80,12 @@ if ($rol == 1) {
                 <h2 class="major">Agregar Novedad</h2>
                 <form id="miFormulario" method="POST" action="../controller/ctr_aggNovedad.php" enctype="multipart/form-data">
                     <div class="fields">
+
                         <div class="field half">
                             <!-- <label name="fechaRegistro" for="fechaRegistro">Fecha registro</label> -->
                             <input type="date" name="fechaRegistro" id="fechaRegistro" style="color: black;" required hidden />
                         </div>
+
                         <div class="field half">
                             <label name="fechaNovedad" for="fechaNovedad">Fecha de novedad</label>
                             <input type="date" name="fechaNovedad" id="fechaNovedad" style="color: black;" required />
@@ -98,6 +100,7 @@ if ($rol == 1) {
                             <label for="idServicio">Codigo servicio</label>
                             <input type="text" name="idServicio" id="idServicio" required />
                         </div>
+
                         <div class="field">
                             <label for="coordinador">Coordinador</label>
                             <select id="coordinador" name="coordinador" required>
@@ -111,6 +114,7 @@ if ($rol == 1) {
                                 <option value="YordiJimenez">Yordi Jimenez</option>
                             </select>
                         </div>
+
                         <div class="field">
                             <label for="novedad">Novedad</label>
                             <select id="novedad" name="novedad" required>
@@ -118,10 +122,12 @@ if ($rol == 1) {
                                 <option value="Saldo sobrante">Saldo sobrante</option>
                             </select>
                         </div>
+
                         <div class="field half">
                             <label for="trabajador">Trabajador</label>
                             <input type="text" name="trabajador" id="trabajador" pattern="[A-Za-z]+" title="Por favor ingresa solo letras" required />
                         </div>
+
                         <div class="field " required>
                             <label for="cliente">Clientes</label>
                             <select id="cliente" name="cliente">
@@ -142,7 +148,6 @@ if ($rol == 1) {
                             <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
                         </div>
                     </div>
-
 
                     <button class="primary" type="submit" class="enviar" name="enviar" id="enviar">Registrar novedad</button>
                     <button class="clearForm" type="button" onclick="limpiarCampos()">Limpiar Campos</button>
