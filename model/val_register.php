@@ -5,7 +5,6 @@ class valRegister
     private $conexion;
     private $rol;
     private $estado;
-
     private $zona;
 
 
@@ -24,11 +23,22 @@ class valRegister
             $verificar_codigo = $this->conexion->query("SELECT * FROM usuarios WHERE codigo = '$this->codigo'");
 
             if ($verificar_codigo->num_rows > 0) {
-                echo '
-                <script>
-                    alert("Este Codigo ya Está Registrado, Inténtalo Nuevamente");
-                    window.location = "../view/register.php";
-                </script>';
+                echo "
+                    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                    <script language='JavaScript'>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Este codigo ya se encuentra en uso',
+                            showCancelButton: false,
+                            confirmButtonColor: '#FF0000',
+                            confirmButtonText: 'OK',
+                            timer: 6000
+                        }).then(() => {
+                            location.assign('../view/register.php');
+                        });
+                    });
+                    </script>";
                 exit();
             }
         }
@@ -66,7 +76,7 @@ class valRegister
                             icon: 'error',
                             title: 'El usuario $this->codigo ya se encuentra registrado',
                             showCancelButton: false,
-                            confirmButtonColor: '#3085d6',
+                            confirmButtonColor: '#FF0000',
                             confirmButtonText: 'OK',
                             timer: 5000
                         }).then(() => {
@@ -94,7 +104,7 @@ class valRegister
                         icon: 'error',
                         title: 'Por favor rellene los campos',
                         showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
+                        confirmButtonColor: '#FF0000',
                         confirmButtonText: 'OK',
                         timer: 5000
                     }).then(() => {

@@ -10,5 +10,6 @@ $estado = 1;
 $conexion = new Conexion();
 // --------------------------------------------------------------------
 $register = new valRegister($codigo, $conexion, $rol, $zona, $estado);
+$register->verificarCodigo();
 $register->registrarCodigo();
 // --------------------------------------------------------------------

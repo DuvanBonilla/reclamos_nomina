@@ -39,7 +39,7 @@ class valLogin
                             icon: 'error',
                             title: 'Usuario No Existe, Contraseña Incorrecta. Verifique Su Informacion',
                             showCancelButton: false,
-                            confirmButtonColor: '#3085d6',
+                            confirmButtonColor: '#FF0000',
                             confirmButtonText: 'OK',
                             timer: 5000
                         }).then(() => {
@@ -57,7 +57,7 @@ class valLogin
                             icon: 'error',
                             title: 'Usuario No Existe, Contraseña Incorrecta. Verifique Su Informacion',
                             showCancelButton: false,
-                            confirmButtonColor: '#3085d6',
+                            confirmButtonColor: '#FF0000',
                             confirmButtonText: 'OK',
                             timer: 5000
                         }).then(() => {
@@ -75,7 +75,7 @@ class valLogin
                     icon: 'error',
                     title: 'Por favor rellene los campos',
                     showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
+                    confirmButtonColor: '#FF0000',
                     confirmButtonText: 'OK',
                     timer: 5000
                 }).then(() => {

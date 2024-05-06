@@ -142,6 +142,10 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
+html,
+body {
+  overflow-y: hidden;
+}
 input,
 select,
 textarea {

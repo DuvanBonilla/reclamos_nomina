@@ -60,9 +60,9 @@ try {
                     echo "<td><button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN $disabledCostos style='background-color: red;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
                 }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                // gestion del estado de la nvoedad
+                // gestion del estado de la novedad
                 if ($fila["estado"] == "pendiente") {
-                    echo "<td><button class='popup-button update-novedadNumber-button ' data-novedad='" . $fila['id'] . "'  style='background-color: #FF0000;' ><i class='fa solid fa-xmark fa-beat'></i></button></td>";
+                    echo "<td><button class='popup-button update-novedadNumber-button ' data-novedad='" . $fila['id'] . "'  style='background-color: #FF0000;' > <i class='fa solid fa-xmark fa-beat'></i></button></td>";
                 } else if ($fila["estado"] == "proceso") {
                     echo "<td><button class='popup-button update-novedadNumber-button ' data-novedad='" . $fila['id'] . "'  style='background-color: #ffdf00;'><i class='fas fa-spinner fa-spin'></i></button></td>";
                 } else if ($fila["estado"] == "terminado") {

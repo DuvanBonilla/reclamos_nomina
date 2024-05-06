@@ -8,16 +8,26 @@ if ($_SESSION['rol'] == 1 && $_SESSION['rol'] == 3 && $_SESSION['rol'] == 4) {
     header('location: ../view/main2.php');
     exit;
 }
-$rol = $_SESSION['rol'];
-if ($rol == 1) {
-    $rol = "Administrador";
-} else if ($rol == 2) {
-    $rol = "Coordinador";
-} else if ($rol == 3) {
-    $rol = "Costos";
-} else if ($rol == 4) {
-    $rol = "Nomina";
-}
+$zonas = array(
+    1 => "Uniban Zungo",
+    2 => "Uniban M3",
+    3 => "Uniban Colonia",
+    4 => "Banacol Zungo",
+    5 => "Banacol Colonia",
+    6 => "Operaciones Marinas",
+    7 => "Santa Marta",
+    8 => "Zona Aduanera",
+    9 => "Administracion",
+);
+$zona = $zonas[$_SESSION['zona']];
+
+$roles = array(
+    1 => "Administrador",
+    2 => "Coordinador",
+    3 => "Costos",
+    4 => "Nomina",
+);
+$rol = $roles[$_SESSION['rol']];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -36,6 +46,7 @@ if ($rol == 1) {
 </head>
 
 <body class="is-preload">
+
     <nav>
         <a class="exit-link" href="../model/cerrar_session.php">
             <i class="fa fa-right-from-bracket fa-beat " style="color: #ff0000"></i>
@@ -45,12 +56,14 @@ if ($rol == 1) {
     <div id="wrapper">
         <!-- Header -->
         <header id="header">
+
             <div class="logo">
                 <img class="logo" src="images/logo-blanco.png" alt="">
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1 style=>Bienvenido <span style="color: #abcd43;"><?php echo $rol; ?></span></h1>
+                    <!-- <h1>Registro de novedades</h1 -->
+                    <h1 style=>Bienvenido <span style="color: #abcd43;"><?php echo $rol; ?></span> </br> de la zona <span style="color: #abcd43;"><?php echo $zona; ?></span></h1>
                     <p> <strong> En esta plataforma, los coordinadores pueden reportar las novedades presentadas.<br /> ¡Gracias por tu contribución para mejorar nuestros servicios! </strong></a>
                 </div>
             </div>
@@ -116,7 +129,7 @@ if ($rol == 1) {
                         </div>
                         <div class="field half">
                             <label for="trabajador">Trabajador</label>
-                            <input type="text" name="trabajador" id="trabajador" pattern="[A-Za-z]+" title="Por favor ingresa solo letras" required />
+                            <input type="text" name="trabajador" id="trabajador" pattern="[A-Za-z ]+" title="Por favor ingresa solo letras y espacios" required />
                         </div>
                         <div class="field " required>
                             <label for="cliente">Cliente</label>
