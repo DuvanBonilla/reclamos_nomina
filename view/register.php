@@ -52,6 +52,8 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                     <option value="6">Operaciones Marinas</option>
                     <option value="7">Santa Marta</option>
                     <option value="8">Zona Aduanera</option>
+                    <option value="9">Administracion</option>
+
                 </select>
                 <button type="submit" class="enviar" name="enviar" id="enviar">Registrar usuario</button>
             </form>

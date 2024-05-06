@@ -93,7 +93,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <!-- --------------------- nomina -------- -->
     <script src="../controller/js/captureApprovedNomina.js"></script>
     <!-- -------------------- eliminar -------- -->
-    <script src="../controller/js/capureDeleteNovedad.js"></script>
+    <script src="../controller/js/captureDeleteNovedad.js"></script>
     <!-- -------------------- js de la tabla -------- -->
     <script src="../controller/js/allNovedades.js"></script>
 </body>

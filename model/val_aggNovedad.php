@@ -90,7 +90,7 @@
                 document.addEventListener('DOMContentLoaded', function() {
                     Swal.fire({
                         icon: 'error',
-                        title: 'esta vacido',
+                        title: 'esta vacio',
                         showCancelButton: false,
                         confirmButtonColor: '#FF5733 ',
                         confirmButtonText: 'OK',

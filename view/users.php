@@ -21,7 +21,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Consultar usuario</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/allNovedades.css" />
+    <link rel="stylesheet" type="text/css" href="css/allUsers.css" />
 
 </head>
 
@@ -33,17 +33,10 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
         <section class="table__header">
             <h1>Usuarios registrados</h1>
             <div class="input-group">
-                <input id="search" type="search" placeholder="Buscar novedad" />
+                <input id="search" type="search" placeholder="Buscar usuario" />
                 <img src="images/search.png" alt="" />
             </div>
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file" />
-                <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
-                </div>
-            </div>
+
         </section>
 
         <section class="table__body">
@@ -81,7 +74,8 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <script src="../controller/js/captureCodigoUserEstado.js"></script>
     <!-- ------------------- popUp-------- -->
     <script src="../controller/js/updateUsersPopUp.js"></script>
-
+    <!-- ------------------- buscar y sorting de la tabla-------- -->
+    <script src="../controller/js/tableUsers.js"></script>
 </body>
 
 </html>

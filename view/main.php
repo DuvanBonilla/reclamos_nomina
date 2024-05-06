@@ -123,7 +123,7 @@ if ($rol == 1) {
                             <input type="text" name="trabajador" id="trabajador" pattern="[A-Za-z]+" title="Por favor ingresa solo letras" required />
                         </div>
                         <div class="field " required>
-                            <label for="cliente">Cliente</label>
+                            <label for="cliente">Clientes</label>
                             <select id="cliente" name="cliente">
                                 <option value="uniban">Uniban</option>
                                 <option value="zungo">Banacol</option>

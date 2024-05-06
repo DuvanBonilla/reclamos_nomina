@@ -1,9 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
 .container {
-  background-color: #fff;
+  width: 400px;
+  margin: 50px auto;
+  background-color: rgb(249, 246, 246);
   padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form input[type="text"],
+.form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-image: url("../images/login.jpg");
+  box-sizing: border-box;
+}
+.form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #512da8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+.modal-content {
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 80%;
+  border-radius: 15px;
+  background-image: url("../images/updateUser.jpg");
+  background-position: center;
   background-size: cover;
-  height: 300px;
 }

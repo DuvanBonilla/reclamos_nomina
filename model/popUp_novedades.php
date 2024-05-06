@@ -64,13 +64,13 @@ try {
                 // Determinar si el botón debe estar desactivado
                 $disabledC = ($disabledCostos == 2) ? 'disabled' : '';
                 if ($fila["id_aprobacionC"] == "1") {
-                    echo "<td> <strong>EstadoCostos: </strong> <button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: #00a135;'>  <strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
+                    echo "<td> <strong>Costos: </strong> <button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: #00a135;'>  <strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
                     echo "<hr/ class='custom-hr'>";
                     echo "<br/>";
                     // -------------------------------------------------------------------------------------------------------
 
                 } else if ($fila["id_aprobacionC"] == "2") {
-                    echo "<td> <strong>EstadoCostos: </strong> <button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: red;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
+                    echo "<td> <strong>Costos: </strong> <button class='popup-button update-approvedC-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionC='" . $fila['id_aprobacionC'] . "' data-id='" . $fila['id'] . "' $disabledC style='background-color: red;'><strong>" . $fila['estado_aprobado'] . "</strong></button></td>";
                     echo "<hr/ class='custom-hr'>";
                     echo "<br/>";
                     // -------------------------------------------------------------------------------------------------------
@@ -82,11 +82,11 @@ try {
                 // Determinar si el botón debe estar desactivado
                 $disabledN = ($disabled == 2) ? 'disabled' : '';
                 if ($fila["id_aprobacionN"] == "1") {
-                    echo "<td> <strong>EstadoNomina: </strong> <button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN style='background-color: #00a135;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
+                    echo "<td> <strong>Nomina: </strong> <button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN style='background-color: #00a135;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
                     echo "<hr/ class='custom-hr'>";
                     echo "<br/>";
                 } else if ($fila["id_aprobacionN"] == "2") {
-                    echo "<td> <strong>EstadoNomina: </strong> <button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN style='background-color: red;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
+                    echo "<td> <strong>Nomina: </strong> <button class='popup-button update-approvedN-button' data-estado='" . $fila['estado'] . "' data-id_aprobacionN='" . $fila['id_aprobacionN'] . "' data-id='" . $fila['id'] . "' $disabledN style='background-color: red;'><strong>" . $fila['estado_aprobado_area'] . "</strong></button></td>";
                     echo "<hr/ class='custom-hr'>";
                 }
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
