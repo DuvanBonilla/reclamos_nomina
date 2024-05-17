@@ -23,7 +23,6 @@ try {
         if ($resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $fila['fecha_registro'] . "</td>";
                 echo "<td>" . $fila['fecha_novedad'] . "</td>";
                 echo "<td>" . $fila['nombre_coordinador'] . "</td>";
                 echo "<td>" . $fila['tipo_novedad'] . "</td>";

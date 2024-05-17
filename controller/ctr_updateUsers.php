@@ -13,4 +13,5 @@ $zona = $_POST['zona'];
 $conexion = new Conexion();
 // -------------------------------------------------------------------------------------------------------
 $updateUsers = new updateUser($codigo_user, $rol, $zona, $conexion);
+$updateUsers->verificarCodigo();
 $updateUsers->changeUsers();

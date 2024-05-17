@@ -11,6 +11,10 @@ class valLogin
         $this->conexion = $conexion->conMysql();
     }
 
+    public function estadoUser()
+    {
+    }
+
     public function validarLogin()
     {
         if (!empty($_POST["codigo"])) {
@@ -22,22 +26,14 @@ class valLogin
                 $zona = $datos["id_zona"];
                 $estado = $datos["estado"];
 
-                if ($this->codigo == $codigo) {
-                    $_SESSION['rol'] = $rol;
-                    $_SESSION['zona'] = $zona;
-                    $_SESSION['id_usuario'] = $codigo;
-                    $_SESSION['estado'] = $estado;
-
-                    echo '<script>window.location.href="../view/main.php";</script>';
-                    exit();
-                } else {
+                if ($estado == 2) {
                     echo "
                     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
                     <script language='JavaScript'>
                     document.addEventListener('DOMContentLoaded', function() {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Usuario No Existe, Contraseña Incorrecta. Verifique Su Informacion',
+                            title: 'Usuario desactivado',
                             showCancelButton: false,
                             confirmButtonColor: '#FF0000',
                             confirmButtonText: 'OK',
@@ -47,6 +43,33 @@ class valLogin
                         });
                     });
                     </script>";
+                } else {
+                    if ($this->codigo == $codigo) {
+                        $_SESSION['rol'] = $rol;
+                        $_SESSION['zona'] = $zona;
+                        $_SESSION['id_usuario'] = $codigo;
+                        $_SESSION['estado'] = $estado;
+
+                        echo '<script>window.location.href="../view/main.php";</script>';
+                        exit();
+                    } else {
+                        echo "
+                        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                        <script language='JavaScript'>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Codigo Incorrecto. Verifique Su Informacion',
+                                showCancelButton: false,
+                                confirmButtonColor: '#FF0000',
+                                confirmButtonText: 'OK',
+                                timer: 5000
+                            }).then(() => {
+                                location.assign('../view/login.php');
+                            });
+                        });
+                        </script>";
+                    }
                 }
             } else {
                 echo "
@@ -55,7 +78,7 @@ class valLogin
                     document.addEventListener('DOMContentLoaded', function() {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Usuario No Existe, Contraseña Incorrecta. Verifique Su Informacion',
+                            title: 'Codigo Incorrecto. Verifique Su Informacion',
                             showCancelButton: false,
                             confirmButtonColor: '#FF0000',
                             confirmButtonText: 'OK',

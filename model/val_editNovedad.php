@@ -1,24 +1,24 @@
 <?php
 
-class updateUser
+class updateNovedad
 {
-    private $codigo_user;
-    private $rol;
-    private $zona;
+    private $idServicio;
+    private $descripcion;
     private $conexion;
 
-    public function __construct($codigo_user, $rol, $zona, $conexion)
+
+
+    public function __construct($idServicio, $descripcion, $conexion)
     {
-        $this->codigo_user = $codigo_user;
-        $this->rol = $rol;
-        $this->zona = $zona;
+        $this->idServicio = $idServicio;
+        $this->descripcion = $descripcion;
         $this->conexion = $conexion->conMysql();
     }
 
-    public function verificarCodigo()
+    public function verificarNovedad()
     {
-        if (!empty(($_POST["codigo"] && $_POST["rol"] && $_POST["zona"]))) {
-            $verificar_codigo = $this->conexion->query("SELECT * FROM usuarios WHERE codigo = '$this->codigo_user'");
+        if (!empty(($_POST["idServicio"] && $_POST["descripcion"]))) {
+            $verificar_codigo = $this->conexion->query("SELECT * FROM novedades_nomina WHERE id_servicio = '$this->idServicio'");
 
             if ($verificar_codigo->num_rows < 1) {
                 echo "
@@ -33,7 +33,7 @@ class updateUser
                             confirmButtonText: 'OK',
                             timer: 6000
                         }).then(() => {
-                            location.assign('../view/users.php');
+                            location.assign('../view/allNovedades.php');
                         });
                     });
                     </script>";
@@ -41,13 +41,13 @@ class updateUser
             }
         }
     }
-    public function changeUsers()
+    public function updateNovedad()
     {
-        if (!empty($_POST['codigo']) && !empty($_POST['rol']) && !empty($_POST['zona'])) {
-            $query = "UPDATE usuarios SET id_rol = ?, id_zona = ? WHERE codigo = ?";
+        if (!empty($_POST['idServicio']) && !empty($_POST['descripcion'])) {
+            $query = "UPDATE novedades_nomina SET descripcion = ? WHERE id_servicio = ?";
 
             if ($stmt = $this->conexion->prepare($query)) {
-                $stmt->bind_param('iii', $this->rol, $this->zona, $this->codigo_user);
+                $stmt->bind_param('si', $this->descripcion, $this->idServicio);
 
                 if ($stmt->execute()) {
                     echo "
@@ -56,13 +56,13 @@ class updateUser
                     document.addEventListener('DOMContentLoaded', function() {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Usuario actualizado con éxito',
+                            title: 'Novedad actualizado con éxito',
                             showCancelButton: false,
                             confirmButtonColor: '#3085d6',
                             confirmButtonText: 'OK',
                             timer: 5000
                         }).then(() => {
-                            location.assign('../view/users.php');
+                            location.assign('../view/allNovedades.php');
                         });
                     });
                     </script>";
@@ -82,7 +82,7 @@ class updateUser
                         confirmButtonText: 'OK',
                         timer: 5000
                     }).then(() => {
-                        location.assign('../view/users.php');
+                        location.assign('../view/allNovedades.php');
                     });
                 });
                 </script>";
@@ -100,7 +100,7 @@ class updateUser
                     confirmButtonText: 'OK',
                     timer: 5000
                 }).then(() => {
-                    location.assign('../view/users.php');
+                    location.assign('../view/allNovedades.php');
                 });
             });
             </script>";

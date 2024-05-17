@@ -5,11 +5,12 @@
         private $fechaRegistro;
         private $fechaNovedad;
         private $coordinador;
+        private $semana;
+
         private $novedad;
         private $trabajador;
         private $descripcion;
         private $idServicio;
-        private $cliente;
         private $idUsuario;
         private $estado;
         private $id_zona;
@@ -17,16 +18,16 @@
         private $id_aprobacionN;
         private $conexion;
 
-        public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $novedad, $trabajador, $descripcion, $idServicio, $cliente, $idUsuario, $estado, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion)
+        public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $semana, $novedad, $trabajador, $descripcion, $idServicio, $idUsuario, $estado, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion)
         {
             $this->fechaRegistro = $fechaRegistro;
             $this->fechaNovedad = $fechaNovedad;
             $this->coordinador = $coordinador;
+            $this->semana = $semana;
             $this->novedad = $novedad;
             $this->trabajador = $trabajador;
             $this->descripcion = $descripcion;
             $this->idServicio = $idServicio;
-            $this->cliente = $cliente;
             $this->idUsuario = $idUsuario;
             $this->estado = $estado;
             $this->id_zona = $id_zona;
@@ -38,12 +39,12 @@
 
         public function registrarNovedad()
         {
-            if (!empty($_POST['fechaRegistro'] && $_POST['fechaNovedad'] && $_POST['novedad'] && $_POST['cliente'] && $_POST['coordinador'] && $_POST['idServicio'] && $_POST['descripcion'])) {
-                $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,tipo_novedad,trabajador,descripcion,id_servicio,cliente,id_usuario,id_estado, id_zona, id_aprobacionC, id_aprobacionN) 
+            if (!empty($_POST['fechaRegistro'] && $_POST['fechaNovedad'] && $_POST['novedad'] && $_POST['coordinador'] &&  $_POST['semana'] && $_POST['idServicio'] && $_POST['descripcion'])) {
+                $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,semana,tipo_novedad,trabajador,descripcion,id_servicio,id_usuario,id_estado, id_zona, id_aprobacionC, id_aprobacionN) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
                 if ($stmt = $this->conexion->prepare($query)) {
-                    $stmt->bind_param('ssssssssssiii', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->cliente, $this->idUsuario, $this->estado, $this->id_zona, $this->id_aprobacionC, $this->id_aprobacionN);
+                    $stmt->bind_param('ssssssssssiii', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->semana, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->idUsuario, $this->estado, $this->id_zona, $this->id_aprobacionC, $this->id_aprobacionN);
 
                     if ($stmt->execute()) {
                         echo "

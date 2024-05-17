@@ -1,10 +1,10 @@
 <?php
-
 session_start();
 if (!isset($_SESSION['rol']) || $_SESSION['estado'] == 2) {
     header('location: ../view/login.php');
     exit;
 }
+
 
 $zonas = array(
     1 => "Uniban Zungo",
@@ -26,8 +26,9 @@ $roles = array(
     4 => "Nomina",
 );
 $rol = $roles[$_SESSION['rol']];
-?>
 
+
+?>
 <!DOCTYPE HTML>
 <html>
 
@@ -69,7 +70,10 @@ $rol = $roles[$_SESSION['rol']];
             <nav>
                 <ul>
                     <li><a href="#contact">Añadir novedad</a></li>
-                    <li><a href="allNovedades2.php">Consultar novedad</a></li>
+                    <li><a href="allNovedades.php">Consultar novedad</a></li>
+                    <li><a href="register.php">Registrar usuario</a></li>
+                    <li><a href="users.php">Consultar usuarios</a></li>
+
                 </ul>
             </nav>
         </header>

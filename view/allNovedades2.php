@@ -39,7 +39,7 @@ if ($_SESSION['rol'] != 2) {
                 <label for="export-file" class="export__file-btn" title="Export File"></label>
                 <input type="checkbox" id="export-file" />
                 <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
+                    <label>Exportar &nbsp; &#10140;</label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
                 </div>
             </div>
@@ -49,7 +49,6 @@ if ($_SESSION['rol'] != 2) {
             <table>
                 <thead>
                     <tr>
-                        <th>Fecha registro <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Fecha novedad <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Coordinador <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Novedad <span class="icon-arrow">&UpArrow;</span></th>

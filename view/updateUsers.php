@@ -12,7 +12,7 @@
     <div class="container">
         <form class="form" action="../controller/ctr_updateUsers.php " method="POST">
             <label for="codigo">Codigo</label>
-            <input type="text" id="codigo" name="codigo" style="text-align: center;" required placeholder="Usuario registrado" />
+            <input type="text" id="codigo" name="codigo" style="text-align: center;" pattern="[0-9]+" required placeholder="Usuario registrado" />
             <label for="rol">Rol</label>
             <select id="rol" name="rol" name="rol">
                 <option value="2">Coordinador</option>

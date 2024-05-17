@@ -5,10 +5,18 @@ if (!isset($_SESSION['rol']) || $_SESSION['estado'] == 2) {
     header('location: ../view/login.php');
     exit;
 }
-if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
+
+if ($_SESSION['rol'] == 1) {
+    header('location: ../view/mainAdmin.php');
+    exit;
+}
+
+if ($_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     header('location: ../view/main2.php');
     exit;
 }
+
+
 
 $zonas = array(
     1 => "Uniban Zungo",
@@ -75,9 +83,6 @@ $rol = $roles[$_SESSION['rol']];
                 <ul>
                     <li><a href="#contact">Añadir novedad</a></li>
                     <li><a href="allNovedades.php">Consultar novedad</a></li>
-                    <li><a href="register.php">Registrar usuario</a></li>
-                    <li><a href="users.php">Consultar usuarios</a></li>
-
                 </ul>
             </nav>
         </header>
@@ -97,22 +102,29 @@ $rol = $roles[$_SESSION['rol']];
                         </div>
 
                         <div class="field half">
-                            <label name="fechaNovedad" for="fechaNovedad">Fecha de novedad</label>
+                            <label name="fechaNovedad" for="fechaNovedad"><strong>Fecha de novedad</strong> </label>
                             <input type="date" name="fechaNovedad" id="fechaNovedad" style="color: black;" required />
                         </div>
 
                         <div class="uploadArchive">
-                            <label class="labelArchivo" for="archivo">Seleccione un Archivo</label>
+                            <label class="labelArchivo" for="archivo"><strong>Seleccione un Archivo</strong></label>
                             <input type="file" class="form-control-file" name="archivo" id="archivo">
                         </div>
 
                         <div class="field half">
-                            <label for="idServicio">Codigo servicio</label>
+                            <label for="idServicio"><strong>Codigo servicio</strong></label>
                             <input type="text" name="idServicio" id="idServicio" required />
                         </div>
 
+                        <div class="field half">
+                            <label for="semana"><strong>Semana</strong></label>
+                            <input type="text" name="semana" id="semana" required />
+                        </div>
+
                         <div class="field">
-                            <label for="coordinador">Coordinador</label>
+                            <label for="coordinador">
+                                <strong>Coordinador</strong>
+                            </label>
                             <select id="coordinador" name="coordinador" required>
                                 <option value="ErasmoMadarriaga">Erasmo Madarriaga</option>
                                 <option value="AntonioLopez">Antonio Lopez</option>
@@ -126,7 +138,7 @@ $rol = $roles[$_SESSION['rol']];
                         </div>
 
                         <div class="field">
-                            <label for="novedad">Novedad</label>
+                            <label for="novedad"><strong>Novedad</strong></label>
                             <select id="novedad" name="novedad" required>
                                 <option value="saldo faltante">Saldo faltante</option>
                                 <option value="Saldo sobrante">Saldo sobrante</option>
@@ -134,27 +146,14 @@ $rol = $roles[$_SESSION['rol']];
                         </div>
 
                         <div class="field half">
-                            <label for="trabajador">Trabajador</label>
-                            <input type="text" name="trabajador" id="trabajador" pattern="[A-Za-z ]+" title="Por favor ingresa solo letras y espacios" required />
+                            <label for="trabajador"><strong>Trabajador</strong></label>
+                            <input type="text" name="trabajador" id="trabajador" pattern="[0-9a-zA-ZñÑ\s]+" title="Por favor ingresa solo letras, números y espacios" required />
                         </div>
 
-                        <div class="field " required>
-                            <label for="cliente">Clientes</label>
-                            <select id="cliente" name="cliente">
-                                <option value="uniban">Uniban</option>
-                                <option value="zungo">Banacol</option>
-                                <option value="cfs">Cfs</option>
-                                <option value="banafruit">Banafrut</option>
-                                <option value="conserva">Conserba</option>
-                                <option value="fyffes">Fyffes</option>
-                                <option value="smitco">Smitco</option>
-                                <option value="spsm">Spsm</option>
-                                <option value="simbacol">Simbacol</option>
-                            </select>
-                        </div>
+
 
                         <div class="field ">
-                            <label for="descripcion">Descripcion</label>
+                            <label for="descripcion"><strong>Descripcion</strong></label>
                             <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
                         </div>
                     </div>

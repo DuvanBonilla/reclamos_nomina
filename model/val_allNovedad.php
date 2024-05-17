@@ -14,6 +14,8 @@ try {
         LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion
         LEFT JOIN zona as z ON N.id_zona = z.id_zona";
 
+
+
     $resultado = $conMysql->query($sql);
     // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
 
@@ -21,7 +23,6 @@ try {
         if ($resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $fila['fecha_registro'] . "</td>";
                 echo "<td>" . $fila['fecha_novedad'] . "</td>";
                 echo "<td>" . $fila['nombre_coordinador'] . "</td>";
                 echo "<td>" . $fila['tipo_novedad'] . "</td>";
@@ -89,6 +90,12 @@ try {
                 // eliminar novedad
                 echo "<td><button class='popup-button update-delete-button' data-id='" . $fila['id'] . "' style='background-color: red;'><i class='fas fa-trash-alt fa-shake'></i> </button></td>";
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                // editar novedad
+                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                if ($_SESSION['rol'] == 1) {
+                    echo "<td><button class='popup-button edit-novedad-button '  style='background-color: #512da8;'>  <i class='fa-regular fa-pen-to-square'></i> </button></td>";
+                }
             }
         } else {
             echo "<tr><td colspan='9'>No se encontraron resultados</td></tr>";

@@ -1,10 +1,13 @@
 <?php
-session_start();
-// Destruir la sesión
+session_start(); // Inicia la sesión
+
+// Destruye todas las variables de sesión
+session_unset();
 session_destroy();
-// Establecer el tiempo de expiración de la cookie de sesión en el pasado
-setcookie(session_name(), '', time() - 600, '/');
-// Redirigir o mostrar un mensaje al usuario
-// Ejemplo de redirección a una página de inicio
+
+// Establece el tiempo de expiración de la cookie de sesión en el pasado
+setcookie(session_name(), '', time() - 3600, '/');
+
+// Redirige al usuario a la página de login
 header('Location: ../view/login.php');
-exit();
+exit;

@@ -8,7 +8,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     header('location: ../view/main2.php');
     exit;
 }
-
+$rol = $_SESSION['rol'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                 <label for="export-file" class="export__file-btn" title="Export File"></label>
                 <input type="checkbox" id="export-file" />
                 <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
+                    <label>Exportar &nbsp; &#10140;</label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt="" /></label>
                 </div>
             </div>
@@ -50,7 +50,6 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
             <table>
                 <thead>
                     <tr>
-                        <th>Fecha registro <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Fecha novedad <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Coordinador <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Novedad <span class="icon-arrow">&UpArrow;</span></th>
@@ -63,6 +62,9 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Archivo <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Eliminar <span class="icon-arrow">&UpArrow;</span></th>
+                        <?php if ($rol == 1) : ?>
+                            <th>Editar <span class="icon-arrow">&UpArrow;</span></th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -71,10 +73,20 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
             </table>
         </section>
 
-        <!-- Modal -->
+        <!-- Modal de novedades para movil -->
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close"><i class="fa-solid fa-xmark fa-bounce"></i></span>
+                <div id="modalContent"></div>
+                <!-- contenido del modal -->
+            </div>
+        </div>
+
+
+        <!-- Modal edit descripcion novedad -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close"><i class="fa-solid fa-xmark fa-bounce"></i></span>
                 <div id="modalContent"></div>
                 <!-- contenido del modal -->
             </div>
@@ -84,10 +96,10 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     </main>
     <!-- ------------------- url para el ajax -------- -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- --------------- popUp de ver novedad en celular -------- -->
-    <script src="../controller/js/popUp_novedades.js"></script>
+    <!-- -------------------- poup edit novedad -------- -->
+    <script src="../controller/js/popUpEditNovedad.js"></script>
     <!-- ------ capturar id para la consulta individual del popUp -------- -->
-    <script src="../controller/js/captureIdPopUpNovedad.js"></script>
+    <script src="../controller/js/popUpNovedad.js"></script>
     <!-- ------------------------ costos -------- -->
     <script src="../controller/js/captureApprovedCostos.js"></script>
     <!-- --------------------- nomina -------- -->
@@ -96,6 +108,7 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
     <script src="../controller/js/captureDeleteNovedad.js"></script>
     <!-- -------------------- js de la tabla -------- -->
     <script src="../controller/js/allNovedades.js"></script>
+
 </body>
 
 </html>
