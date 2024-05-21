@@ -16,6 +16,7 @@ $semana = $_POST["semana"];
 // --------------------------------------------------------------------
 // registro del estado en pendiente y id de la cuenta que registró
 $estado = 1;
+$zonaEspecifica = $_POST['zonaEspecifica'];
 $id_aprobacionC = 2;
 $id_aprobacionN = 2;
 // --------------------------------------------------------------------
@@ -26,7 +27,7 @@ $idUsuario =  $_SESSION['id_usuario'];
 $conexion = new Conexion();
 $conMysql = $conexion->conMysql();
 // --------------------------------------------------------------------
-$valNovedad = new valNovedad($fechaRegistro, $fechaNovedad, $coordinador, $semana, $novedad, $trabajador, $descripcion, $idServicio, $idUsuario, $estado, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion);
+$valNovedad = new valNovedad($fechaRegistro, $fechaNovedad, $coordinador, $semana, $novedad, $trabajador, $descripcion, $idServicio, $idUsuario, $estado, $zonaEspecifica, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion);
 // --------------------------------------------------------------------
 $valNovedad->registrarNovedad();
 // --------------------------------------------------------------------

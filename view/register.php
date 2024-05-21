@@ -44,16 +44,15 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                 </select>
                 <label for="zona">Zona</label>
                 <select id="zona" name="zona">
-                    <option value="1">Uniban Zungo</option>
-                    <option value="2">Uniban M3</option>
-                    <option value="3">Uniban Colonia</option>
-                    <option value="4">Banacol Zungo</option>
-                    <option value="5">Banacol colonia</option>
-                    <option value="6">Operaciones Marinas</option>
-                    <option value="7">Santa Marta</option>
-                    <option value="8">Zona Aduanera</option>
-                    <option value="9">Administracion</option>
-
+                    <option value="1">Administracion</option>
+                    <option value="2">Costos</option>
+                    <option value="3">Nomina</option>
+                    <option value="4">Santa Marta</option>
+                    <option value="5">Banacol Zungo</option>
+                    <option value="6">Colonia</option>
+                    <option value="7">Uniban Zungo</option>
+                    <option value="8">Operaciones Marinas</option>
+                    <option value="9">Uniban M3</option>
                 </select>
                 <button type="submit" class="enviar" name="enviar" id="enviar">Registrar usuario</button>
             </form>

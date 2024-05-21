@@ -55,11 +55,10 @@ if ($_SESSION['rol'] != 2) {
                         <th>Trabajador <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Descripcion <span class="icon-arrow">&UpArrow;</span></th>
                         <th>ID servicio <span class="icon-arrow">&UpArrow;</span></th>
-                        <th>Zona <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Zona especifica <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Costos <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
-
                     </tr>
                 </thead>
                 <tbody>

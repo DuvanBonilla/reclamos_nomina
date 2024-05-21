@@ -14,8 +14,6 @@
         <form class="form" action="../controller/ctr_editNovedad.php" method="POST">
             <label for="codigo">Id servicio</label>
             <input type="text" name="idServicio" id="idServicio" placeholder="Id servicio registrado" style="text-align: center;" required />
-            <button type="submit" class="enviar" name="enviar" id="enviar">Buscar</button>
-            <br>
             <br>
             <div class="field">
                 <label for="descripcion">Nueva descripción</label>

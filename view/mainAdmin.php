@@ -5,7 +5,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['estado'] == 2) {
     exit;
 }
 
-
 $zonas = array(
     1 => "Uniban Zungo",
     2 => "Uniban M3",
@@ -17,7 +16,8 @@ $zonas = array(
     8 => "Zona Aduanera",
     9 => "Administracion",
 );
-$zona = $zonas[$_SESSION['zona']];
+
+$area = $zonas[$_SESSION['zona']];
 
 $roles = array(
     1 => "Administrador",
@@ -26,9 +26,10 @@ $roles = array(
     4 => "Nomina",
 );
 $rol = $roles[$_SESSION['rol']];
-
+$zona = $_SESSION['zona'];
 
 ?>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -63,7 +64,7 @@ $rol = $roles[$_SESSION['rol']];
             <div class="content">
                 <div class="inner">
                     <!-- <h1>Registro de novedades</h1 -->
-                    <h1 style=>Bienvenido <span style="color: #abcd43;"><?php echo $rol; ?></span> </br> de la zona <span style="color: #abcd43;"><?php echo $zona; ?></span></h1>
+                    <h1 style=>Bienvenido <span style="color: #abcd43;"><?php echo $rol; ?></span> </br> de la zona <span style="color: #abcd43;"><?php echo $area; ?></span></h1>
                     <p> <strong> En esta plataforma, los coordinadores pueden reportar las novedades presentadas.<br /> ¡Gracias por tu contribución para mejorar nuestros servicios! </strong></a>
                 </div>
             </div>
@@ -125,6 +126,37 @@ $rol = $roles[$_SESSION['rol']];
                                 <option value="LuisBallesta">Luis Ballesta</option>
                                 <option value="RosalinoRodriguez">Rosalino Rodriguez</option>
                                 <option value="YordiJimenez">Yordi Jimenez</option>
+                            </select>
+                        </div>
+
+
+                        <div class="field">
+                            <label for="ZonaEspecifica">
+                                <strong>Zona Especifica</strong>
+                            </label>
+                            <?php echo "Valor de zona (antes de acceder a opciones): " . $zona; // Debugging 
+                            ?>
+                            <select id="zonaEspecifica" name="zonaEspecifica" required>
+                                <?php
+                                $opcionesPorZona = [
+                                    4 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Patio satelite", "Smitco csf"],
+                                    5 => ["Banacol Zungo"],
+                                    6 => ["Banacol N1", "Banacol N2", "Uniban Colonia"],
+                                    7 => ["Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban"],
+                                    8 => ["Operaciones Marinas"],
+                                    9 => ["Uniban M3"]
+                                ];
+
+                                if (isset($opcionesPorZona[$zona])) {
+                                    $opciones = $opcionesPorZona[$zona];
+                                    foreach ($opciones as $opcion) {
+                                        echo '<option>' . $opcion . '</option>';
+                                    }
+                                } else {
+                                    echo "No hay opciones para la zona " . $zona; // Debugging
+                                }
+
+                                ?>
                             </select>
                         </div>
 

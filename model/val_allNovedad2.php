@@ -5,16 +5,14 @@ try {
     $conexion = new Conexion();
     $conMysql = $conexion->conMysql();
     $zona =  $_SESSION['zona'];
-    $sql = "SELECT N.*, E.estado AS estado, A.area, EC.estado AS estado_aprobado, EN.estado AS estado_aprobado_area, Z.zona AS zona
+    $sql = "SELECT N.*, E.estado AS estado, A.area, EC.estado AS estado_aprobado, EN.estado AS estado_aprobado_area, Z.zona AS zona, ZE.zona AS zona_especifica
     FROM novedades_nomina AS N
     INNER JOIN estado AS E ON N.id_estado = E.id_estado
     INNER JOIN zona AS Z ON N.id_zona = Z.id_zona
-    -- estado costos
     INNER JOIN aprobacion_costos_nomina AS A ON N.id_aprobacionC = A.id
     INNER JOIN estado_aprobado_area AS EC ON A.id = EC.id_aprobacion
-    -- INNER JOIN estado_aprobado_area AS EC ON N.id_aprobacionC = EC.id_aprobacion 
-    -- estado nomina
-    INNER JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion 
+    INNER JOIN zona_especifica as ZE on N.id_zona_especifica = ZE.zona
+    LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion 
     WHERE Z.id_zona = $zona";
     $resultado = $conMysql->query($sql);
     // -------------------------------------------------------------------------------------------------------
@@ -29,7 +27,7 @@ try {
                 echo "<td>" . $fila['trabajador'] . "</td>";
                 echo "<td>" . $fila['descripcion'] . "</td>";
                 echo "<td>" . $fila['id_servicio'] . "</td>";
-                echo "<td>" . $fila['zona'] . "</td>";
+                echo "<td>" . $fila['zona_especifica'] . "</td>";
 
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 // colores costos, rol coordinador

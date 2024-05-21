@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2024 at 05:22 PM
+-- Generation Time: May 21, 2024 at 03:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -118,17 +118,18 @@ INSERT INTO `estado_usuarios` (`id`, `estado`) VALUES
 --
 
 CREATE TABLE `novedades_nomina` (
-  `id` int(11) NOT NULL,
+  `id` int(25) NOT NULL,
   `fecha_registro` date DEFAULT NULL,
   `fecha_novedad` date DEFAULT NULL,
   `nombre_coordinador` varchar(100) DEFAULT NULL,
+  `semana` varchar(255) NOT NULL,
   `tipo_novedad` varchar(100) DEFAULT NULL,
   `trabajador` varchar(100) DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
   `id_servicio` int(11) DEFAULT NULL,
-  `cliente` varchar(100) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `id_estado` int(11) DEFAULT NULL,
+  `id_zona_especifica` varchar(255) NOT NULL,
   `id_zona` int(20) NOT NULL,
   `id_aprobacionC` int(20) NOT NULL,
   `id_aprobacionN` int(20) NOT NULL
@@ -173,8 +174,14 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`codigo`, `id_rol`, `id_zona`, `estado`) VALUES
-(1, 4, 9, 1),
-(3, 1, 3, 1);
+(1, 2, 4, 1),
+(2, 2, 5, 1),
+(3, 2, 6, 1),
+(4, 2, 7, 1),
+(5, 2, 8, 1),
+(6, 2, 9, 1),
+(88, 4, 3, 1),
+(99, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -192,15 +199,49 @@ CREATE TABLE `zona` (
 --
 
 INSERT INTO `zona` (`id_zona`, `zona`) VALUES
-(1, 'UnibanZungo'),
-(2, 'UnibanM3'),
-(3, 'UnibanColonia'),
-(4, 'BanacolZungo'),
-(5, 'BanacolColonia'),
-(6, 'OperacionesMarinas'),
-(7, 'SantaMarta'),
-(8, 'ZonaAduanera'),
-(9, 'Administracion');
+(1, 'Administracion'),
+(2, 'Costos'),
+(3, 'Nomina'),
+(4, 'Santa Marta'),
+(5, 'Banacol zungo'),
+(6, 'Colonia'),
+(7, 'Uniban zungo'),
+(8, 'Operaciones marinas'),
+(9, 'Uniban m3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `zona_especifica`
+--
+
+CREATE TABLE `zona_especifica` (
+  `id` int(255) NOT NULL,
+  `zona` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `zona_especifica`
+--
+
+INSERT INTO `zona_especifica` (`id`, `zona`) VALUES
+(1, 'Patio Smitco'),
+(2, 'Patio satelite'),
+(3, 'SPSM buque'),
+(4, 'Cuarto frio'),
+(5, 'Lavado de contenedores'),
+(6, 'Patio satelite'),
+(7, 'Smitco csf'),
+(8, 'Banacol zungo'),
+(9, 'Banacol N1'),
+(10, 'Banacol N2'),
+(11, 'Uniban colonia'),
+(12, 'Muelle 2'),
+(13, 'Patio contenedores'),
+(14, 'Zona aduanera'),
+(15, 'Carton uniban'),
+(16, 'Operaciones marinas'),
+(17, 'Uniban m3');
 
 --
 -- Indexes for dumped tables
@@ -245,7 +286,8 @@ ALTER TABLE `novedades_nomina`
   ADD KEY `id_estado` (`id_estado`),
   ADD KEY `id_zona` (`id_zona`),
   ADD KEY `id_aprobacion` (`id_aprobacionC`),
-  ADD KEY `id_aprobacionN` (`id_aprobacionN`);
+  ADD KEY `id_aprobacionN` (`id_aprobacionN`),
+  ADD KEY `id_zona_especifica` (`id_zona_especifica`);
 
 --
 -- Indexes for table `roles`
@@ -269,6 +311,12 @@ ALTER TABLE `zona`
   ADD PRIMARY KEY (`id_zona`);
 
 --
+-- Indexes for table `zona_especifica`
+--
+ALTER TABLE `zona_especifica`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -288,7 +336,7 @@ ALTER TABLE `estado_usuarios`
 -- AUTO_INCREMENT for table `novedades_nomina`
 --
 ALTER TABLE `novedades_nomina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

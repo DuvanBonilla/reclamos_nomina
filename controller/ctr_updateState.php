@@ -7,9 +7,6 @@ include_once '../model/val_updateState.php';
 $estado = intval($_POST['estado']);
 $id_novedad = intval($_POST['id_novedad']);
 // -------------------------------------------------------------------------------------------------------
-var_dump("estado $estado");
-var_dump("id estado $id_novedad");
-// -------------------------------------------------------------------------------------------------------
 $conexion = new Conexion();
 // -------------------------------------------------------------------------------------------------------
 $updateState = new updateState($estado, $id_novedad, $conexion);

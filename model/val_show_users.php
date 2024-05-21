@@ -33,15 +33,15 @@ if ($result->num_rows > 0)
         // zona
         // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
         $arrayZonas = array(
-            1 => "Uniban Zungo",
-            2 => "Uniban M3",
-            3 => "Uniban Colonia",
-            4 => "Banacol Zungo",
-            5 => "Banacol colonia",
-            6 => "Operaciones Marinas",
-            7 => "Santa Marta",
-            8 => "Zona Aduanera",
-            9 => "Administracion",
+            1 => "Administracion",
+            2 => "Costos",
+            3 => "Nomina",
+            4 => "Santa Marta",
+            5 => "Banacol Zungo",
+            6 => "Colonia",
+            7 => "Uniban Zungo",
+            8 => "Operaciones Marinas",
+            9 => "Uniban M3",
 
         );
         $zona = $arrayZonas[$row['id_zona']];

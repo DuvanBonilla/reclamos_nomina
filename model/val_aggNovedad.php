@@ -13,12 +13,13 @@
         private $idServicio;
         private $idUsuario;
         private $estado;
+        private $zonaEspecifica;
         private $id_zona;
         private $id_aprobacionC;
         private $id_aprobacionN;
         private $conexion;
 
-        public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $semana, $novedad, $trabajador, $descripcion, $idServicio, $idUsuario, $estado, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion)
+        public function __construct($fechaRegistro, $fechaNovedad, $coordinador, $semana, $novedad, $trabajador, $descripcion, $idServicio, $idUsuario, $estado, $zonaEspecifica, $id_zona, $id_aprobacionC, $id_aprobacionN, $conexion)
         {
             $this->fechaRegistro = $fechaRegistro;
             $this->fechaNovedad = $fechaNovedad;
@@ -30,6 +31,7 @@
             $this->idServicio = $idServicio;
             $this->idUsuario = $idUsuario;
             $this->estado = $estado;
+            $this->zonaEspecifica = $zonaEspecifica;
             $this->id_zona = $id_zona;
             $this->id_aprobacionC = $id_aprobacionC;
             $this->id_aprobacionN = $id_aprobacionN;
@@ -39,12 +41,12 @@
 
         public function registrarNovedad()
         {
-            if (!empty($_POST['fechaRegistro'] && $_POST['fechaNovedad'] && $_POST['novedad'] && $_POST['coordinador'] &&  $_POST['semana'] && $_POST['idServicio'] && $_POST['descripcion'])) {
-                $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,semana,tipo_novedad,trabajador,descripcion,id_servicio,id_usuario,id_estado, id_zona, id_aprobacionC, id_aprobacionN) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+            if (!empty($_POST['fechaRegistro'] && $_POST['fechaNovedad'] && $_POST['novedad'] && $_POST['coordinador'] &&  $_POST['semana'] && $_POST['idServicio'] && $_POST['descripcion'] && $_POST['zonaEspecifica'])) {
+                $query = "INSERT INTO novedades_nomina(fecha_registro,fecha_novedad,nombre_coordinador,semana,tipo_novedad,trabajador,descripcion,id_servicio,id_usuario,id_estado,id_zona_especifica, id_zona, id_aprobacionC, id_aprobacionN) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
                 if ($stmt = $this->conexion->prepare($query)) {
-                    $stmt->bind_param('ssssssssssiii', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->semana, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->idUsuario, $this->estado, $this->id_zona, $this->id_aprobacionC, $this->id_aprobacionN);
+                    $stmt->bind_param('sssssssssssiii', $this->fechaRegistro, $this->fechaNovedad, $this->coordinador, $this->semana, $this->novedad, $this->trabajador, $this->descripcion, $this->idServicio, $this->idUsuario, $this->estado, $this->zonaEspecifica, $this->id_zona, $this->id_aprobacionC, $this->id_aprobacionN);
 
                     if ($stmt->execute()) {
                         echo "

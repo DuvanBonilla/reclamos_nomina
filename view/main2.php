@@ -7,17 +7,18 @@ if (!isset($_SESSION['rol']) || $_SESSION['estado'] == 2) {
 }
 
 $zonas = array(
-    1 => "Uniban Zungo",
-    2 => "Uniban M3",
-    3 => "Uniban Colonia",
-    4 => "Banacol Zungo",
-    5 => "Banacol Colonia",
-    6 => "Operaciones Marinas",
-    7 => "Santa Marta",
-    8 => "Zona Aduanera",
-    9 => "Administracion",
+    1 => "Administracion",
+    2 => "Costos",
+    3 => "Nomina",
+    4 => "Santa Marta",
+    5 => "Banacol Zungo",
+    6 => "Colonia",
+    7 => "Uniban Zungo",
+    8 => "Operaciones Marinas",
+    9 => "Uniban M3",
 );
-$zona = $zonas[$_SESSION['zona']];
+
+$area = $zonas[$_SESSION['zona']];
 
 $roles = array(
     1 => "Administrador",
@@ -26,6 +27,8 @@ $roles = array(
     4 => "Nomina",
 );
 $rol = $roles[$_SESSION['rol']];
+
+$zona = $_SESSION['zona'];
 ?>
 
 <!DOCTYPE HTML>
@@ -34,7 +37,7 @@ $rol = $roles[$_SESSION['rol']];
 <head>
     <title>Registro de novedades</title>
     <meta charset="utf-8" />
-    <link rel="icon" href="images/logo-redondo.ico" type="image/x-icon" />
+    <link rel="icon" href="images/logo.ico.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..." crossorigin="anonymous">
 
@@ -62,7 +65,7 @@ $rol = $roles[$_SESSION['rol']];
             <div class="content">
                 <div class="inner">
                     <!-- <h1>Registro de novedades</h1 -->
-                    <h1 style=>Bienvenido <span style="color: #abcd43;"><?php echo $rol; ?></span> </br> de la zona <span style="color: #abcd43;"><?php echo $zona; ?></span></h1>
+                    <h1 style=>Bienvenido <span style="color: #abcd43;"><?php echo $rol; ?></span> </br> de la zona <span style="color: #abcd43;"><?php echo $area; ?></span></h1>
                     <p> <strong> En esta plataforma, los coordinadores pueden reportar las novedades presentadas.<br /> ¡Gracias por tu contribución para mejorar nuestros servicios! </strong></a>
                 </div>
             </div>
@@ -125,6 +128,34 @@ $rol = $roles[$_SESSION['rol']];
                         </div>
 
                         <div class="field">
+                            <label for="ZonaEspecifica">
+                                <strong>Zona Especifica</strong>
+                            </label>
+                            <select id="zonaEspecifica" name="zonaEspecifica" required>
+                                <?php
+                                $opcionesPorZona = [
+                                    4 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Patio satelite", "Smitco csf"],
+                                    5 => ["Banacol Zungo"],
+                                    6 => ["Banacol N1", "Banacol N2", "Uniban Colonia"],
+                                    7 => ["Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban"],
+                                    8 => ["Operaciones Marinas"],
+                                    9 => ["Uniban M3"]
+                                ];
+
+                                if (isset($opcionesPorZona[$zona])) {
+                                    $opciones = $opcionesPorZona[$zona];
+                                    foreach ($opciones as $opcion) {
+                                        echo '<option>' . $opcion . '</option>';
+                                    }
+                                } else {
+                                    echo "No hay opciones para la zona " . $zona; // Debugging
+                                }
+
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="field">
                             <label for="novedad"><strong>Novedad</strong></label>
                             <select id="novedad" name="novedad" required>
                                 <option value="saldo faltante">Saldo faltante</option>
@@ -155,6 +186,7 @@ $rol = $roles[$_SESSION['rol']];
     </div>
     <!-- Background -->
     <div id="bg"></div>
+
     <!-- Scripts -->
     <script src="../controller/js/setDate.js"></script>
     <script src="../controller/js/clear_form.js"></script>
