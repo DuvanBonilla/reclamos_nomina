@@ -13,7 +13,6 @@ class Conexion
         if ($conexion->connect_error) {
             die('conexion a la base de datos fallida' . $conexion->connect_error);
         }
-
         return $conexion;
     }
 }

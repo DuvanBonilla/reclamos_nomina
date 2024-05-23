@@ -134,7 +134,10 @@ $zona = $_SESSION['zona'];
                             <select id="zonaEspecifica" name="zonaEspecifica" required>
                                 <?php
                                 $opcionesPorZona = [
-                                    4 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Patio satelite", "Smitco csf"],
+                                    1 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf", "Banacol Zungo", "Banacol N1", "Banacol N2", "Uniban Colonia", "Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban", "Operaciones Marinas", "Uniban M3"],
+                                    2 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf", "Banacol Zungo", "Banacol N1", "Banacol N2", "Uniban Colonia", "Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban", "Operaciones Marinas", "Uniban M3"],
+                                    3 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf", "Banacol Zungo", "Banacol N1", "Banacol N2", "Uniban Colonia", "Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban", "Operaciones Marinas", "Uniban M3"],
+                                    4 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf"],
                                     5 => ["Banacol Zungo"],
                                     6 => ["Banacol N1", "Banacol N2", "Uniban Colonia"],
                                     7 => ["Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban"],

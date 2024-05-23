@@ -37,10 +37,10 @@ if ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3 && $_SESSION['rol'] != 4) {
                 <input type="text" id="codigo" name="codigo" placeholder="codigo" style="text-align: center;" />
                 <label for="rol">Rol</label>
                 <select id="rol" name="rol" name="rol">
-                    <option value="2">Coordinador</option>
-                    <option value="4">Nomina</option>
-                    <option value="3">Costos</option>
                     <option value="1">Administrador</option>
+                    <option value="2">Coordinador</option>
+                    <option value="3">Costos</option>
+                    <option value="4">Nomina</option>
                 </select>
                 <label for="zona">Zona</label>
                 <select id="zona" name="zona">

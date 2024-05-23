@@ -81,7 +81,7 @@
                             confirmButtonText: 'OK',
                             timer: 5000
                         }).then(() => {
-                            location.assign('../view/main.php');
+                            location.assign('../view/main.php#contact');
                         });
                     });
                     </script>";
@@ -99,7 +99,7 @@
                         confirmButtonText: 'OK',
                         timer: 5000
                     }).then(() => {
-                        location.assign('../view/main.php');
+                        location.assign('../view/main.php#contact');
                     });
                 });
                 </script>";
@@ -125,7 +125,7 @@
                 $nombreArchivo = $archivo['name'];
                 $archivoTemporal = $archivo['tmp_name'];
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                $carpetaDestino = 'C:\\\xampp\\\\htdocs\\\reclamos_nomina\\\archivos\\\\';
+                $carpetaDestino = 'C:/xampp/htdocs/reclamos_nomina/archivos/';
                 $rutaDestino = $carpetaDestino . $nombreArchivo;
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 if (move_uploaded_file($archivoTemporal, $rutaDestino)) {

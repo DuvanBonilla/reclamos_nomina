@@ -53,118 +53,40 @@ function sortTable(column, sort_asc) {
 
 //  ------------------------ convertir a excel ------------------------
 
-// const toExcel = function (table) {
-//     const thead = table.querySelector('thead');
-//     const tbody_rows = table.querySelectorAll('tbody tr');
-
-//     // Obtener los encabezados de columna y eliminar espacios adicionales y símbolos no deseados
-//     const headers = [...thead.querySelectorAll('th')].map(header => header.textContent.trim().replace(/[^\w\s]/gi, ''));
-
-//     // Encontrar los índices de las columnas "Estado" y "Eliminar"
-//     const estadoIndex = headers.indexOf('Estado');
-//     const eliminarIndex = headers.indexOf('Eliminar');
-
-//     // Eliminar las columnas "Estado" y "Eliminar" de los encabezados
-//     if (estadoIndex !== -1) {
-//         headers.splice(estadoIndex, 1);
-//     }
-//     if (eliminarIndex !== -1) {
-//         headers.splice(eliminarIndex, 1);
-//     }
-
-//     const table_data = [headers.join(';')]; // Agregar los encabezados como la primera fila del archivo CSV
-
-//     tbody_rows.forEach(row => {
-//         const cells = row.querySelectorAll('td');
-//         const rowData = [...cells].map(cell => cell.textContent.trim());
-
-//         // Eliminar las celdas correspondientes a las columnas "Estado" y "Eliminar"
-//         if (estadoIndex !== -1) {
-//             rowData.splice(estadoIndex, 1);
-//         }
-//         if (eliminarIndex !== -1) {
-//             rowData.splice(eliminarIndex, 1);
-//         }
-
-//         let imgSrc = '';
-//         const img = row.querySelector('img');
-//         if (img) {
-//             imgSrc = decodeURIComponent(img.src);
-//         }
-//         rowData.push(imgSrc); // Añadir la fuente de la imagen como última celda
-//         table_data.push(rowData.join(';')); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
-//     });
-
-//     return table_data.join('\n'); // Unir todas las filas con saltos de línea
-// }
-
-// const excel_btn = document.querySelector('#toEXCEL');
-// excel_btn.onclick = () => {
-//     const excel = toExcel(customers_table);
-//     downloadFile(excel, 'excel.csv'); // Solo necesitas pasar el contenido del archivo CSV y el nombre del archivo
-// }
-
-// const downloadFile = function (data, fileName = '') {
-//     const a = document.createElement('a');
-//     a.download = fileName;
-//     const csvData = new Blob([data], { type: 'text/csv;charset=utf-8' }); // Especificar la codificación de caracteres como UTF-8
-//     const csvUrl = URL.createObjectURL(csvData);
-
-//     a.href = csvUrl;
-//     document.body.appendChild(a);
-//     a.click();
-//     document.body.removeChild(a);
-//     URL.revokeObjectURL(csvUrl);
-// }
-
-
-
-const excel_btn = document.querySelector('#toEXCEL');
-
 const toExcel = function (table) {
-    const tbody = table.querySelector('tbody');
-    const rows = tbody.querySelectorAll('tr');
+    const thead = table.querySelector('thead');
+    const tbody_rows = table.querySelectorAll('tbody tr');
 
-    // Array para almacenar los datos de cada fila, incluyendo los encabezados
-    const rowData = [];
+    // Obtener los encabezados de columna, eliminar espacios adicionales y símbolos no deseados, y tomar solo los primeros 7
+    const headers = [...thead.querySelectorAll('th')]
+        .map(header => header.textContent.trim().replace(/[^\w\s]/gi, ''))
+        .slice(0, 7); // Tomar solo los primeros 7 encabezados
 
-    // Especificar los encabezados manualmente
-    const headers = [
-        "Fecha registro",
-        "Fecha novedad",
-        "Coordinador",
-        "Novedad",
-        "Trabajador",
-        "Descripción",
-        "ID servicio",
-        "Cliente",
-        "Costos",
-        "Nómina",
-    ];
-    rowData.push(headers.join(';')); // Agregar los encabezados al array
+    const table_data = [headers.join(';')]; // Agregar los encabezados como la primera fila del archivo CSV
 
-    // Recorremos cada fila de la tabla
-    rows.forEach(row => {
+    tbody_rows.forEach(row => {
         const cells = row.querySelectorAll('td');
-        const rowValues = Array.from(cells).map(cell => cell.innerText.trim());
-        rowData.push(rowValues.join(';')); // Agregar los valores de la fila al array
+        // Tomar solo los primeros 7 datos de cada fila
+        const rowData = [...cells]
+            .map(cell => cell.textContent.trim())
+            .slice(0, 7); // Tomar solo las primeras 7 celdas
+
+        table_data.push(rowData.join(';')); // Convertir la fila en una cadena CSV, separando las celdas por punto y coma
     });
 
-    console.log('Datos de la tabla:', rowData);
-
-    return rowData.join('\n'); // Unir todas las filas con saltos de línea
+    return table_data.join('\n'); // Unir todas las filas con saltos de línea
 }
 
+const excel_btn = document.querySelector('#toEXCEL');
 excel_btn.onclick = () => {
     const excel = toExcel(customers_table);
-    downloadFile(excel, 'datos.csv'); // Nombrar el archivo como "datos.csv"
+    downloadFile(excel, 'excel.csv'); // Solo necesitas pasar el contenido del archivo CSV y el nombre del archivo
 }
 
 const downloadFile = function (data, fileName = '') {
     const a = document.createElement('a');
     a.download = fileName;
-    const csvData = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), data], { type: 'text/csv;charset=utf-8' });
-
+    const csvData = new Blob([data], { type: 'text/csv;charset=utf-8' }); // Especificar la codificación de caracteres como UTF-8
     const csvUrl = URL.createObjectURL(csvData);
 
     a.href = csvUrl;
@@ -173,4 +95,5 @@ const downloadFile = function (data, fileName = '') {
     document.body.removeChild(a);
     URL.revokeObjectURL(csvUrl);
 }
+
 

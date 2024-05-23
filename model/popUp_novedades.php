@@ -36,6 +36,10 @@ try {
                 echo "<hr/ class='custom-hr'>";
                 // -------------------------------------------------------------------------------------------------------
                 echo "<br/>";
+                echo "<td><strong>Zona especifica: </strong>" . $fila['id_zona_especifica'] . "</td>";
+                echo "<hr/ class='custom-hr'>";
+                // -------------------------------------------------------------------------------------------------------
+                echo "<br/>";
                 echo "<td><strong>Codigo servicio: </strong>" . $fila['id_servicio'] . "</td>";
                 echo "<hr/ class='custom-hr'>";
                 echo "<br/>";
@@ -44,10 +48,6 @@ try {
                 // -------------------------------------------------------------------------------------------------------
                 echo "<br/>";
                 echo "<td><strong>Trabajador: </strong>" . $fila['trabajador'] . "</td>";
-                echo "<hr/ class='custom-hr'>";
-                // -------------------------------------------------------------------------------------------------------
-                echo "<br/>";
-                echo "<td><strong>Cliente: </strong>" . $fila['cliente'] . "</td>";
                 echo "<hr/ class='custom-hr'>";
                 // -------------------------------------------------------------------------------------------------------
                 echo "<br/>";

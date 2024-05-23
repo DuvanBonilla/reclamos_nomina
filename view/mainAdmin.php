@@ -6,15 +6,15 @@ if (!isset($_SESSION['rol']) || $_SESSION['estado'] == 2) {
 }
 
 $zonas = array(
-    1 => "Uniban Zungo",
-    2 => "Uniban M3",
-    3 => "Uniban Colonia",
-    4 => "Banacol Zungo",
-    5 => "Banacol Colonia",
-    6 => "Operaciones Marinas",
-    7 => "Santa Marta",
-    8 => "Zona Aduanera",
-    9 => "Administracion",
+    1 => "Administracion",
+    2 => "Costos",
+    3 => "Nomina",
+    4 => "Santa Marta",
+    5 => "Banacol Zungo",
+    6 => "Colonia",
+    7 => "Uniban Zungo",
+    8 => "Operaciones Marinas",
+    9 => "Uniban M3",
 );
 
 $area = $zonas[$_SESSION['zona']];
@@ -134,12 +134,13 @@ $zona = $_SESSION['zona'];
                             <label for="ZonaEspecifica">
                                 <strong>Zona Especifica</strong>
                             </label>
-                            <?php echo "Valor de zona (antes de acceder a opciones): " . $zona; // Debugging 
-                            ?>
                             <select id="zonaEspecifica" name="zonaEspecifica" required>
                                 <?php
                                 $opcionesPorZona = [
-                                    4 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Patio satelite", "Smitco csf"],
+                                    1 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf", "Banacol Zungo", "Banacol N1", "Banacol N2", "Uniban Colonia", "Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban", "Operaciones Marinas", "Uniban M3"],
+                                    2 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf", "Banacol Zungo", "Banacol N1", "Banacol N2", "Uniban Colonia", "Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban", "Operaciones Marinas", "Uniban M3"],
+                                    3 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf", "Banacol Zungo", "Banacol N1", "Banacol N2", "Uniban Colonia", "Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban", "Operaciones Marinas", "Uniban M3"],
+                                    4 => ["Patio Smitco", "Patio Satelite", "SPSM buque", "Cuarto Frio", "Lavado De Contenedores", "Smitco csf"],
                                     5 => ["Banacol Zungo"],
                                     6 => ["Banacol N1", "Banacol N2", "Uniban Colonia"],
                                     7 => ["Muelle 2", "Patio Contenedores", "Zona Aduanera", "Carton Uniban"],

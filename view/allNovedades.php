@@ -62,7 +62,7 @@ $rol = $_SESSION['rol'];
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Archivo <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Eliminar <span class="icon-arrow">&UpArrow;</span></th>
-                        <?php if ($rol == 1) : ?>
+                        <?php if ($rol == 1 || $rol == 3 || $rol == 4) : ?>
                             <th>Editar <span class="icon-arrow">&UpArrow;</span></th>
                         <?php endif; ?>
                     </tr>

@@ -80,7 +80,7 @@ if ($_SESSION['rol'] != 2) {
     <!-- ------------------- url para el ajax -------- -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- --------------- popUp de ver novedad en celular -------- -->
-    <script src="../controller/js/popUp_novedades.js"></script>
+    <script src="../controller/js/popUpNovedad.js"></script>
     <!-- ------ capturar id para la consulta individual del popUp -------- -->
     <script src="../controller/js/captureIdPopUpNovedad.js"></script>
     <!-- -------------------- js de la tabla -------- -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 03:57 PM
+-- Generation Time: May 21, 2024 at 04:18 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -230,18 +230,17 @@ INSERT INTO `zona_especifica` (`id`, `zona`) VALUES
 (3, 'SPSM buque'),
 (4, 'Cuarto frio'),
 (5, 'Lavado de contenedores'),
-(6, 'Patio satelite'),
-(7, 'Smitco csf'),
-(8, 'Banacol zungo'),
-(9, 'Banacol N1'),
-(10, 'Banacol N2'),
-(11, 'Uniban colonia'),
-(12, 'Muelle 2'),
-(13, 'Patio contenedores'),
-(14, 'Zona aduanera'),
-(15, 'Carton uniban'),
-(16, 'Operaciones marinas'),
-(17, 'Uniban m3');
+(6, 'Smitco csf'),
+(7, 'Banacol zungo'),
+(8, 'Banacol N1'),
+(9, 'Banacol N2'),
+(10, 'Uniban colonia'),
+(11, 'Muelle 2'),
+(12, 'Patio contenedores'),
+(13, 'Zona aduanera'),
+(14, 'Carton uniban'),
+(15, 'Operaciones marinas'),
+(16, 'Uniban m3');
 
 --
 -- Indexes for dumped tables
