@@ -127,7 +127,6 @@ $zona = $_SESSION['zona'];
                                 <option value="CesarRamirez">Cesar Ramirez</option>
                                 <option value="CostosLogistica">Costos Logistica</option>
                                 <option value="Nomina">Nomina</option>
-
                             </select>
                         </div>
 
@@ -166,7 +165,6 @@ $zona = $_SESSION['zona'];
                             <label for="novedad"><strong>Novedad</strong></label>
                             <select id="novedad" name="novedad" required>
                                 <option value="saldo faltante">Saldo faltante</option>
-                                <option value="Saldo sobrante">Saldo sobrante</option>
                             </select>
                         </div>
 
