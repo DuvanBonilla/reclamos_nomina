@@ -127,7 +127,8 @@ $zona = $_SESSION['zona'];
                                 <option value="RosalinoRodriguez">Rosalino Rodriguez</option>
                                 <option value="YordiJimenez">Yordi Jimenez</option>
                                 <option value="CesarRamirez">Cesar Ramirez</option>
-
+                                <option value="CostosLogistica">Costos Logistica</option>
+                                <option value="Nomina">Nomina</option>
                             </select>
                         </div>
 
@@ -173,7 +174,7 @@ $zona = $_SESSION['zona'];
 
                         <div class="field half">
                             <label for="trabajador"><strong>Trabajador</strong></label>
-                            <input type="text" name="trabajador" id="trabajador" pattern="[0-9a-zA-ZñÑ\s]+" title="Por favor ingresa solo letras, números y espacios" required />
+                            <input type="text" name="trabajador" id="trabajador" required />
                         </div>
 
                         <div class="field ">

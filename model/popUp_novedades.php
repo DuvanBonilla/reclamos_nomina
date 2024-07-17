@@ -32,6 +32,10 @@ try {
                 echo "<hr/ class='custom-hr'>";
                 // -------------------------------------------------------------------------------------------------------
                 echo "<br/>";
+                echo "<td><strong>Semana: </strong>" . $fila['semana'] . "</td>";
+                echo "<hr/ class='custom-hr'>";
+                // -------------------------------------------------------------------------------------------------------
+                echo "<br/>";
                 echo "<td><strong>Coordinador:</strong> " . $fila['nombre_coordinador'] . "</td>";
                 echo "<hr/ class='custom-hr'>";
                 // -------------------------------------------------------------------------------------------------------
@@ -54,13 +58,14 @@ try {
                 echo "<td><strong>Descripcion: </strong>" . $fila['descripcion'] . "</td>";
                 echo "<hr/ class='custom-hr'>";
                 echo "<br/>";
-         
+
 
                 // -------------------------------------------------------------------------------------------------------
-                echo "<br/>";
-                echo "<td><strong>Adjunto: </strong> "?>. 
-                  
-                <?php
+?>
+<?php
+
+                echo "<br />";
+                echo "<td><strong>Adjunto: </strong></td> ";
                 $id = $fila['id'];
                 $archivoSql = "SELECT archivo FROM archivos WHERE id = $id";
                 $resultadoArchivo = $conMysql->query($archivoSql);
@@ -68,13 +73,13 @@ try {
                 if ($resultadoArchivo && $resultadoArchivo->num_rows > 0) {
                     $fila2 = $resultadoArchivo->fetch_assoc();
                     $archivo = $fila2['archivo'];
-
                     echo "<td><a href='../model/descargar_archivos.php?archivo=" . $archivo . "' class='popup-button update-delete-button' style='background-color: #2194bc;' download><i class='fas fa-file-download'></i></a></td>";
+                    echo "<hr/ class='custom-hr'>";
                 } else {
                     echo "<td><a ' class='popup-button ' style='background-color: #FF0000;' download><i class='fa solid fa-xmark fa-beat'></i></a></td>";
-                }; 
+                    echo "<hr/ class='custom-hr'>";
+                };
 
-                echo "<hr/ class='custom-hr'>";
                 echo "<br/>";
                 // ---------------------------------------------------------- ---------------------------------------------------------- ---------------------------------------------------------- 
                 $disabled = $_SESSION['id_aprobacionC'] = $fila["id_aprobacionC"];
@@ -149,3 +154,4 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
+<script src="../controller/js/confirm_delete.js"></script>

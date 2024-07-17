@@ -8,9 +8,7 @@
 
 body {
   min-height: 100vh;
-  /* background: url(../images/prueba.jpg) center / cover; */
   background: url(../images/novedades.jpg) center / cover;
-
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -387,7 +385,7 @@ tbody td.active {
 }
 
 .popup-button {
-  background-color: #4caf50;
+  /* background-color: #4caf50; */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -479,7 +477,7 @@ tbody td.active {
 /* Contenido del modal */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* Centro vertical y horizontalmente */
+  margin: 7% auto; /* Centro vertical y horizontalmente */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Ancho del modal */
@@ -487,6 +485,7 @@ tbody td.active {
   overflow-wrap: break-word; /* Para navegadores modernos */
   max-width: 80%;
   border-radius: 15px;
+  width: 400px;
 }
 
 /* Botón de cerrar */
@@ -503,5 +502,5 @@ tbody td.active {
 }
 
 .custom-hr {
-  border-top: 1px solid transparent;
+  border-top: 1px solid #fefefe;
 }
