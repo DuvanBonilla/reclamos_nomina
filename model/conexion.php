@@ -1,10 +1,24 @@
 <?php
+
+use  Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable('./../');
+$dotenv->load();
+
 class Conexion
 {
-    private $host = "localhost";
-    private $user = "root";
-    private $password = "";
-    private $database = "reclamos_nomina";
+    private $host;
+    private $user;
+    private $password;
+    private $database;
+
+    public function __construct()
+    {
+        $this->host = $_ENV['DBHOST'];
+        $this->user = $_ENV['DBUSER'];
+        $this->password = $_ENV['DBPASS'];
+        $this->database = $_ENV['DBNAME'];
+    }
 
     public function conMysql()
     {
