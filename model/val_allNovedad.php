@@ -68,23 +68,6 @@ try {
                 } else if ($fila["estado"] == "terminado") {
                     echo "<td><button class='popup-button update-novedadNumber-button ' data-novedad='" . $fila['id'] . "'  style='background-color: #00a135;'><i class='fas fa-check fa-beat'></i></button></td>";
                 }
-                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                // descargar archivo de novedad
-                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                //    id de la novedad
-                // $id = $fila['id'];
-                // $archivoSql = "SELECT archivo FROM archivos WHERE id = $id";
-                // $resultadoArchivo = $conMysql->query($archivoSql);
-
-                // if ($resultadoArchivo && $resultadoArchivo->num_rows > 0) {
-                //     $fila2 = $resultadoArchivo->fetch_assoc();
-                //     $archivo = $fila2['archivo'];
-
-                //     echo "<td><a href='../model/descargar_archivos.php?archivo=" . $archivo . "' class='popup-button update-delete-button' style='background-color: #2194bc;' download><i class='fas fa-file-download'></i></a></td>";
-                // } else {
-                //     echo "<td><a ' class='popup-button ' style='background-color: #FF0000;' download><i class='fa solid fa-xmark fa-beat'></i></a></td>";
-                // }
-
 
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 // eliminar novedad
