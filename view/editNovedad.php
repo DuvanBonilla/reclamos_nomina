@@ -15,8 +15,24 @@
 <body>
     <div class="container">
         <form class="form" action="../controller/ctr_editNovedad.php" method="POST">
+            <label for="Novedad">Novedad</label>
+            <input type="text" name="novedad" id="novedad"  style="text-align: center;" required />
+
+            <label for="Trabajador">Trabajador</label>
+            <input type="text" name="trabajador" id="trabajador"  style="text-align: center;" required />
+
+            <label for="IdServicio">ID servicio</label>
+            <input type="text" name="idservicio" id="idservicio"  style="text-align: center;" required /> 
+
+            <label for="Trabajador">Trabajador</label>
+            <input type="text" name="trabajador" id="trabajador"  style="text-align: center;" required />
+            
             <label for="codigo">Id servicio</label>
-            <input type="text" name="idServicio" id="idServicio" placeholder="Id servicio registrado" style="text-align: center;" required />
+            <input type="text" name="idServicio" id="idServicio"  style="text-align: center;" required />
+
+            <label for="ZonaEspecifica">Zona Especifica</label>
+            <input type="text" name="zonaespecifica" id="zonaespecifica"  style="text-align: center;" required />
+
             <br>
             <div class="field">
                 <label for="descripcion">Nueva descripción</label>
