@@ -5,7 +5,7 @@ $(document).on("click", ".edit-novedad-button, .novedad-button", function () {
         data: {
         },
         success: function (response) {
-            console.log("Respuesta del servidor:", response);
+            // console.log("Respuesta del servidor:", response);
 
             // Mostrar el modal
             var modal = document.getElementById("myModal");

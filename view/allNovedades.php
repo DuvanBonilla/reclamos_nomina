@@ -50,6 +50,7 @@ $rol = $_SESSION['rol'];
             <table>
                 <thead>
                     <tr>
+                        <th>Id<span class="icon-arrow">&UpArrow;</span></th>
                         <th>Fecha novedad <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Coordinador <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Novedad <span class="icon-arrow">&UpArrow;</span></th>
@@ -109,5 +110,4 @@ $rol = $_SESSION['rol'];
     <script src="../controller/js/allNovedades.js"></script>
 
 </body>
-
 </html>
