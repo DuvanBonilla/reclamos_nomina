@@ -6,14 +6,16 @@ try {
     // consulta de la tabla de novedades
     $conexion = new Conexion();
     $conMysql = $conexion->conMysql();
-    $sql = "SELECT N.*, E.estado AS estado, A.area, EC.estado AS estado_aprobado, EN.estado AS estado_aprobado_area, z.zona as zona, ZE.zona AS zona_especifica, ZE.zona AS zona_especifica
-        FROM novedades_nomina AS N
-        LEFT JOIN estado AS E ON N.id_estado = E.id_estado
-        LEFT JOIN aprobacion_costos_nomina AS A ON N.id_aprobacionC = A.id
-        LEFT JOIN estado_aprobado_area AS EC ON A.id = EC.id_aprobacion
-        LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion
-        LEFT JOIN zona_especifica as ZE on N.id_zona_especifica = ZE.zona
-        LEFT JOIN zona as z ON N.id_zona = z.id_zona";
+    $sql = "SELECT N.*, E.estado AS estado, A.area, EC.estado AS estado_aprobado, EN.estado AS estado_aprobado_area, z.zona AS zona, ZE.zona AS zona_especifica
+    FROM novedades_nomina AS N
+    LEFT JOIN estado AS E ON N.id_estado = E.id_estado
+    LEFT JOIN aprobacion_costos_nomina AS A ON N.id_aprobacionC = A.id
+    LEFT JOIN estado_aprobado_area AS EC ON A.id = EC.id_aprobacion
+    LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion
+    LEFT JOIN zona_especifica AS ZE ON N.id_zona_especifica = ZE.zona
+    LEFT JOIN zona AS z ON N.id_zona = z.id_zona
+    ORDER BY N.fecha_novedad DESC"; // Ordenar por la fecha de la novedad en orden descendente
+
     $resultado = $conMysql->query($sql);
     // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
 
@@ -21,6 +23,7 @@ try {
         if ($resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<tr>";
+                echo "<td>" . $fila['id'] . "</td>";
                 echo "<td>" . $fila['fecha_novedad'] . "</td>";
                 echo "<td>" . $fila['nombre_coordinador'] . "</td>";
                 echo "<td>" . $fila['tipo_novedad'] . "</td>";
@@ -80,7 +83,8 @@ try {
                 // editar novedad
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) {
-                    echo "<td><button class='popup-button edit-novedad-button '  style='background-color: #512da8;'>  <i class='fa-regular fa-pen-to-square'></i> </button></td>";
+                    echo "<td><button class='popup-button edit-novedad-button ' data-id='" . $fila['id'] . "'  data-tipo_novedad='" . $fila['tipo_novedad'] . "' data-trabajador='" . $fila['trabajador'] . "' data-id_zona_especifica='" . $fila['id_zona_especifica'] . "' data-descripcion='" . $fila['descripcion'] . "' data-id_servicio='" . $fila['id_servicio'] . "' style='background-color: #512da8;'>  <i class='fa-regular fa-pen-to-square'></i> </button></td>";
+       
                 }
             }
         } else {
@@ -97,4 +101,5 @@ try {
 
 ?>
 
-<script src="../controller/js/confirm_delete.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../controller/js/captureIdNovedad.js"></script>

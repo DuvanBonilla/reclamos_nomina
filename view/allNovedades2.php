@@ -49,6 +49,7 @@ if ($_SESSION['rol'] != 2) {
             <table>
                 <thead>
                     <tr>
+                        <th>Id<span class="icon-arrow">&UpArrow;</span></th>
                         <th>Fecha novedad <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Coordinador <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Novedad <span class="icon-arrow">&UpArrow;</span></th>
