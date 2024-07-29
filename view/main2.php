@@ -1,4 +1,10 @@
 <?php
+require('../vendor/autoload.php');
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable('./../');
+$dotenv->load();
 
 session_start();
 if (!isset($_SESSION['rol']) || $_SESSION['estado'] == 2) {

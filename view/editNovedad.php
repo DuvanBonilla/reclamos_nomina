@@ -13,7 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_servicio = $_POST['id_servicio'];
         $id_zona_especifica= $_POST['id_zona_especifica'];
 ?>
-        <!DOCTYPE html>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

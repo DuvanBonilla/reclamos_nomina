@@ -1,5 +1,6 @@
     <?php
-
+    require_once("../controller/ctr_aws_s3.php");
+    require './../vendor/autoload.php';
     class valNovedad
     {
         private $fechaRegistro;
@@ -124,13 +125,17 @@
                 // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
                 $nombreArchivo = $archivo['name'];
                 $archivoTemporal = $archivo['tmp_name'];
-                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                $carpetaDestino = 'C:/xampp/htdocs/reclamos_nomina/archivos/';
-                $rutaDestino = $carpetaDestino . $nombreArchivo;
-                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-                if (move_uploaded_file($archivoTemporal, $rutaDestino)) {
 
-                    $sql = "INSERT INTO archivos (id,fecha,nombre_archivo,archivo) VALUES ('$id', '$fechaRegistro','$nombreArchivo', '$rutaDestino')";
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+
+                $key = uniqid() . '.' . $extension;
+                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                // $carpetaDestino = 'C:/xampp/htdocs/reclamos_nomina/archivos/';
+                // $rutaDestino = $carpetaDestino . $nombreArchivo;
+                // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
+                if (uploadFile($archivoTemporal, $key)) {
+
+                    $sql = "INSERT INTO archivos (id,fecha,nombre_archivo,archivo) VALUES ('$id', '$fechaRegistro','$nombreArchivo', '$key')";
                     if ($this->conexion->query($sql)) {
                         return true; // Éxito
                     }
