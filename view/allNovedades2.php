@@ -63,7 +63,7 @@ if ($_SESSION['rol'] != 2) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php require_once("../model/val_allNovedad2.php"); ?>
+                    <?php require_once '../model/val_allNovedad2.php'; ?>
                 </tbody>
             </table>
         </section>
