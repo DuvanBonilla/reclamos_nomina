@@ -11,7 +11,7 @@ $(document).ready(function () {
         if (id_novedad) {
             $.ajax({
                 type: "POST",
-                url: 'http://localhost/reclamos_nomina2/view/editNovedad.php',
+                url: 'http://localhost/reclamos_nomina/view/editNovedad.php',
                 data: {
                     id: id_novedad,
                     novedad: novedad,
