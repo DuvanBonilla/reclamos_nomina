@@ -108,6 +108,9 @@ $rol = $_SESSION['rol'];
     <script src="../controller/js/captureDeleteNovedad.js"></script>
     <!-- -------------------- js de la tabla -------- -->
     <script src="../controller/js/allNovedades.js"></script>
+    <!-- -------------------- js confirmar eliminar -------- -->
+    <script src="../controller/js/confirm_delete.js"></script>
+
 
 </body>
 </html>
