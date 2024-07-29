@@ -2,23 +2,29 @@
 
 class updateNovedad
 {
-    private $idServicio;
+    private $id;
+    private $novedad;
+    private $trabajador;
+    private $idservicio;
+    private $zonaespecifica;
     private $descripcion;
     private $conexion;
 
-
-
-    public function __construct($idServicio, $descripcion, $conexion)
+    public function __construct($id, $novedad, $trabajador, $idservicio, $zonaespecifica, $descripcion, $conexion)
     {
-        $this->idServicio = $idServicio;
+        $this->id = $id;
+        $this->novedad = $novedad;
+        $this->trabajador = $trabajador;
+        $this->idservicio = $idservicio;
+        $this->zonaespecifica = $zonaespecifica;
         $this->descripcion = $descripcion;
         $this->conexion = $conexion->conMysql();
     }
 
     public function verificarNovedad()
     {
-        if (!empty(($_POST["idServicio"] && $_POST["descripcion"]))) {
-            $verificar_codigo = $this->conexion->query("SELECT * FROM novedades_nomina WHERE id_servicio = '$this->idServicio'");
+        if (!empty(($_POST["id"] ))) {
+            $verificar_codigo = $this->conexion->query("SELECT * FROM novedades_nomina WHERE id = '$this->id'");
 
             if ($verificar_codigo->num_rows < 1) {
                 echo "
@@ -43,11 +49,11 @@ class updateNovedad
     }
     public function updateNovedad()
     {
-        if (!empty($_POST['idServicio']) && !empty($_POST['descripcion'])) {
-            $query = "UPDATE novedades_nomina SET descripcion = ? WHERE id_servicio = ?";
+        if (!empty($_POST['id']) && !empty($_POST['descripcion'])) {
+            $query = "UPDATE novedades_nomina SET tipo_novedad = ?, trabajador = ?, id_servicio = ?, id_zona_especifica = ?,descripcion = ? WHERE id = ?";
 
             if ($stmt = $this->conexion->prepare($query)) {
-                $stmt->bind_param('si', $this->descripcion, $this->idServicio);
+                $stmt->bind_param('ssissi', $this->novedad,$this->trabajador,$this->idservicio,$this->zonaespecifica,$this->descripcion,$this->id);
 
                 if ($stmt->execute()) {
                     echo "
