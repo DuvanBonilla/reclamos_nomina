@@ -14,7 +14,7 @@ try {
     LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion
     LEFT JOIN zona_especifica AS ZE ON N.id_zona_especifica = ZE.zona
     LEFT JOIN zona AS z ON N.id_zona = z.id_zona
-    ORDER BY N.fecha_novedad DESC"; // Ordenar por la fecha de la novedad en orden descendente
+    ORDER BY N.fecha_registro DESC"; // Ordenar por la fecha de la novedad en orden descendente
 
     $resultado = $conMysql->query($sql);
     // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------

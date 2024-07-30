@@ -14,7 +14,7 @@ try {
     INNER JOIN zona_especifica as ZE on N.id_zona_especifica = ZE.zona
     LEFT JOIN estado_aprobado_area AS EN ON N.id_aprobacionN = EN.id_aprobacion 
     WHERE Z.id_zona = $zona
-    ORDER BY N.fecha_novedad DESC";
+    ORDER BY N.fecha_registro DESC";
     $resultado = $conMysql->query($sql);
     // -------------------------------------------------------------------------------------------------------
 
