@@ -62,13 +62,13 @@ $rol = $_SESSION['rol'];
                         <th>Nomina <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Eliminar <span class="icon-arrow">&UpArrow;</span></th>
-                        <?php if ($rol == 1 || $rol == 3 || $rol == 4) : ?>
+                        <?php if ($rol == 1 || $rol == 3 || $rol == 4) { ?>
                             <th>Editar <span class="icon-arrow">&UpArrow;</span></th>
-                        <?php endif; ?>
+                        <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php require_once("../model/val_allNovedad.php"); ?>
+                    <?php require_once '../model/val_allNovedad.php'; ?>
                 </tbody>
             </table>
         </section>
@@ -107,6 +107,8 @@ $rol = $_SESSION['rol'];
     <!-- -------------------- eliminar -------- -->
     <script src="../controller/js/captureDeleteNovedad.js"></script>
     <!-- -------------------- js de la tabla -------- -->
+    <script src="../controller/js/allNovedades.js"></script>
+    <!-- -------------------- js confirmar elimar -------- -->
     <script src="../controller/js/allNovedades.js"></script>
 
 </body>
