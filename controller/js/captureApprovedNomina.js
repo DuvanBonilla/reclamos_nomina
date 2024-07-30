@@ -10,9 +10,6 @@ $(document).on("click", ".update-approvedN-button, .approvedN-button", function 
     } else if (estado === "terminado") {
         estado = 3;
     }
-    // console.log("Datos antes de la solicitud AJAX:");
-    // console.log("id_aprobacionC:", id_aprobacionC);
-    // console.log("id:", id_novedad);
     $.ajax({
         type: "POST",
         url: "../controller/ctr_approvedNomina.php",
@@ -23,7 +20,6 @@ $(document).on("click", ".update-approvedN-button, .approvedN-button", function 
 
         },
         success: function (response) {
-            console.log("Respuesta del servidor:", response);
             // Recargar la página después de completar la solicitud AJAX
             location.reload();
 

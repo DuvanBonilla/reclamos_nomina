@@ -10,9 +10,6 @@ $(document).on("click", ".update-approvedC-button, .approvedC-button", function 
     } else if (estado === "terminado") {
         estado = 3;
     }
-    // console.log("Datos antes de la solicitud AJAX:");
-    // console.log("id_aprobacionC:", id_aprobacionC);
-    // console.log("id:", id_novedad);
     $.ajax({
         type: "POST",
         url: "../controller/ctr_approvedCostos.php",
@@ -22,7 +19,6 @@ $(document).on("click", ".update-approvedC-button, .approvedC-button", function 
             estado: estado,
         },
         success: function (response) {
-            console.log("Respuesta del servidor:", response);
             // Recargar la página después de completar la solicitud AJAX
             location.reload();
 

@@ -1,6 +1,5 @@
 $(document).on("click", ".update-novedadNumber-button, .novedadNumber-button", function () {
     var novedad = $(this).data("novedad");
-    console.log("id:", novedad);
 
     $.ajax({
         type: "POST",
@@ -9,7 +8,6 @@ $(document).on("click", ".update-novedadNumber-button, .novedadNumber-button", f
             novedad: novedad,
         },
         success: function (response) {
-            console.log("Respuesta del servidor:", response);
 
             // Mostrar el modal
             var modal = document.getElementById("myModal");
