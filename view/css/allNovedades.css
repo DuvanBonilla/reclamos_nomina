@@ -453,8 +453,8 @@ tbody td.active {
   table td:nth-child(1),
   table th:nth-child(5),
   table td:nth-child(5),
-  table th:nth-child(10),
-  table td:nth-child(10) {
+  table th:nth-child(11),
+  table td:nth-child(11) {
     display: table-cell;
   }
 }
