@@ -23,7 +23,6 @@ $(document).on("click", ".update-approvedN-button, .approvedN-button", function 
 
         },
         success: function (response) {
-            console.log("Respuesta del servidor:", response);
             // Recargar la página después de completar la solicitud AJAX
             location.reload();
 

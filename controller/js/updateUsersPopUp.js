@@ -1,6 +1,5 @@
 $(document).on("click", ".update-user-button, .user-button", function () {
     var codigo = $(this).data("codigo");
-    console.log("codigo:", codigo);
 
     $.ajax({
         type: "POST",
@@ -9,7 +8,6 @@ $(document).on("click", ".update-user-button, .user-button", function () {
             codigo: codigo,
         },
         success: function (response) {
-            console.log("Respuesta del servidor:", response);
 
             // Mostrar el modal
             var modal = document.getElementById("myModal");

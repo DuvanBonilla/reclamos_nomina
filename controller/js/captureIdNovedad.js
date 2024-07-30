@@ -11,7 +11,7 @@ $(document).ready(function () {
         if (id_novedad) {
             $.ajax({
                 type: "POST",
-                url: 'http://localhost/reclamos/view/editNovedad.php',
+                url: 'http://44.217.106.177/reclamos/view/editNovedad.php',
                 data: {
                     id: id_novedad,
                     novedad: novedad,
@@ -21,7 +21,6 @@ $(document).ready(function () {
                     id_zona_especifica: id_zona_especifica,
                 },
                 success: function (response) {
-                    console.log("Respuesta del servidor:", response);
 
                     // Mostrar el modal
                     var modal = document.getElementById("myModal");

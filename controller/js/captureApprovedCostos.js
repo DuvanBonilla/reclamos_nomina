@@ -22,7 +22,6 @@ $(document).on("click", ".update-approvedC-button, .approvedC-button", function 
             estado: estado,
         },
         success: function (response) {
-            console.log("Respuesta del servidor:", response);
             // Recargar la página después de completar la solicitud AJAX
             location.reload();
 
