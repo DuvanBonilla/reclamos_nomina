@@ -128,9 +128,6 @@ class valNovedad
 
             $key = uniqid().'.'.$extension;
             // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
-            // $carpetaDestino = 'C:/xampp/htdocs/reclamos_nomina/archivos/';
-            // $rutaDestino = $carpetaDestino . $nombreArchivo;
-            // ---------------------------------------------------------- ---------------------------------------------------------- ------------------------------------------------------------------------------------------------------------
             if (uploadFile($key, $archivoTemporal)) {
                 $sql = "INSERT INTO archivos (id,fecha,nombre_archivo,archivo) VALUES ('$id', '$fechaRegistro','$nombreArchivo', '$key')";
                 if ($this->conexion->query($sql)) {
